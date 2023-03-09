@@ -2,7 +2,7 @@
 
 :- dynamic i_am_at/1, at/2, holding/1.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
-:- ensure_loaded(rooms/room_1), ensure_loaded(rooms/room_2).
+:- ensure_loaded(rooms/room_1), ensure_loaded(rooms/room_2), ensure_loaded(rooms/room_3), ensure_loaded(rooms/room_4).
 
 i_am_at(someplace).
 
