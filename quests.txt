@@ -1,0 +1,81 @@
+You are a wizard apprentice who failed their final exams, thus General University of magic put you in deadly dungeon.
+Were you to escape, Wizard Council would let you retake exams.
+
+It might be cool to have multiple solutions to problems. [In this version there are singular solutions and not for every problem xd]
+
+How to end game:
+1. Bypass beast guarding the dungeon exit (somehow)
+2. Reach and open the trapdoor from the beginning of the dungeon (open with cast(open, rusty key) and reach it... somehow )
+
+Rooms:
+There shouldn't be empty rooms. Room should contain at least one usefull object, preferably also a puzzle.
+
+1. Exit - It is guarded by bloodthirsty beast
+2. Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.
+    There is a skeleton in wizard robes and a journal*1.
+    There are a slightly open door on the east wall.
+3. Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+    You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be usefull.
+    By touch you find passage north east and west.
+    [when you cast light you can find usefull objects here]
+    magnet*7
+4. Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide to jump over it.
+    Over the pool fly some weird glowing bugs*2. They look simillar to fireflies.
+    On the south side of the pool there is a rope*8
+    on the north side of acid pool there are passages north and west. On the south side there is passage south.
+14. Small Dragon - A dragonling is blocking the corridor. It guards a pile of student's robes, books and cheat sheets. It looks rather angry.
+    [To unlock this path cast sleep on a dragon]
+    When dragon asleep: Little dragonling is sleeping on the pile of students' robes books and cheat sheets. There is passage west and south.
+    [You can take cheat sheet*6]
+15. Soot room - Rather big room with soot spots. [perhaps statue moving puzzle here?]
+    There is soot covered skeleton. Beside it there is partially burned journal*3
+    There are passages north and south.
+16. Alchemist room  - [add room description here]. There is something shiny [key*5] between floor tiles, but you cannot grab it with your fingers.
+    Passages west and north.
+    Jars*4, key*5 [you can obtain key by casting grab or by use(magnet, floor) or smth simillar]
+
+
+Objects:
+1. Old journal - "I found the exit! It is to the north, but fierce beast guides it.
+    I'm gonna await next student who's gonna fail their exams and team up with them against the beast."
+2. Fireflies - [They can be picked up if jar in inventory. Spell component.] [add description here] 
+3. Burned journal - "[illegible] is giving me a hard time. I know the [illegible] spell would be a save way to deal with it, 
+    however casting "grab" on it's tail would be funnier. Besides I don't have nightcap for [illegible] spell"
+4. jar - [needed to take firefly, perhaps can contain something else if multiple jars] [add description]
+5. key - Small iron key fit more for pendants than doors or chests. [spell component]
+6. cheet sheet - [add description of some cool spell here] [add light spell description]
+7. magnet - [add description here] [usable object]
+8. rope - old tattered rope. You wouldn't trust it to hold you weight. [spell component]
+x. Beer - [the hero is a student who failed an exam. There must be beer somewhere in the game]
+
+
+To Do:
+[add way to overcome acid puddle]
+[add nightcap somewhere]
+[add info about rusty key (probably next to closed door on some cheat sheet)]
+[add info about grab spell but past the dragon or acid pool]
+[create some small moving block puzzle? sokoban? move command???]
+
+[create game winning scenarios]
+
+
+Commands:
+look                    - look around. Get room description
+look(smth)              - investigate specyfic object. Get that object detailed description ex. read spell cheat sheet
+go(dir) or n, s, w, e   - Move between rooms. Perhaps go(room_name) would automaticly move you to specyfic room if possible?
+take(smth)              - add smth to inventory
+inventory               - list items in inventory
+?use(smth1, smth2)       - use something on something ex. use(key, acid) to make key rusty
+
+
+
+Spells:
+You can cast spells to solve problems. To cast spell you need appropriate component. Player is not given spell list in the tutorial. They have to learn them in game.
+syntax:
+    cast(SPELLNAME, COMPONENT)
+You usually can guess the component, but there will be spell cheat sheets in the dungeon (left by previous unlucky students).
+spell list (placeholder components):
+    cast(light, firefly)
+    cast(open, rusty key)/ cast(open, key)  - wersion with rusty key is more powerfull and can open any door (perhaps also trapdoor in Beneth the trapdoor #2) 
+    cast(grab, rope)                        - takes something from afar 
+    cast(sleep, nightcap)
