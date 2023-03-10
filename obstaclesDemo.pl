@@ -1,7 +1,7 @@
 /* <The name of this game>, by <your name goes here>. */
 
-:- dynamic i_am_at/1, at/2, holding/1, blocked/1.
-:- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(holding(_)). /* CHANGED HERE*/
+:- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2.
+:- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). /* CHANGED HERE*/
 /*:- ensure_loaded(rooms/room_1), ensure_loaded(rooms/room_2), ensure_loaded(rooms/room_3), ensure_loaded(rooms/room_4).*/
 
 :- ensure_loaded(rules/rules).
@@ -24,6 +24,11 @@ path(room2, s, blocked_roomN).
 path(room1, s, room2).
 path(room2, n, room1).
 
+path(room1, w, secret_room).
+path(secret_room, e, room1).
+
+blocked(room1, secret_room). /* NEW */
+
 blocked(blocked_room). /* NEW */
 
 at(orange, room1).
@@ -45,6 +50,7 @@ describe(blocked_room) :- write('You are in blocked room. In the middle there is
 describe(blocked_roomS) :- write('You are in blocked room. In the middle there is a deep pit. You are on the southern side of the pit.'), nl.
 describe(blocked_roomN) :- write('You are in blocked room. In the middle there is a deep pit. You are on the northern side of the pit.'), nl.
 describe(room2) :- write('You are in room2.'), nl.
+describe(_) :- write('[No description for this room yet]').
 
 
 /* These rules are to give conditional parts of rooms' descriptions. */ /* NEW */

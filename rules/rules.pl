@@ -1,21 +1,36 @@
 /* to add obstacle logic to main game copy unlock, go and look rules. Add apropriate path, subroom, blocked and describe additional truths.*/
 
 /* NEW */
-/* These rules describe how to unlock closed path. */
-unlock :- 
+/* These rules describe how to unlock room with obstacle. */
+
+bypass :- 
         at(Item, Place),
         subroom(Place, UnlockedPlace),
         retract(at(Item, Place)),
         assert(at(Item, UnlockedPlace)),
         false.
 
-unlock :-
+bypass :-
         i_am_at(Place),
         subroom(Place, UnlockedPlace),
         retract(i_am_at(Place)),
         assert(i_am_at(UnlockedPlace)),
         retract(blocked(UnlockedPlace)),
-        write("Unlocked"), nl.
+        write("Obstacle removed"), !, nl.
+
+bypass :- write('No obstacle to bypass here.'), nl.
+
+
+/* These rules describe how to unlock closed path. */
+
+unlock(Direction) :-
+        i_am_at(Place),
+        path(Place, Direction, There),
+        (retract(blocked(Place, There)) ; retract(blocked(There, Place))), !,
+        write('Unlocked'), nl.
+
+unlock(_) :- write('Nothing to unlock here.'), nl.
+
 
 /* These rules describe how to pick up an object. */
 
@@ -49,6 +64,13 @@ w :- go(w).
 
 
 /* This rule tells how to move in a given direction. */
+go(Direction) :-
+        i_am_at(Here),
+        path(Here, Direction, There),
+        (blocked(Here, There) ; blocked(There, Here)), !,
+        write('That path is blocked.'), nl.
+
+
 
 go(Direction) :-  /* CHANGED HERE*/
         i_am_at(Here),
@@ -96,7 +118,8 @@ instructions :-
         write('look.              -- to look around you again.'), nl,
         write('instructions.      -- to see this message again.'), nl,
         write('halt.              -- to end the game and quit.'), nl,
-        write('unlock.            -- debug command to bypass example obstacle in demo.'), nl,
+        write('bypass.            -- debug command to bypass example obstacle in demo.'), nl,
+        write('unlock(direction). -- debug command to unlock example blocked path in demo.'), nl,
         nl.
 
 
