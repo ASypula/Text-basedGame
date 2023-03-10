@@ -19,24 +19,32 @@ path(room2, s, blocked_roomN).
 path(room1, s, room2).
 path(room2, n, room1).
 
-blocked(blocked_room).
+blocked(blocked_room). /* NEW */
 
 at(orange, room1).
 at(apple, room1).
 
 at(rope, blocked_roomN).
+at(bucket, blocked_roomS).
 
+subroom(blocked_roomN, blocked_room). /* NEW */
+subroom(blocked_roomS, blocked_room). 
+
+/* NEW */
+/* These rules describe how to unlock closed path. */
 unlock :- 
-        at(rope, blocked_roomN),
-        retract(at(rope, blocked_roomN)),
-        assert(at(rope, blocked_room)),
-        retract(blocked(blocked_room)),
+        at(Item, Place),
+        subroom(Place, UnlockedPlace),
+        retract(at(Item, Place)),
+        assert(at(Item, UnlockedPlace)),
         false.
 
 unlock :-
         i_am_at(Place),
+        subroom(Place, UnlockedPlace),
         retract(i_am_at(Place)),
-        assert(i_am_at(blocked_room)),
+        assert(i_am_at(UnlockedPlace)),
+        retract(blocked(UnlockedPlace)),
         write("Unlocked"), nl.
 
 /* These rules describe how to pick up an object. */
@@ -170,9 +178,12 @@ describe(blocked_roomN) :- write('You are in blocked room. In the middle there i
 describe(room2) :- write('You are in room2.'), nl.
 
 
+/* These rules are to give conditional parts of rooms' descriptions. */ /* NEW */
 describe_additional(blocked_room) :- at(rope, blocked_room), write('You see a rope on the northern side.'), nl, false.
-describe_additional(blocked_room) :- write('debug'), nl, false.
+describe_additional(blocked_room) :- at(bucket, blocked_room), write('You see a bucket on the southern side.'), nl, false.
 describe_additional(blocked_roomS) :- at(rope, blocked_roomN), write('You see a rope on the other side.'), nl, false.
 describe_additional(blocked_roomN) :- at(rope, blocked_roomN), write('You see a rope on this side.'), nl, false.
+describe_additional(blocked_roomS) :- at(bucket, blocked_roomS), write('You see a bucket on this side.'), nl, false.
+describe_additional(blocked_roomN) :- at(bucket, blocked_roomS), write('You see a bucket on the other side.'), nl, false.
 describe_additional(_) :- true.
 
