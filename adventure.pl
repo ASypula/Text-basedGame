@@ -1,7 +1,7 @@
 /* <The name of this game>, by <your name goes here>. */
 
 :- dynamic i_am_at/1, at/2, holding/1, blocked/1.
-:- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(holding(_)).
+:- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(holding(_)). /* CHANGED HERE*/
 /*:- ensure_loaded(rooms/room_1), ensure_loaded(rooms/room_2), ensure_loaded(rooms/room_3), ensure_loaded(rooms/room_4).*/
 
 i_am_at(room1).
@@ -87,7 +87,7 @@ w :- go(w).
 
 /* This rule tells how to move in a given direction. */
 
-go(Direction) :-
+go(Direction) :-  /* CHANGED HERE*/
         i_am_at(Here),
         path(Here, Direction, There),
         \+ blocked(There),
@@ -101,10 +101,10 @@ go(_) :-
 
 /* This rule tells how to look about you. */
 
-look :-
+look :-         /* CHANGED HERE*/
         i_am_at(Place),
-        describe(Place),
-        !, nl,
+        describe(Place), !,
+        describe_additional(Place), nl,
         notice_objects_at(Place),
         nl.
 
@@ -164,11 +164,15 @@ start :-
    circumstances, a room may have more than one description. */
 
 describe(room1) :- write('You are in room1.'), nl.
-describe(blocked_room) :- at(rope, blocked_room), write('You are in blocked room. In the middle there is a deep pit. You see a rope on the northen side.'), nl.
-describe(blocked_roomS) :- at(rope, blocked_roomN), write('You are in blocked room. In the middle there is a deep pit. You see a rope on the other side.'), nl.
-describe(blocked_roomN) :- at(rope, blocked_roomN), write('You are in blocked room. In the middle there is a deep pit. You see a rope on this side.'), nl.
-describe(blocked_room) :- write('You are in blocked room. In the middle there is a deep pit.'), nl.
-describe(blocked_roomS) :- write('You are in blocked room. In the middle there is a deep pit.'), nl.
-describe(blocked_roomN) :- write('You are in blocked room. In the middle there is a deep pit.'), nl.
+describe(blocked_room) :- write('You are in blocked room. In the middle there is a deep pit. Over it hovers magical bridge conjured by debug command.'), nl.
+describe(blocked_roomS) :- write('You are in blocked room. In the middle there is a deep pit. You are on the southern side of the pit.'), nl.
+describe(blocked_roomN) :- write('You are in blocked room. In the middle there is a deep pit. You are on the northern side of the pit.'), nl.
 describe(room2) :- write('You are in room2.'), nl.
+
+
+describe_additional(blocked_room) :- at(rope, blocked_room), write('You see a rope on the northern side.'), nl, false.
+describe_additional(blocked_room) :- write('debug'), nl, false.
+describe_additional(blocked_roomS) :- at(rope, blocked_roomN), write('You see a rope on the other side.'), nl, false.
+describe_additional(blocked_roomN) :- at(rope, blocked_roomN), write('You see a rope on this side.'), nl, false.
+describe_additional(_) :- true.
 
