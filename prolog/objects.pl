@@ -53,6 +53,10 @@ describe(_) :-
 
 /* Actions with objects */
 
+take(firefly) :-
+    write("Hmmm If only you could use something to catch it in."), nl,
+    false.
+
 use_object(jar, firefly) :-
     holding(jar),
     i_am_at(Place),
