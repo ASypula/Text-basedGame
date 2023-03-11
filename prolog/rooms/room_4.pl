@@ -1,5 +1,7 @@
+:- multifile describe/1.
+
 /* Room description */
-look(room_4) :-
+describe(room_4) :-
     write('Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide to jump over it.'), nl,
     write('On the north side of acid pool there are passages north and west. On the south side there is passage south.'), nl.
 
@@ -13,4 +15,4 @@ hint(room_4) :-
 /* Objects */
 notice_objects_at(room_4) :-
     write('Over the pool fly some weird glowing bugs. They look simillar to fireflies.'), nl,
-    write('On the south side of the pool there is a rope'), nl.
+    write('On the south side of the pool there is a rope'), nl, false.
