@@ -11,7 +11,7 @@ Rooms:
 There shouldn't be empty rooms. Room should contain at least one usefull object, preferably also a puzzle.
 
 1. Exit - It is guarded by bloodthirsty beast
-2. Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.
+2. Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
     There is a skeleton in wizard robes and a journal*1.
     There are a slightly open door on the east wall.
 3. Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
@@ -19,7 +19,7 @@ There shouldn't be empty rooms. Room should contain at least one usefull object,
     By touch you find passage north east and west.
     [when you cast light you can find usefull objects here]
     magnet*7
-4. Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide to jump over it.
+4. Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide too jump over it.
     Over the pool fly some weird glowing bugs*2. They look simillar to fireflies.
     On the south side of the pool there is a rope*8
     on the north side of acid pool there are passages north and west. On the south side there is passage south.
