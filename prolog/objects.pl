@@ -7,7 +7,7 @@ describe(old_journal) :-
 
 describe(firefly) :-
     holding(firefly),
-    write("Small, light-emitting beetles."),
+    write("Small, light-emitting beetles. Their light might not be very strong, but If reinforced..."),
     nl, !.
 
 describe(burned_journal) :-
@@ -20,7 +20,6 @@ describe(jar) :-
     write("Empty, a bit dusty jar."),
     nl, !.
 
-/* TODO: should we hint that an object is a spell component? */
 describe(key) :-
     holding(key),
     write("Small iron key fit more for pendants than doors or chests. (hint: spell component)"),
@@ -40,11 +39,12 @@ describe(magnet) :-
 
 describe(rope) :-
     holding(rope),
-    write("Old tattered rope. You wouldn't trust it to hold you weight"),
+    write("Old tattered rope. You wouldn't trust it to hold your weight."), nl,
+    write("But it's quite long. I can't throw it too far but maybe I can grab something with a help of some spell?"),
     nl, !. 
 
 describe(beer) :-
-    holding(magnet),
+    holding(beer),
     write("[the hero is a student who failed an exam. There must be beer somewhere in the game]"),
     nl, !. 
 
@@ -53,21 +53,19 @@ describe(_) :-
 
 /* Actions with objects */
 
-grab(firefly, jar) :-
+use_object(firefly, jar) :-
     holding(jar),
+    i_am_at(Place),
+    at(firefly, Place),
+    assert(holding(firefly)),
     write("Wow! You managed to grab a firefly! Be careful not to free it."),
-    nl, !.
-
-holding(firefly) :-
-    grab(firefly, jar),
     nl, !.
 
 take(key) :-
     write("Sorry, you are not able to easily pick up the key. Think of a different solution."), nl,
     false.
 
-/* Can use be used? It's being highlighted in the editor as sth built-in... */
-use(magnet, whole, X) :-
+use_object(magnet, whole, X) :-
     metal(X),
     holding(magnet),
     i_am_at(Place),

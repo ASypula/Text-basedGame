@@ -1,6 +1,9 @@
 You are a wizard apprentice who failed their final exams, thus General University of magic put you in deadly dungeon.
 Were you to escape, Wizard Council would let you retake exams.
 
+Hints:
+- As a wizard apprentice you can cast some spells but for each one, a special component/object may be required.
+
 It might be cool to have multiple solutions to problems. [In this version there are singular solutions and not for every problem xd]
 
 How to end game:
