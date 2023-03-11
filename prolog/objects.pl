@@ -65,7 +65,7 @@ take(key) :-
     write("Sorry, you are not able to easily pick up the key. Think of a different solution."), nl,
     false.
 
-use_object(magnet, whole, X) :-
+use_object(magnet, hole, X) :-
     metal(X),
     holding(magnet),
     i_am_at(Place),
