@@ -53,7 +53,7 @@ describe(_) :-
 
 /* Actions with objects */
 
-use_object(firefly, jar) :-
+use_object(jar, firefly) :-
     holding(jar),
     i_am_at(Place),
     at(firefly, Place),
