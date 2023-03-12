@@ -1,4 +1,6 @@
 :- multifile describe/1.
+:- multifile describe_additional/1.
+:- multifile hint/1.
 
 /* Room description */
 describe(room_2) :-

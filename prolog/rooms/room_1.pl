@@ -1,4 +1,6 @@
 :- multifile describe/1.
+:- multifile describe_additional/1.
+:- multifile hint/1.
 
 /* Room description */
 describe(room_1) :-
@@ -13,4 +15,5 @@ hint(room_1) :-
 
 /* Objects */
 describe_additional(room_1) :-
-    false.
+    at(_, _),
+    write('Nothing...'), nl, false.
