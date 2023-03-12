@@ -21,7 +21,7 @@ There shouldn't be empty rooms. Room should contain at least one usefull object,
     You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be usefull.
     By touch you find passage north east and west.
     [when you cast light you can take usefull objects here]
-    magnet*7 rope*8
+    rope*8
 4. Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide to jump over it.
     Over the pool fly some weird glowing bugs*2. They look simillar to fireflies.
     On the north side there is a skeleton wearing a nightcap*10. I lays in a very comfortable natural position, as if it just layed to eternal sleep here.
@@ -32,6 +32,7 @@ There shouldn't be empty rooms. Room should contain at least one usefull object,
     [To unlock this path cast sleep on a dragon]
     When dragon asleep: Little dragonling is sleeping on the pile of students' robes books and cheat sheets. There is passage west and south.
     [You can take cheat sheet*6]
+    [You can take book spinnet*12]
 15. Soot room - Rather big room with soot spots. [perhaps statue moving puzzle here?]
     There is soot covered skeleton. Beside it there is partially burned journal*3
     There are passages north and south.
@@ -42,10 +43,11 @@ There shouldn't be empty rooms. Room should contain at least one usefull object,
     potion*9
 5. Machinery - [this room is accessible only by opening door to it with cast(open, key)]
     The room is filled with techno-magic machinery. It is not considered difficult magic, but you oversleept that exam and failed it anyway.
-    There is a control panel but it is blocked by a 4 digit code password. On the back of it very old dusty sticky note*11 is attatched.
+    There is a control panel but it is blocked by a 4 digit code password (use enter(xxxx). command). On the back of it very old dusty sticky note*11 is attatched.
     [the code is 1988 which is a year of Morris worm. There is a note with specyfic year somewhere else on the level]
     [the machinery creates magical bridge over acid pool thus unlocking that room]
 6. Corridor - Corridor filled with sleeping goblins and skeletons. You must move very carefully between them.
+    One of the goblins holds curious looking magnet*7
     the corridor leads north. There is also an opening on the east side.
 
 
@@ -66,7 +68,9 @@ Objects:
 9. potion - You recognise it from your alchemy classes (the only ones that you passes). This is a Far Jump Potion. You can use it to jump very far, but only once.
 10. nightcap - It doesn't look too fashionable, but kind of comfy. [spell component]
 11. sticky note - "The code is year of the Worm Spell disaster."
-x. Beer - [the hero is a student who failed an exam. There must be beer somewhere in the game]
+12. book spinnet - "There is more powerfull variant of "open" spell that uses rusty key as a component, which is proven to..." 
+    The words "more", "powerful" and "rusty" are underlined and next to them there is a handwritten note "Dumb as hell".
+x. Beer - You are a student who failed an exam. There must be beer somewhere in the game.
 
 
 To Do:
