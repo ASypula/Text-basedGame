@@ -14,5 +14,10 @@ hint(room_3) :-
 /* Puzzles */
 
 /* Objects */
-notice_objects_at(room_3) :-
-    write('@TODO - conditional magnet info'), nl, false.
+describe_additional(room_3) :-
+    at(torch, room_3),
+    write('Something strange reflects the light of your tourch.. is it a magnet?'), nl, false.
+
+describe_additional(room_3) :-
+    at(magnet, room_3),
+    write('You were right! This shiny thing is in fact the magnet.'), nl, false.

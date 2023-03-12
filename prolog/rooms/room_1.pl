@@ -12,5 +12,5 @@ hint(room_1) :-
 /* Puzzles */
 
 /* Objects */
-notice_objects_at(room_1) :-
-    write('There aren''t any useful object here'), nl.
+describe_additional(room_1) :-
+    false.

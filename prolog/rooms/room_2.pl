@@ -14,5 +14,6 @@ hint(room_2) :-
 /* Puzzles */
 
 /* Objects */
-notice_objects_at(room_2) :-
+describe_additional(room_2) :-
+    at(journal, room_2),
     write('You see a journal neer the skeleton in wizard robes'), nl, false.

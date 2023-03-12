@@ -13,6 +13,10 @@ hint(room_4) :-
 /* Puzzles */
 
 /* Objects */
-notice_objects_at(room_4) :-
-    write('Over the pool fly some weird glowing bugs. They look simillar to fireflies.'), nl,
+describe_additional(room_4) :-
+    at(firefly, room_4),
+    write('Over the pool fly some weird glowing bugs. They look simillar to fireflies.'), nl, false.
+
+describe_additional(room_4) :-
+    at(rope, room_4),
     write('On the south side of the pool there is a rope'), nl, false.
