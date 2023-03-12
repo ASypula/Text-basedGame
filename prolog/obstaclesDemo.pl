@@ -2,9 +2,9 @@
 
 :- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). /* CHANGED HERE*/
+:- multifile([describe/1, describe_additional/1]).
 /*:- ensure_loaded(rooms/room_1), ensure_loaded(rooms/room_2), ensure_loaded(rooms/room_3), ensure_loaded(rooms/room_4).*/
 
-:- ensure_loaded(rules/rules).
 
 /* to add obstacle logic to main game copy unlock, go and look rules. Add apropriate path, subroom, blocked and describe additional truths.*/
 
@@ -50,7 +50,6 @@ describe(blocked_room) :- write('You are in blocked room. In the middle there is
 describe(blocked_roomS) :- write('You are in blocked room. In the middle there is a deep pit. You are on the southern side of the pit.'), nl.
 describe(blocked_roomN) :- write('You are in blocked room. In the middle there is a deep pit. You are on the northern side of the pit.'), nl.
 describe(room2) :- write('You are in room2.'), nl.
-describe(_) :- write('[No description for this room yet]').
 
 
 /* These rules are to give conditional parts of rooms' descriptions. */ /* NEW */
@@ -60,5 +59,32 @@ describe_additional(blocked_roomS) :- at(rope, blocked_roomN), write('You see a 
 describe_additional(blocked_roomN) :- at(rope, blocked_roomN), write('You see a rope on this side.'), nl, false.
 describe_additional(blocked_roomS) :- at(bucket, blocked_roomS), write('You see a bucket on this side.'), nl, false.
 describe_additional(blocked_roomN) :- at(bucket, blocked_roomS), write('You see a bucket on the other side.'), nl, false.
-describe_additional(_) :- true.
 
+
+:- ensure_loaded(rules/rules).
+
+instructions :-
+        nl,
+        write('Enter commands using standard Prolog syntax.'), nl,
+        write('Available commands are:'), nl,
+        write('start.             -- to start the game.'), nl,
+        write('n.  s.  e.  w.     -- to go in that direction.'), nl,
+        write('take(object).      -- to pick up an object.'), nl,
+        write('inventory.         -- to see all picked up objects.'), nl,
+        write('look.              -- to look around you again.'), nl,
+        write('describe(object).  -- to take a closer look at an object.'), nl,
+        write('use_object(object_to_use, use_on_what).-- to use an object on something.'), nl,
+        write('cast(spell, component). -- to cast a spell using correct component.'), nl,
+        write('instructions.      -- to see this message again.'), nl,
+        write('halt.              -- to end the game and quit.'), nl,
+        write('bypass.            -- debug command to bypass example obstacle in demo.'), nl,
+        write('unlock(direction). -- debug command to unlock example blocked path in demo.'), nl,
+        nl.
+
+
+
+/* This rule prints out instructions and tells where you are. */
+
+start :-
+        instructions,
+        look.
