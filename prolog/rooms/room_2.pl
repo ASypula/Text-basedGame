@@ -1,7 +1,3 @@
-:- multifile describe/1.
-:- multifile describe_additional/1.
-:- multifile hint/1.
-
 /* Room description */
 describe(room_2) :-
     write('Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.'), nl,

@@ -62,9 +62,6 @@ e :- go(e).
 
 w :- go(w).
 
-/* added to make main stop throwing exception without paths.pl file for main.pl file demonstration */
-path(x, y, z).
-
 /* This rule tells how to move in a given direction. */
 go(Direction) :-
         i_am_at(Here),

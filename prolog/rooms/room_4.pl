@@ -1,7 +1,3 @@
-:- multifile describe/1.
-:- multifile describe_additional/1.
-:- multifile hint/1.
-
 /* Room description */
 describe(room_4) :-
     write('Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide to jump over it.'), nl,
