@@ -14,15 +14,20 @@ There shouldn't be empty rooms. Room should contain at least one usefull object,
 2. Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.
     There is a skeleton in wizard robes and a journal*1.
     There is a slightly open door on the east wall.
+    [one of the endings below. Thi one is more secret so don't put those brackets in hints]
+        [you can use jump potion to jump to trapdoor]
+        [you can open a trapdoor using open with rusty key]
 3. Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
     You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be usefull.
     By touch you find passage north east and west.
     [when you cast light you can take usefull objects here]
-    magnet*7
+    magnet*7 rope*8
 4. Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide to jump over it.
     Over the pool fly some weird glowing bugs*2. They look simillar to fireflies.
-    On the south side of the pool there is a rope*8
+    On the north side there is a skeleton wearing a nightcap*10. I lays in a very comfortable natural position, as if it just layed to eternal sleep here.
     on the north side of acid pool there are passages north and west. On the south side there is passage south.
+    [You can traverse the acid pool by using jump potion*9]
+    [you can take nightcap from northen side or by using grab spell]
 14. Small Dragon - A dragonling is blocking the corridor. It guards a pile of student's robes, books and cheat sheets. It looks rather angry.
     [To unlock this path cast sleep on a dragon]
     When dragon asleep: Little dragonling is sleeping on the pile of students' robes books and cheat sheets. There is passage west and south.
@@ -34,6 +39,14 @@ There shouldn't be empty rooms. Room should contain at least one usefull object,
     Some sort of jewellery? Or maybe a key?
     Passages west and north.
     Jars*4, key*5 [you can obtain key by casting grab or by use(magnet, key) or smth simillar]
+    potion*9
+5. Machinery - [this room is accessible only by opening door to it with cast(open, key)]
+    The room is filled with techno-magic machinery. It is not considered difficult magic, but you oversleept that exam and failed it anyway.
+    There is a control panel but it is blocked by a 4 digit code password. On the back of it very old dusty sticky note*11 is attatched.
+    [the code is 1988 which is a year of Morris worm. There is a note with specyfic year somewhere else on the level]
+    [the machinery creates magical bridge over acid pool thus unlocking that room]
+6. Corridor - Corridor filled with sleeping goblins and skeletons. You must move very carefully between them.
+    the corridor leads north. There is also an opening on the east side.
 
 
 Objects:
@@ -44,15 +57,21 @@ Objects:
     however casting "grab" on it's tail would be funnier. Besides I don't have nightcap for [illegible] spell"
 4. jar - [needed to take firefly, perhaps can contain something else if multiple jars] [add description]
 5. key - Small iron key fit more for pendants than doors or chests. [spell component]
-6. cheet sheet - [add description of some cool spell here] [add light spell description]
+6. cheet sheet - "light spell: prons: easy, efficient, stays for a long time; cons: requires life component"
+    "grab spell: prons: nearly anything will do as a component. Just needs to be long. Even long shoelace will do; cons: life animals and beasts hate it for some reason."
+    "sleep spell: prons: usefull to aviod combat, you can wear component on your head; cons: doesn't work on school staff, If casted on self, you cannot wake up."
 7. magnet - [add description here] [usable object]
-8. rope - old tattered rope. You wouldn't trust it to hold you weight. [spell component]
+8. rope - old tattered rope. You wouldn't trust it to hold you weight. But it's quite long. 
+    I can't throw it too far but maybe I can grab something with a help of some spell?
+9. potion - You recognise it from your alchemy classes (the only ones that you passes). This is a Far Jump Potion. You can use it to jump very far, but only once.
+10. nightcap - It doesn't look too fashionable, but kind of comfy. [spell component]
+11. sticky note - "The code is year of the Worm Spell disaster."
 x. Beer - [the hero is a student who failed an exam. There must be beer somewhere in the game]
 
 
 To Do:
-[add way to overcome acid puddle]
-[add nightcap somewhere]
+[add way to overcome acid puddle] done
+[add nightcap somewhere] done
 [add info about rusty key (probably next to closed door on some cheat sheet)]
 [add info about grab spell but past the dragon or acid pool]
 [create some small moving block puzzle? sokoban? move command???]
