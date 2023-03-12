@@ -62,9 +62,6 @@ e :- go(e).
 
 w :- go(w).
 
-/* added to make main stop throwing exception without paths.pl file for main.pl file demonstration */
-path(x, y, z).
-
 /* This rule tells how to move in a given direction. */
 go(Direction) :-
         i_am_at(Here),
@@ -81,7 +78,7 @@ go(Direction) :-  /* CHANGED HERE*/
         !, look.
 
 go(_) :-
-        write("You can't go that way.").
+        write('You can''t go that way.').
 
 
 /* This rule tells how to look about you. */
@@ -113,6 +110,9 @@ inventory :-
 
 inventory :- nl.
 
+/* This rule is a basic form and each room should implement it */
+describe_additional(_) :-
+    true.
 
 /*default describe outputs */
 

@@ -1,3 +1,6 @@
+:- multifile use_object/2.
+:- multifile take/1.
+
 /* Get information about objects */
 
 investigate(lantern) :-

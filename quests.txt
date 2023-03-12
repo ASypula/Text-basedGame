@@ -16,14 +16,14 @@ There shouldn't be empty rooms. Room should contain at least one usefull object,
 1. Exit - It is guarded by bloodthirsty beast
 2. Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
     There is a skeleton in wizard robes and a journal*1.
-    There are a slightly open door on the east wall.
+    There is a slightly open door on the east wall.
 3. Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
     You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be usefull.
     By touch you find passage north east and west.
     [when you cast light you can find usefull objects here]
     magnet*7
 4. Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide too jump over it.
-    Over the pool fly some weird glowing bugs*2. They look simillar to fireflies.
+    Over the pool fly some weird glowing bugs*2. They look similar to fireflies.
     On the south side of the pool there is a rope*8
     on the north side of acid pool there are passages north and west. On the south side there is passage south.
 14. Small Dragon - A dragonling is blocking the corridor. It guards a pile of student's robes, books and cheat sheets. It looks rather angry.
@@ -35,7 +35,7 @@ There shouldn't be empty rooms. Room should contain at least one usefull object,
     There are passages north and south.
 16. Alchemist room  - [add room description here]. There is something shiny [key*5] between floor tiles, but you cannot grab it with your fingers.
     Passages west and north.
-    Jars*4, key*5 [you can obtain key by casting grab or by use(magnet, floor) or smth simillar]
+    Jars*4, key*5 [you can obtain key by casting grab or by use(magnet, floor) or smth similar]
 
 
 Objects:
