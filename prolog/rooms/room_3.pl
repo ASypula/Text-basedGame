@@ -14,7 +14,7 @@ hint(room_3) :-
 /* Objects */
 describe_additional(room_3) :-
     at(torch, room_3),
-    write('Something strange reflects the light of your tourch.. is it a magnet?'), nl, false.
+    write('Something strange reflects the light of your torch.. is it a magnet?'), nl, false.
 
 describe_additional(room_3) :-
     at(magnet, room_3),
