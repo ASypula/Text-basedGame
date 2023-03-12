@@ -18,7 +18,7 @@ cast(Spell_name, Component) :-
 
 cast(Spell_name, _) :-
     spell(Spell_name, _),
-    write("This is not rigt component for this spell. No wonder you failed your exams."), nl, !.
+    write("This is not right component for this spell. No wonder you failed your exams."), nl, !.
 
 cast(_, _) :-
     write("Don't know such spell."), nl.

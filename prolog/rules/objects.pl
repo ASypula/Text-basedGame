@@ -59,7 +59,7 @@ investigate(_) :-
 
 /* Specyfic take actions with objects */
 
-take(journal) :-
+take(journal) :-    /* allows the user to take the correct journal in present room */
     is_journal(Journal),
     i_am_at(Place),
     at(Journal, Place),
