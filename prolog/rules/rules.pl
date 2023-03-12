@@ -81,7 +81,7 @@ go(Direction) :-  /* CHANGED HERE*/
         !, look.
 
 go(_) :-
-        write('You can''t go that way.').
+        write("You can't go that way.").
 
 
 /* This rule tells how to look about you. */
