@@ -14,19 +14,19 @@ cast(Spell_name, Component) :-
 cast(Spell_name, Component) :-
     spell(Spell_name, Component),
     \+ holding(Component), 
-    write("You don't have that component"), nl, !.
+    write('You don''t have that component'), nl, !.
 
 cast(Spell_name, _) :-
     spell(Spell_name, _),
-    write("This is not right component for this spell. No wonder you failed your exams."), nl, !.
+    write('This is not right component for this spell. No wonder you failed your exams.'), nl, !.
 
 cast(_, _) :-
-    write("Don't know such spell."), nl.
+    write('Don''t know such spell.'), nl.
 
 cast_at_place(light, dark_room) :-
-    write("@TODO, write some outcome here."), !.
+    write('@TODO, write some outcome here.'), !.
 
 cast_at_place(_, _) :-
-    write("Not so useful here."), nl.
+    write('Not so useful here.'), nl.
 
 /* @TODO: add more spells */
