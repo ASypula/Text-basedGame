@@ -62,6 +62,8 @@ e :- go(e).
 
 w :- go(w).
 
+/* added to make main stop throwing exception without paths.pl file for main.pl file demonstration */
+path(x, y, z).
 
 /* This rule tells how to move in a given direction. */
 go(Direction) :-
@@ -69,8 +71,6 @@ go(Direction) :-
         path(Here, Direction, There),
         (blocked(Here, There) ; blocked(There, Here)), !,
         write('That path is blocked.'), nl.
-
-
 
 go(Direction) :-  /* CHANGED HERE*/
         i_am_at(Here),
@@ -104,38 +104,22 @@ notice_objects_at(Place) :-
 notice_objects_at(_).
 
 
-
-/* This rule just writes out game instructions. */
-
-instructions :-
-        nl,
-        write('Enter commands using standard Prolog syntax.'), nl,
-        write('Available commands are:'), nl,
-        write('start.             -- to start the game.'), nl,
-        write('n.  s.  e.  w.     -- to go in that direction.'), nl,
-        write('take(Object).      -- to pick up an object.'), nl,
-        write('inventory.         -- to see all picked up objects.'), nl,
-        write('look.              -- to look around you again.'), nl,
-        write('instructions.      -- to see this message again.'), nl,
-        write('halt.              -- to end the game and quit.'), nl,
-        write('bypass.            -- debug command to bypass example obstacle in demo.'), nl,
-        write('unlock(direction). -- debug command to unlock example blocked path in demo.'), nl,
-        nl.
-
-
 /* This rule prints inventory contents */
+
 inventory :- write('Your objects:'), nl, fail.
 inventory :-
         holding(Item),
         write('    '), write(Item), nl, false.
-inventory :- true.
+
+inventory :- nl.
 
 /* This rule is a basic form and each room should implement it */
 describe_additional(_) :-
     true.
 
-/* This rule prints out instructions and tells where you are. */
+/*default describe outputs */
 
-start :-
-        instructions,
-        look.
+describe(_) :- write('[No description for this room yet]').
+describe_additional(_) :- true.
+
+use_object(_, _) :- write('Not helpfull here.'), nl.
