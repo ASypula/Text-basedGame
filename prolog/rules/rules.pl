@@ -130,6 +130,9 @@ inventory :-
         write('    '), write(Item), nl, false.
 inventory :- true.
 
+/* This rule is a basic form and each room should implement it */
+describe_additional(_) :-
+    true.
 
 /* This rule prints out instructions and tells where you are. */
 
