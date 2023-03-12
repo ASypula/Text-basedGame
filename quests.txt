@@ -1,14 +1,13 @@
 You are a wizard apprentice who failed their final exams, thus General University of magic put you in deadly dungeon.
 Were you to escape, Wizard Council would let you retake exams.
 
-It might be cool to have multiple solutions to problems. [In this version there are singular solutions and not for every problem xd]
+It might be cool to have multiple solutions to problems. 
 
 How to end game:
 1. Bypass beast guarding the dungeon exit (somehow)
-2. Reach and open the trapdoor from the beginning of the dungeon (open with cast(open, rusty key) and reach it... somehow )
+2. Reach and open the trapdoor from the beginning of the dungeon (open with cast(open, rusty key) and reach it using jump potion
 
 Rooms:
-There shouldn't be empty rooms. Room should contain at least one usefull object, preferably also a puzzle.
 
 1. Exit - It is guarded by bloodthirsty beast
 2. Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.
@@ -91,11 +90,11 @@ To Do:
 
 Commands:
 look                    - look around. Get room description
-look(smth)              - investigate specyfic object. Get that object detailed description ex. read spell cheat sheet
+investigate(smth)              - investigate specyfic object. Get that object detailed description ex. read spell cheat sheet
 go(dir) or n, s, w, e   - Move between rooms. Perhaps go(room_name) would automaticly move you to specyfic room if possible?
 take(smth)              - add smth to inventory
 inventory               - list items in inventory
-?use(smth1, smth2)       - use something on something ex. use(key, acid) to make key rusty
+use_object(smth1, smth2)       - use something on something ex. use(key, acid) to make key rusty
 
 
 
@@ -104,8 +103,16 @@ You can cast spells to solve problems. To cast spell you need appropriate compon
 syntax:
     cast(SPELLNAME, COMPONENT)
 You usually can guess the component, but there will be spell cheat sheets in the dungeon (left by previous unlucky students).
-spell list (placeholder components):
+spell list:
     cast(light, firefly)
     cast(open, rusty key)/ cast(open, key)  - wersion with rusty key is more powerfull and can open any door (perhaps also trapdoor in Beneth the trapdoor #2) 
     cast(grab, rope)                        - takes something from afar 
     cast(sleep, nightcap)
+
+
+Specyfic room mechanic:
+    Junk room and items obscured by darkness
+    Machinery and enter(1988) that creates magical bridge over acid pool
+    use_object z potion w acid pool, to jump over the acid
+    use_object w Beneath the trapdoor to reach it and escape the dungeon (but first the trapdoor must be open)
+    Puzzle room grow, shrink and put
