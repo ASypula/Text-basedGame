@@ -1,6 +1,8 @@
 /* "Escape from detention" by Aleksandra Sypuła, Eryk Sztanga and Mateusz Wasilewski. */
 
 :- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2.
+/* check if that works */ 
+:- multifile([describe/1, describe_additional/1, take/1]).
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). 
 
 /*It is important that the rooms are loaded before rules, because in rooms there are more specyfic cases of some rules (ex. describe)*/
