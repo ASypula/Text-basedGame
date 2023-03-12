@@ -62,6 +62,8 @@ e :- go(e).
 
 w :- go(w).
 
+/* added to make main stop throwing exception without paths.pl file for main.pl file demonstration */
+path(x, y, z).
 
 /* This rule tells how to move in a given direction. */
 go(Direction) :-
@@ -116,3 +118,5 @@ inventory :- nl.
 
 describe(_) :- write('[No description for this room yet]').
 describe_additional(_) :- true.
+
+use_object(_, _) :- write('Not helpfull here.'), nl.

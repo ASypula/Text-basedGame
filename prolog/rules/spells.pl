@@ -16,6 +16,10 @@ cast(Spell_name, Component) :-
     \+ holding(Component), 
     write("You don't have that component"), nl, !.
 
+cast(Spell_name, _) :-
+    spell(Spell_name, _),
+    write("This is not rigt component for this spell. No wonder you failed your exams."), nl, !.
+
 cast(_, _) :-
     write("Don't know such spell."), nl.
 
