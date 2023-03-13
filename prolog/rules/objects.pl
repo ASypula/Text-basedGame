@@ -3,10 +3,6 @@
 
 /* Get information about objects */
 
-investigate(lantern) :-
-    write("Your good trusty lantern. You will need it untill you finally get a hold of light spell."),
-    nl, !.
-
 investigate(journal) :-
     write("Be more specyfic about which journal. (To check out your invetory try command \"inventory\")."),
     nl, !.
@@ -52,10 +48,48 @@ investigate(rope) :-
     write("But it's quite long. I can't throw it too far but maybe I can grab something with a help of some spell?"),
     nl, !. 
 
+investigate(potion) :-
+    holding(potion),
+    write('You recognise it from your alchemy classes (the only ones that you pass). This is a Far Jump Potion.'), nl,
+    write('You can use it to jump very far, but only once.'), nl, !.
+
+investigate(nightcap) :-
+    holding(nightcap),
+    write("It doesn't look too fashionable, but kind of comfy. (hint: spell component)"),
+    nl, !. 
+
+investigate(note) :-
+    holding(note),
+    write("The code is year of the Worm Spell disaster."),
+    nl, !. 
+
+investigate(book_fragment) :-
+    holding(book_fragment),
+    write("There is a more powerful variant of 'open' spell that uses rusty key as a component, which is proven to..."), nl,
+    write("The words 'more', 'powerful' and 'rusty' are underlined and next to them there is a handwritten note 'Dumb as hell'."),
+    nl, !. 
+
+investigate(big_journal) :-
+    holding(big_journal),
+    write("I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(object). and shrink(object).)."), nl,
+    write("Others form some kind of a riddle. Good thing that I listened during rune theory lectures. It roughly translates as:"), nl,
+    write("1. Green block has only one neighbour."), nl,
+    write("2. Red has both small and big neighbour."), nl,
+    write("3. Purple is small."), nl,
+    write("4. Red and blue are both next to their colour mix."), nl,
+    write("5. Their size has symmetry about the middle block."), nl,
+    write("6. Blue doesn't have any small blocks on it's right."), nl,
+    write("7. Red is more to the left than orange is."),
+    nl, !. 
+
 investigate(beer) :-
     holding(beer),
     write("[the hero is a student who failed an exam. There must be beer somewhere in the game]"),
     nl, !. 
+
+investigate(lantern) :-
+    write("Your good trusty lantern. You will need it until you finally get a hold of light spell."),
+    nl, !.
 
 investigate(_) :-
     write('Nothing to describe. Object is not in your inventory'), nl.
@@ -101,6 +135,7 @@ use_object(magnet, X) :-
 
 is_journal(burned_journal).
 is_journal(old_journal).
+is_journal(big_journal).
 
 /*rules about what objects are metal*/
 

@@ -96,14 +96,14 @@ look :-         /* CHANGED HERE*/
 notice_objects_at(Place) :-
         at(X, Place),
         write('There is a '), write(X), write(' here.'), nl,
-        fail.
+        false.
 
 notice_objects_at(_).
 
 
 /* This rule prints inventory contents */
 
-inventory :- write('Your objects:'), nl, fail.
+inventory :- write('Your objects:'), nl, false.
 inventory :-
         holding(Item),
         write('    '), write(Item), nl, false.
