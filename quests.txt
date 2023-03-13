@@ -50,10 +50,11 @@ Rooms:
     the corridor leads north. There is also an opening on the east side.
 7. Puzzle room - This room has weird magical sigils on the walls. 
     You recognise them as symbols allowing to do specyfic transmutation spells here, but can't recall which.
-    [add tip somewhere that those are "grow" and "shrink" with syntax grow(object) and put with syntax put(object, position)]
-    There are 5 pedestals in a lin, numbered from 1 (most left) to 5 (most right).
+    There is a comedicly big journal*13 here. Under it there is squished little skeleton wearing small wizard hat.
+    There are 5 pedestals in a line, numbered from 1 (most left) to 5 (most right). [You can put blocks on pedestals using put(color, position)]
     In the room there are also 5 blocks in diffrent colors - red, green, blue, purple and orange. The red, blue and purple are small. Green and orange are bigger.
-    [rewrite puzzle from my notebook]
+    [correct solution is O R p B G]
+    [to solve the riddle you have to set right sizes to blocks and put them on correct pedestals. This unlocks path to room 8]
 
 
 Objects:
@@ -75,6 +76,15 @@ Objects:
 11. sticky note - "The code is year of the Worm Spell disaster."
 12. book spinnet - "There is more powerfull variant of "open" spell that uses rusty key as a component, which is proven to..." 
     The words "more", "powerful" and "rusty" are underlined and next to them there is a handwritten note "Dumb as hell".
+13. big journal - "I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(object). and shrink(object).).
+    Others form some kind of a riddle. Good think that I listened during rune theory lectures. It roghly translates as:
+        1. Green block has only one neighbour.
+        2. Red has both small and big neighbour.
+        3. Purple is small.
+        4. Red and blue are both next to their colour mix.
+        5. Their size has symmetry about the middle block.
+        6. Blue doesn't have any small blocks on it's right.
+        7. Red is more to the left than orange is."
 x. Beer - You are a student who failed an exam. There must be beer somewhere in the game.
 
 
