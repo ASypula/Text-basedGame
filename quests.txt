@@ -55,6 +55,10 @@ Rooms:
     In the room there are also 5 blocks in diffrent colors - red, green, blue, purple and orange. The red, blue and purple are small. Green and orange are bigger.
     [correct solution is O R p B G]
     [to solve the riddle you have to set right sizes to blocks and put them on correct pedestals. This unlocks path to room 8]
+8. Undead student - [add some cool description of small liblary here]
+    [there is undead skeleton here. It wears very old tattered hat with "Maggus" on it.]
+    [It is an undead student who achieved immortality but they become bounded to this place.]
+    [Undead student can grant you a wish after you bring them beer. You can get a weapon to kill the fierce beast.]
 
 
 Objects:
