@@ -46,6 +46,7 @@ Rooms:
     There is a control panel but it is blocked by a 4 digit code password (use enter(xxxx). command). On the back of it very old dusty sticky note*11 is attatched.
     [the code is 1988 which is a year of Morris worm. There is a note with specyfic year somewhere else on the level]
     [the machinery creates magical bridge over acid pool thus unlocking that room]
+    [it also unlocks 13 or 12 room]
 6. Corridor - Corridor filled with sleeping goblins and skeletons. You must move very carefully between them.
     One of the goblins holds curious looking magnet*7
     the corridor leads north. There is also an opening on the east side.
@@ -56,14 +57,14 @@ Rooms:
     In the room there are also 5 blocks in diffrent colors - red, green, blue, purple and orange. The red, blue and purple are small. Green and orange are bigger.
     [correct solution is O R p B G]
     [to solve the riddle you have to set right sizes to blocks and put them on correct pedestals. This unlocks path to room 8]
-8. Undead student - [add some cool description of small liblary here]
+8. Undead student - [add some cool description of a small liblary here]
     [there is undead skeleton here. It wears very old tattered hat with "Maggus" on it.]
     [It is an undead student who achieved immortality but they become bounded to this place.]
     [Undead student can grant you a wish after you bring them beer. You can get a spell to kill the fierce beast.]
     [spell might be power_word_kill because it is long and hard to guess and it is DnD reference xd]
 13. [TODO] - beer*x here, but blocked somehow. Safe perhaps? room is locked.
-12. [TODO] - second magnet opportunity?
-11. another corridor xd
+12. [TODO] - second magnet opportunity? item to unlock beer. Room is locked by technomagic barrier [code in Machinery unlocks it]
+11. another corridor xd. 13 south. 12 north.
 10. [todo] - north to the beast guardian room. east goes long corridor.
 
 
@@ -87,14 +88,14 @@ Objects:
 12. book spinnet - "There is more powerfull variant of "open" spell that uses rusty key as a component, which is proven to..." 
     The words "more", "powerful" and "rusty" are underlined and next to them there is a handwritten note "Dumb as hell".
 13. big journal - "I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(object). and shrink(object).).
-    Others form some kind of a riddle. Good think that I listened during rune theory lectures. It roghly translates as:
+    Others form some kind of a riddle. Good think that I listened during rune theory lectures. It roughly translates as:
         1. Green block has only one neighbour.
         2. Red has both small and big neighbour.
         3. Purple is small.
         4. Red and blue are both next to their colour mix.
         5. Their size has symmetry about the middle block.
         6. Blue doesn't have any small blocks on it's right.
-        7. Red is more to the left than orange is."
+        7. Red is more to the left than green is."
 x. Beer - You are a student who failed an exam. There must be beer somewhere in the game.
 
 
@@ -136,3 +137,6 @@ Specyfic room mechanic:
     use_object z potion w acid pool, to jump over the acid
     use_object w Beneath the trapdoor to reach it and escape the dungeon (but first the trapdoor must be open)
     Puzzle room grow, shrink and put
+
+ideas for me:
+    3 cobolds arguing about sandwich. 
