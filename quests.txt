@@ -4,12 +4,13 @@ Were you to escape, Wizard Council would let you retake exams.
 It might be cool to have multiple solutions to problems. 
 
 How to end game:
-1. Bypass beast guarding the dungeon exit (somehow)
+1. Bypass beast guarding the dungeon exit (kill spell or magnet + sleep spell)
 2. Reach and open the trapdoor from the beginning of the dungeon (open with cast(open, rusty key) and reach it using jump potion
 
 Rooms:
 
-1. Exit - It is guarded by bloodthirsty beast
+1. Exit - It is guarded by a bloodthirsty beast. [manticore with school staff badge made of metal]
+    [you can cast power word kill on it to bypass it or use magnet on a badge and then cast sleep]
 2. Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.
     There is a skeleton in wizard robes and a journal*1.
     There is a slightly open door on the east wall.
@@ -58,7 +59,12 @@ Rooms:
 8. Undead student - [add some cool description of small liblary here]
     [there is undead skeleton here. It wears very old tattered hat with "Maggus" on it.]
     [It is an undead student who achieved immortality but they become bounded to this place.]
-    [Undead student can grant you a wish after you bring them beer. You can get a weapon to kill the fierce beast.]
+    [Undead student can grant you a wish after you bring them beer. You can get a spell to kill the fierce beast.]
+    [spell might be power_word_kill because it is long and hard to guess and it is DnD reference xd]
+13. [TODO] - beer*x here, but blocked somehow. Safe perhaps? room is locked.
+12. [TODO] - second magnet opportunity?
+11. another corridor xd
+10. [todo] - north to the beast guardian room. east goes long corridor.
 
 
 Objects:
@@ -71,7 +77,7 @@ Objects:
 5. key - Small iron key fit more for pendants than doors or chests. [spell component]
 6. cheet sheet - "light spell: prons: easy, efficient, stays for a long time; cons: requires life component"
     "grab spell: prons: nearly anything will do as a component. Just needs to be long. Even long shoelace will do; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"
-    "sleep spell: prons: usefull to aviod combat, you can wear component on your head; cons: doesn't work on school staff, If casted on self, you cannot wake up."
+    "sleep spell: prons: usefull to aviod combat, you can wear component on your head; cons: doesn't work on school staff fore some reason, If casted on self, you cannot wake up."
 7. magnet - [add description here] [usable object]
 8. rope - old tattered rope. You wouldn't trust it to hold you weight. But it's quite long. 
     I can't throw it too far but maybe I can grab something with a help of some spell?
@@ -97,9 +103,8 @@ To Do:
 [add nightcap somewhere] done
 [add info about rusty key] done
 [add info about grab spell] done
-[create some small moving block puzzle? sokoban? move command???]
 
-[create game winning scenarios] 1/3
+[create game winning scenarios] 3/3 done
 
 
 Commands:
@@ -122,6 +127,7 @@ spell list:
     cast(open, rusty key)/ cast(open, key)  - wersion with rusty key is more powerfull and can open any door (perhaps also trapdoor in Beneth the trapdoor #2) 
     cast(grab, rope)                        - takes something from afar 
     cast(sleep, nightcap)
+    cast(power_word_kill, smth)             - kills the fierce beast
 
 
 Specyfic room mechanic:
