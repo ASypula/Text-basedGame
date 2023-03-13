@@ -117,6 +117,5 @@ describe_additional(_) :-
 /*default describe outputs */
 
 describe(_) :- write('[No description for this room yet]').
-describe_additional(_) :- true.
 
 use_object(_, _) :- write('Not helpfull here.'), nl.
