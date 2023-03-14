@@ -124,10 +124,10 @@ Objects:
         5. Their size has symmetry about the middle block.
         6. Blue doesn't have any small blocks on it's right.
         7. Red is more to the left than green is."
-14 ripped page - "The Open spell is giving me a hard time. I have no idea how to cast it's more powerfull version so northen door is inaccessible to me.
-    I might have a chance with souther door but I have to be carefull anyway. With how sloppy my spellcasting is the door might as well lock again just after I get in.
-    I have move on so I'm going to risk it. Wish me luck."
-15 ripped journal - "My Open spell was so bad my spell componenet shattered. I am stuck here. I didn't even have a chance to ty to enter the code to that machinery.
+14 ripped page - "The Open spell is giving me a hard time. I have no idea how to cast it's a more powerful version so northen door is inaccessible to me.
+    I might have a chance with southern door but I have to be careful anyway. With how sloppy my spellcasting is, the door might as well lock again just after I get in.
+    I have to move on so I'm going to risk it. Wish me luck."
+15 ripped journal - "My Open spell was so bad my spell component shattered. I am stuck here. I didn't even have a chance to try to enter the code to that machinery.
     I wasn't very good at History of Magic but I think Morris Worm Spell disaster was in 1998 or 1988."
 16. A solid bunch of wolfsbane. Good that you aren't a warewolf.
 x. Beer - You are a student who failed an exam. There must be beer somewhere in the game.
@@ -137,8 +137,8 @@ x. Beer - You are a student who failed an exam. There must be beer somewhere in 
 Commands:
 look                    - look around. Get room description
 investigate(smth)       - investigate specific object. Get that object detailed description ex. read spell cheat sheet
-go(dir) or n, s, w, e   - Move between rooms. Perhaps go(room_name) would automaticly move you to specific room if possible?
-take(smth)              - add smth to inventory
+go(dir) or n, s, w, e   - Move between rooms. Perhaps go(room_name) would automatically move you to specific room if possible?
+take(smth)              - add something to inventory
 inventory               - list items in inventory
 use_object(smth1, smth2)       - use something on something ex. use(key, acid) to make key rusty
 
