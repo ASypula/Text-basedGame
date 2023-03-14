@@ -72,7 +72,7 @@ Objects:
 0. Lantern - Your good trusty lantern. You will need it untill you finally get a hold of light spell.
 1. Old journal - "I found the exit! It is to the north, but fierce beast guides it.
     I'm gonna await next student who's gonna fail their exams and team up with them against the beast."
-2. Fireflies - [They can be picked up if jar in inventory. Spell component.] [add description here] 
+2. Fireflies - Small, light-emitting beetles. Their light might not be very strong, but If reinforced...
 3. Burned journal - "[illegible] is giving me a hard time. I know the [illegible] spell would be a save way to deal with it, 
     however casting "grab" on it's tail would be funnier. Besides I don't have nightcap for [illegible] spell"
 4. jar - Empty, a bit dusty jar.
