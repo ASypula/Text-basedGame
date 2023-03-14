@@ -36,26 +36,26 @@ Rooms:
     [You can take cheat sheet*6]
     [You can take book fragment*12]
     [You can take beer*x]
-15. Soot room - Rather big room with soot spots. [perhaps statue moving puzzle here?]
+15. Soot room - Rather big room with soot spots. 
     There is soot covered skeleton. Beside it there is partially burned journal*3
     There are passages north and south.
 16. Alchemist room  - [add room description here]. There is something shiny [key*5] between floor tiles, but you cannot grab it with your fingers.
     Some sort of jewellery? Or maybe a key?
     Passages west and north.
-    Jars*4, key*5 [you can obtain key by casting grab or by use(magnet, key) or smth simillar]
+    Jars*4, key*5 [you can obtain key by casting grab or by use(magnet, key) or grab spell]
     potion*9
 5. Machinery - [this room is accessible only by opening door to it with cast(open, key)]
     The room is filled with techno-magic machinery. It is not considered difficult magic, but you oversleept that exam and failed it anyway.
     There is a control panel but it is blocked by a 4 digit code password (use enter(xxxx). command). On the back of it very old dusty sticky note*11 is attatched.
     There is a door on the east wall.
-    [the code is 1988 which is a year of Morris worm. There is a note with specyfic year somewhere else on the level]
+    [the code is 1988 which is a year of Morris worm. There is also a note with the specyfic year in room 13]
     [the machinery creates magical bridge over acid pool thus unlocking that room]
     [it also unlocks path to 13 room]
 6. Corridor - Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
     One of the goblins holds curious looking magnet*7
     the corridor leads north. There is also an opening on the east side.
 7. Puzzle room - This room has weird magical sigils on the walls. 
-    You recognise them as symbols allowing to do specyfic transmutation spells here, but can't recall which.
+    You recognise them as symbols allowing to cast specyfic transmutation spells without components, but can't recall which.
     There is a comedicly big journal*13 here. Under it there is squished little skeleton wearing small wizard hat.
     There are 5 pedestals in a line, numbered from 1 (most left) to 5 (most right). [You can put blocks on pedestals using put(color, position)]
     In the room there are also 5 blocks in diffrent colors - red, green, blue, purple and orange. The red, blue and purple are small. Green and orange are bigger.
@@ -94,9 +94,9 @@ Objects:
     however casting "grab" on it's tail would be funnier. Besides I don't have nightcap for [illegible] spell"
 4. jar - Empty, a bit dusty jar.
 5. key - Small iron key fit more for pendants than doors or chests. [spell component]
-6. cheet sheet - "light spell: prons: easy, efficient, stays for a long time; cons: requires life component"
-    "grab spell: prons: nearly anything will do as a component. Just needs to be long. Even long shoelace will do; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"
-    "sleep spell: prons: usefull to aviod combat, you can wear component on your head; cons: doesn't work on school staff fore some reason, If casted on self, you cannot wake up."
+6. cheet sheet - "light spell: prons: easy, efficient, stays for a long time; cons: requires rare component"
+    "grab spell: prons: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"
+    "sleep spell: prons: usefull to aviod combat; cons: doesn't work on school staff fore some reason, If casted on self, you cannot wake up."
 7. magnet - Medium size magnet with carved initials.
 8. rope - old tattered rope. You wouldn't trust it to hold you weight. But it's quite long. 
     I can't throw it too far but maybe I can grab something with a help of some spell?
@@ -105,7 +105,8 @@ Objects:
 11. sticky note - "The code is year of the Worm Spell disaster."
 12. book fragment - "There is more powerfull variant of "open" spell that uses rusty key as a component, which is proven to..." 
     The words "more", "powerful" and "rusty" are underlined and next to them there is a handwritten note "Dumb as hell".
-13. big journal - "I finally decoded the runes on the wall. Some of them allow casting grow and shrink spells (grow(object). and shrink(object).).
+13. big journal - "I finally decoded the runes on the wall. Some of them allow casting grow and shrink spells without components 
+    (cast(grow, object). and cast(shrink, object).).
     Others form some kind of a riddle. Good thing that I listened during rune theory lectures. It roughly translates as:
         1. Red is the same size as Orange.
         2. Red has both small and big neighbour.
@@ -134,8 +135,8 @@ use_object(smth1, smth2)       - use something on something ex. use(key, acid) t
 
 Command unique to the room (those commands fail outside those rooms):
 enter(xxxx)             - 4 digits code to unlock machinery
-grow(object)            - to make block big in puzzle room
-shrink(object)          - to make block small in puzzle room
+cast(grow, color)      - to make block big in puzzle room
+cast(shrink, color)    - to make block small in puzzle room
 put(color, place)       - to put block on pedestals in puzzle room
 
 Spells:
