@@ -10,12 +10,12 @@ How to end game:
 
 Rooms:
 
-1. Exit - It is guarded by a bloodthirsty beast. [manticore with school staff badge made of metal]
+1. Exit - It is guarded by a bloodthirsty beast. [manticore with school staff badge made out of metal] [write better description]
     [you can cast power word kill on it to bypass it or use magnet on a badge and then cast sleep]
 2. Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.
     There is a skeleton in wizard robes and a journal*1.
     There is a slightly open door on the east wall.
-    [one of the endings below. Thi one is more secret so don't put those brackets in hints]
+    [one of the endings below. This one is more secret so don't put those brackets in hints]
         [you can use jump potion to jump to trapdoor]
         [you can open a trapdoor using open with rusty key]
 3. Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
@@ -34,7 +34,7 @@ Rooms:
     [To unlock this path cast sleep on a dragon]
     When dragon asleep: Little dragonling is sleeping on the pile of students' robes books and cheat sheets. 
     [You can take cheat sheet*6]
-    [You can take book spinnet*12]
+    [You can take book fragment*12]
     [You can take beer*x]
 15. Soot room - Rather big room with soot spots. [perhaps statue moving puzzle here?]
     There is soot covered skeleton. Beside it there is partially burned journal*3
@@ -74,10 +74,15 @@ Rooms:
     There is a ripped journal*15 here.
     The door is on the south wall.
 12. Evil roots - Room is locked by technomagic door [code in Machinery or rusty key open spell unlocks it]
-
-11. another corridor xd. 13 south. 12 north. Some soot marks.
+    The room is very dark and smells of dirt and herbs. After even one step in you get scrathed by thorns. Let's hope that wasn't anything poisonous.
+    There is no way to safely explore this room without magical light.
+    [after light spell is casted here]
+    You see many normal and magical herbs and flowers growing here. The wolfsbane*16 catches your eye.
+11. Long corridor - You are in long corridor going east and west. In the middle it has two doors in front of each other.
+    The north door is bigger and clearly locked using techno-magic. The south door looks normal but is still locked by a regular lock.
+    The corridor is stained with soot in some places. 
     There is a ripped page*14 here.
-10. Dead ahead - There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.
+10. Death ahead - There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.
     There is also a long corridor going east and another corridor going south.
 
 Objects:
@@ -98,10 +103,10 @@ Objects:
 9. potion - You recognise it from your alchemy classes (the only ones that you passes). This is a Far Jump Potion. You can use it to jump very far, but only once.
 10. nightcap - It doesn't look too fashionable, but kind of comfy. [spell component]
 11. sticky note - "The code is year of the Worm Spell disaster."
-12. book spinnet - "There is more powerfull variant of "open" spell that uses rusty key as a component, which is proven to..." 
+12. book fragment - "There is more powerfull variant of "open" spell that uses rusty key as a component, which is proven to..." 
     The words "more", "powerful" and "rusty" are underlined and next to them there is a handwritten note "Dumb as hell".
-13. big journal - "I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(object). and shrink(object).).
-    Others form some kind of a riddle. Good think that I listened during rune theory lectures. It roughly translates as:
+13. big journal - "I finally decoded the runes on the wall. Some of them allow casting grow and shrink spells (grow(object). and shrink(object).).
+    Others form some kind of a riddle. Good thing that I listened during rune theory lectures. It roughly translates as:
         1. Red is the same size as Orange.
         2. Red has both small and big neighbour.
         3. Purple is small.
@@ -114,16 +119,9 @@ Objects:
     I have move on so I'm going to risk it. Wish me luck."
 15 ripped journal - "My Open spell was so bad my spell componenet shattered. I am stuck here. I didn't even have a chance to ty to enter the code to that machinery.
     I wasn't very good at History of Magic but I think Morris Worm Spell disaster was in 1998 or 1988."
+16. A solid bunch of wolfsbane. Good that you aren't a warewolf.
 x. Beer - You are a student who failed an exam. There must be beer somewhere in the game.
 
-
-To Do:
-[add way to overcome acid puddle] done
-[add nightcap somewhere] done
-[add info about rusty key] done
-[add info about grab spell] done
-
-[create game winning scenarios] 3/3 done
 
 
 Commands:
@@ -134,7 +132,11 @@ take(smth)              - add smth to inventory
 inventory               - list items in inventory
 use_object(smth1, smth2)       - use something on something ex. use(key, acid) to make key rusty
 
-
+Command unique to the room (those commands fail outside those rooms):
+enter(xxxx)             - 4 digits code to unlock machinery
+grow(object)            - to make block big in puzzle room
+shrink(object)          - to make block small in puzzle room
+put(color, place)       - to put block on pedestals in puzzle room
 
 Spells:
 You can cast spells to solve problems. To cast spell you need appropriate component. Player is not given spell list in the tutorial. They have to learn them in game.
