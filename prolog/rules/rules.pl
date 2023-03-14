@@ -95,6 +95,7 @@ look :-         /* CHANGED HERE*/
 
 notice_objects_at(Place) :-
         at(X, Place),
+        \+ obscured(Place),
         write('There is a '), write(X), write(' here.'), nl,
         false.
 
