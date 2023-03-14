@@ -8,7 +8,8 @@ hint(room_2) :-
     write('[It seems there is no hint here]'), nl.
 
 /* Room setup */
-at(old_journal, room_2),
+at(old_journal, room_2).
+path(room_2, e, room_3).
 
 /* Enemies */
 

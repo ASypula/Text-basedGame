@@ -1,3 +1,5 @@
+/*@TODO add possible paths and blockers */
+
 /* Room description */
 describe(room_1) :-
     write('Exit - On the north side of a room you see big golden door with "exit" engraved on them. Unfortunately it is guarded by a beast.'), nl,
@@ -15,6 +17,3 @@ hint(room_1) :-
 /* Puzzles */
 
 /* Objects */
-describe_additional(room_1) :-
-    at(_, _),
-    write('Nothing...'), nl, false.

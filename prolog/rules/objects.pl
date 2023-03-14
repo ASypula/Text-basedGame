@@ -115,7 +115,7 @@ investigate(lantern) :-
 investigate(_) :-
     write('Nothing to describe. Object is not in your inventory'), nl.
 
-/* Specyfic take actions with objects */
+/* Specific take actions with objects */
 
 take(journal) :-    /* allows the user to take the correct journal in present room */
     is_journal(Journal),
@@ -132,7 +132,17 @@ take(key) :-
     write("Sorry, you are not able to easily pick up the key. Think of a different solution."), nl,
     false.
 
-/* These rules describe specyfic use_object actions */
+take(nightcap) :-
+    blocker(acid_pool),
+    write('You are sure, you would like to go swimming in the acid pool?'), nl,
+    false.
+
+take(nightcap) :-
+    assert(holding(nightcap)),
+    write('That jump was worth it. Now you posses a velvet-like nightcap.'), nl,
+    false.
+
+/* These rules describe specific use_object actions */
 
 use_object(jar, firefly) :-
     holding(jar),
@@ -151,6 +161,15 @@ use_object(magnet, X) :-
     assert(holding(X)),
     write("Great! You managed to pick up "),
     write(X), nl.
+
+/*@TODO think about way to enforce jumping each time and reverting the blocker */
+use_object(potion, acid_pool) :-
+    holding(potion),
+    i_am_at(Place),
+    at(acid_pool, Place),
+    retract(blocker(acid_pool)),
+    write("That was a really loooooong jump."),
+    nl, !.
 
 /* rule for easier picking up various journals */
 

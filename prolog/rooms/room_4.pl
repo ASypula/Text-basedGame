@@ -5,11 +5,24 @@ describe(room_4) :-
 
 hint(room_4) :-
     write('[You can traverse the acid pool by using jump potion.]'), nl,
-    write('[You can take nightcap from northen side or by using grab spell.]'), nl.
+    write('[You can take nightcap from northern side or by using grab spell.]'), nl.
 
 /* Room setup */
 at(firefly, room_4).
 at(nightcap, room_4).
+at(acid_pool, room_4).
+
+blocker(acid_pool).
+
+path(room_4, s, room_3).
+path(room_4, w, room_5).
+path(room_4, n, room_6).
+
+blocked(room_4, room_5) :-
+    blocker(acid_pool).
+
+blocked(room_4, room_6) :-
+    blocker(acid_pool).
 
 /* Enemies */
 
@@ -18,7 +31,7 @@ at(nightcap, room_4).
 /* Objects */
 describe_additional(room_4) :-
     at(firefly, room_4),
-    write('Over the pool fly some weird glowing bugs. They look simillar to fireflies.'), nl, false.
+    write('Over the pool fly some weird glowing bugs. They look similar to fireflies.'), nl, false.
 
 describe_additional(room_4) :-
     at(nightcap, room_4),
