@@ -38,7 +38,7 @@ Rooms:
     [you can cast power word kill on it to bypass it or use magnet on a badge and then cast sleep]
     With the beast not being a problem anymore you touch golden door. You take a deep breath and finally open them, stepping out of this nightmare.
 2. Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is a trapdoor, you were tossed here through.
-    There is a skeleton in wizard robes and a journal*1.
+    There is a skeleton in wizard robes. Next to it lays old looking journal*1
     There is a slightly open door on the east wall.
     [one of the endings below. This one is more secret so don't put those brackets in hints]
         [you can use jump potion to jump to trapdoor]
@@ -48,7 +48,7 @@ Rooms:
     By touch you find passage north east and west.
     [when you cast light, you can take useful objects here]
     rope*8
-4. Acid Pool - A the center of the large room there is an acid pool. It expands from east to west wall and is too wide to jump over it.
+4. Acid Pool - At the center of the large room there is an acid pool. It expands from east to west wall and is too wide to jump over it.
     Over the pool fly some weird glowing bugs*2. They look similar to fireflies.
     On the north side there is a skeleton wearing a nightcap*10. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
     On the north side of the acid pool there are passages north and west. On the south side there is a passage south.
