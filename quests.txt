@@ -5,36 +5,36 @@ It might be cool to have multiple solutions to problems.
 
 How to end game:
 1. Most obvious - Bypass beast guarding the dungeon exit (kill spell with wolfsbane component) 
-2. Secret - Bypass beast (use magnet to steal it's enchanted school staff badge and then cast sleep on it)
+2. Secret - Bypass beast (use magnet to steal its enchanted school staff badge and then cast sleep on it)
 3. Secret - Reach and open the trapdoor from the beginning of the dungeon (open with cast(open, rusty key) and reach it using jump potion
 
 Rooms:
 
-1. Exit - On the north side of a room you see big golden door with "exit" engraved on them. Unfortunatelly it is guarded by a beast. 
+1. Exit - On the north side of a room you see big golden door with "exit" engraved on them. Unfortunately it is guarded by a beast. 
     It has a body of a lion but is definitely bigger than a normal animal. The head belongs to deceptively beautiful woman with blue eyes and cruel smile.
     The beast rises its double scorpion tail as if already prepared to attack.
-    The only slightly amusing thing about it is big metal old-fashioned school staff badge attached to it's fur.
+    The only slightly amusing thing about it is a big, metal, old-fashioned school staff badge attached to its fur.
     The room is filled with skeletons in wizard apprentice robes.
     You can still back off to the south.
     [you can cast power word kill on it to bypass it or use magnet on a badge and then cast sleep]
-2. Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.
+2. Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is a trapdoor, you were tossed here through.
     There is a skeleton in wizard robes and a journal*1.
     There is a slightly open door on the east wall.
     [one of the endings below. This one is more secret so don't put those brackets in hints]
         [you can use jump potion to jump to trapdoor]
         [you can open a trapdoor using open with rusty key]
 3. Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
-    You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be usefull.
+    You stumble upon various objects scattered on the floor, but there is no way to distinguish whether any of them may be useful.
     By touch you find passage north east and west.
-    [when you cast light you can take usefull objects here]
+    [when you cast light, you can take useful objects here]
     rope*8
-4. Acid Pool - A the center of the large room there is acid pool. It expands from east to west wall and is to wide to jump over it.
-    Over the pool fly some weird glowing bugs*2. They look simillar to fireflies.
-    On the north side there is a skeleton wearing a nightcap*10. I lays in a very comfortable natural position, as if it just layed to eternal sleep here.
-    on the north side of acid pool there are passages north and west. On the south side there is passage south.
+4. Acid Pool - A the center of the large room there is an acid pool. It expands from east to west wall and is too wide to jump over it.
+    Over the pool fly some weird glowing bugs*2. They look similar to fireflies.
+    On the north side there is a skeleton wearing a nightcap*10. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+    On the north side of the acid pool there are passages north and west. On the south side there is a passage south.
     [You can traverse the acid pool by using jump potion*9]
     [you can take nightcap from northen side or by using grab spell]
-14. Small Dragon - The corridor takes a turn here. You cound go south or west but in the corner lies a dragonling. 
+14. Small Dragon - The corridor takes a turn here. You could go south or west but in the corner lies a dragonling. 
     It guards a pile of student's robes, books and cheat sheets and looks rather angry. Walls around it are covered in burn marks.
     [To unlock this path cast sleep on a dragon]
     When dragon asleep: Little dragonling is sleeping on the pile of students' robes books and cheat sheets. 
@@ -42,7 +42,7 @@ Rooms:
     [You can take book fragment*12]
     [You can take beer*x]
 15. Soot room - Rather big room with soot spots. 
-    There is soot covered skeleton. Beside it there is partially burned journal*3
+    There is a soot covered skeleton. Beside it, there is a partially burned journal*3
     There are passages north and south.
 16. Alchemist room  - [add room description here]. There is something shiny [key*5] between floor tiles, but you cannot grab it with your fingers.
     Some sort of jewellery? Or maybe a key?
@@ -50,44 +50,44 @@ Rooms:
     Jars*4, key*5 [you can obtain key by casting grab or by use(magnet, key) or grab spell]
     potion*9
 5. Machinery - [this room is accessible only by opening door to it with cast(open, key)]
-    The room is filled with techno-magic machinery. It is not considered difficult magic, but you oversleept that exam and failed it anyway.
-    There is a control panel but it is blocked by a 4 digit code password (use enter(xxxx). command). On the back of it very old dusty sticky note*11 is attatched.
+    The room is filled with techno-magic machinery. It is not considered difficult magic, but you overslept that exam and failed it anyway.
+    There is a control panel but it is blocked by a 4 digit code password (use enter(password_xxxx). command). On the back of it very old dusty sticky note*11 is attached.
     There is a door on the east wall.
-    [the code is 1988 which is a year of Morris worm. There is also a note with the specyfic year in room 13]
+    [the code is 1988 which is a year of Morris worm. There is also a note with the specific year in room 13]
     [the machinery creates magical bridge over acid pool thus unlocking that room]
     [it also unlocks path to 13 room]
 6. Corridor - Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
     One of the goblins holds curious looking magnet*7
-    the corridor leads north. There is also an opening on the east side.
+    The corridor leads north. There is also an opening on the east side.
 7. Puzzle room - This room has weird magical sigils on the walls. 
-    You recognise them as symbols allowing to cast specyfic transmutation spells without components, but can't recall which.
+    You recognise them as symbols allowing to cast specific transmutation spells without components, but can't recall which.
     There is a comedicly big journal*13 here. Under it there is squished little skeleton wearing small wizard hat.
     There are 5 pedestals in a line, numbered from 1 (most left) to 5 (most right). [You can put blocks on pedestals using put(color, position)]
-    In the room there are also 5 blocks in diffrent colors - red, green, blue, purple and orange. The red, blue and purple are small. Green and orange are bigger.
-    [correct solution is O R p B G]
+    In the room there are also 5 blocks in different colors - red, green, blue, purple and orange. The red, blue and purple are small. Green and orange are bigger.
+    [correct solution is O R P B G]
     [to solve the riddle you have to set right sizes to blocks and put them on correct pedestals. This unlocks path to room 8]
     The only visible exit is on the west wall.
     [after solving the puzzle the secret east door is unraveled tho]
 8. Undead student - The hidden room is filled with books and oracle orbs. It is illuminated by mistical blue light.
     In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.
     "Oh another lost student." it says. "Don't be afraid, I was once just like you - a lost student." 
-    "I believe we can help each other. I found many secrets in this hidden liblary but unfortunatelly become bound to it."
+    "I believe we can help each other. I found many secrets in this hidden library but unfortunately became bound to it."
     "I know a spell to defeat the beast but it is no use to me. I will share it with you, but first you need to bring me... a beer. As a memorial of my past."
     "Some students sneak beer in here, it should be possible to find some."
-    [nex visit] "So, do you have it?" It's empty eye sockets look at you menacingly.
-    [after use beer skeleton or simillar] "Ah It's been a while. I probably can't taste it now though... "
+    [next visit] "So, do you have it?" Its empty eye sockets look at you menacingly.
+    [after use beer skeleton or similar] "Ah it's been a while. I probably can't taste it now though... "
     "Anyway the spell name is power_word_kill and the component is a bunch of wolfsbane."
 13. Storage - Door to this room is locked [standard Open spell unlocks it].
-    Inside there is a skeleton sitting in a corner. Next to it lays broken jar with some dead insects inside.
+    Inside there is a skeleton sitting in a corner. Next to it lays a broken jar with some dead insects inside.
     Apart from that, the room is mostly filled with empty crates.
     There is a ripped journal*15 here.
     The door is on the south wall.
 12. Evil roots - Room is locked by technomagic door [code in Machinery or rusty key open spell unlocks it]
-    The room is very dark and smells of dirt and herbs. After even one step in you get scrathed by thorns. Let's hope that wasn't anything poisonous.
+    The room is very dark and smells of dirt and herbs. After even one step in you get scratched by thorns. Let's hope that wasn't anything poisonous.
     There is no way to safely explore this room without magical light.
     [after light spell is casted here]
     You see many normal and magical herbs and flowers growing here. The wolfsbane*16 catches your eye.
-11. Long corridor - You are in long corridor going east and west. In the middle it has two doors in front of each other.
+11. Long corridor - You are in a long corridor going east and west. In the middle it has two doors in front of each other.
     The north door is bigger and clearly locked using techno-magic. The south door looks normal but is still locked by a regular lock.
     The corridor is stained with soot in some places. 
     There is a ripped page*14 here.
@@ -136,17 +136,17 @@ x. Beer - You are a student who failed an exam. There must be beer somewhere in 
 
 Commands:
 look                    - look around. Get room description
-investigate(smth)              - investigate specyfic object. Get that object detailed description ex. read spell cheat sheet
-go(dir) or n, s, w, e   - Move between rooms. Perhaps go(room_name) would automaticly move you to specyfic room if possible?
+investigate(smth)       - investigate specific object. Get that object detailed description ex. read spell cheat sheet
+go(dir) or n, s, w, e   - Move between rooms. Perhaps go(room_name) would automaticly move you to specific room if possible?
 take(smth)              - add smth to inventory
 inventory               - list items in inventory
 use_object(smth1, smth2)       - use something on something ex. use(key, acid) to make key rusty
 
 Command unique to the room (those commands fail outside those rooms):
-enter(xxxx)             - 4 digits code to unlock machinery
+enter(password_xxxx)   - 4 digits code to unlock machinery
 cast(grow, color)      - to make block big in puzzle room
 cast(shrink, color)    - to make block small in puzzle room
-put(color, place)       - to put block on pedestals in puzzle room
+put(color, place)      - to put block on pedestals in puzzle room
 
 Spells:
 You can cast spells to solve problems. To cast spell you need appropriate component. Player is not given spell list in the tutorial. They have to learn them in game.
@@ -161,9 +161,9 @@ spell list:
     cast(power_word_kill, wolfsbane)        - kills the fierce beast
 
 
-Specyfic room mechanic:
+specific room mechanic:
     Junk room and items obscured by darkness
     Machinery and enter(1988) that creates magical bridge over acid pool
-    use_object z potion w acid pool, to jump over the acid
-    use_object w Beneath the trapdoor to reach it and escape the dungeon (but first the trapdoor must be open)
+    use_object with potion in acid pool, to jump over the acid
+    use_object in Beneath the trapdoor to reach it and escape the dungeon (but first the trapdoor must be open)
     Puzzle room grow, shrink and put
