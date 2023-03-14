@@ -7,9 +7,8 @@ describe(room_1) :-
     write('The room is filled with skeletons in wizard apprentice robes.'), nl,
     write('You can still back off to the south.'), nl.
 
-/*@TODO do we want to add such a powerful hint here?*/
 hint(room_1) :-
-    write('[You can cast power word kill on it to bypass it or use magnet on a badge and then cast sleep.]'), nl.
+    write('[No hint here...]'), nl.
 
 /* Enemies */
 

@@ -62,7 +62,8 @@ investigate(nightcap) :-
 
 investigate(note) :-
     holding(note),
-    write("The code is year of the Worm Spell disaster."),
+    write("The code is the year of the Worm Spell disaster."),
+    write("You'd better provide the code in the form password_xxxx... Wrong code might have its own consequences."),
     nl, !. 
 
 investigate(book_fragment) :-
@@ -75,13 +76,13 @@ investigate(big_journal) :-
     holding(big_journal),
     write("I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(object). and shrink(object).)."), nl,
     write("Others form some kind of a riddle. Good thing that I listened during rune theory lectures. It roughly translates as:"), nl,
-    write("1. Green block has only one neighbour."), nl,
+    write("1. Red is the same size as Orange."), nl,
     write("2. Red has both small and big neighbour."), nl,
     write("3. Purple is small."), nl,
-    write("4. Red and blue are both next to their colour mix."), nl,
+    write("4. Red and Blue are both next to their colour mix."), nl,
     write("5. Their size has symmetry about the middle block."), nl,
     write("6. Blue doesn't have any small blocks on it's right."), nl,
-    write("7. Red is more to the left than orange is."),
+    write("7. Red is more to the left than Green is."),
     nl, !. 
 
 investigate(ripped_page) :-

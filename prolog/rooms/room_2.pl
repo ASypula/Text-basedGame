@@ -1,7 +1,7 @@
 /* Room description */
 describe(room_2) :-
     write('Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.'), nl,
-    write('There is a skeleton in wizard robes and a journal.'), nl,
+    write('There is a skeleton in wizard robes.'), nl,
     write('There is a slightly open door on the east wall.'), nl.
 
 hint(room_2) :-
