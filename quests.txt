@@ -69,17 +69,18 @@ Rooms:
 
 
 Objects:
+0. Lantern - Your good trusty lantern. You will need it untill you finally get a hold of light spell.
 1. Old journal - "I found the exit! It is to the north, but fierce beast guides it.
     I'm gonna await next student who's gonna fail their exams and team up with them against the beast."
 2. Fireflies - [They can be picked up if jar in inventory. Spell component.] [add description here] 
 3. Burned journal - "[illegible] is giving me a hard time. I know the [illegible] spell would be a save way to deal with it, 
     however casting "grab" on it's tail would be funnier. Besides I don't have nightcap for [illegible] spell"
-4. jar - [needed to take firefly, perhaps can contain something else if multiple jars] [add description]
+4. jar - Empty, a bit dusty jar.
 5. key - Small iron key fit more for pendants than doors or chests. [spell component]
 6. cheet sheet - "light spell: prons: easy, efficient, stays for a long time; cons: requires life component"
     "grab spell: prons: nearly anything will do as a component. Just needs to be long. Even long shoelace will do; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"
     "sleep spell: prons: usefull to aviod combat, you can wear component on your head; cons: doesn't work on school staff fore some reason, If casted on self, you cannot wake up."
-7. magnet - [add description here] [usable object]
+7. magnet - Medium size magnet with carved initials.
 8. rope - old tattered rope. You wouldn't trust it to hold you weight. But it's quite long. 
     I can't throw it too far but maybe I can grab something with a help of some spell?
 9. potion - You recognise it from your alchemy classes (the only ones that you passes). This is a Far Jump Potion. You can use it to jump very far, but only once.
