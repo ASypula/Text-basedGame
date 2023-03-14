@@ -17,7 +17,6 @@ hint(room_3) :-
 
 /* Room setup */
 obscured(room_3).
-dark_room(room_3).
 at(rope, room_3).
 
 /* Enemies */

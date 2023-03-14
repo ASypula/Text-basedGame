@@ -24,7 +24,7 @@ cast(_, _) :-
     write("Don't know such spell."), nl.
 
 cast_at_place(light, Place) :-
-    dark_room(Place),
+    obscured(Place),
     cast(light, firefly),
     i_am_at(Place),
     retract(obscured(Place)),
