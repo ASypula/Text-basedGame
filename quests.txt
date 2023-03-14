@@ -10,7 +10,12 @@ How to end game:
 
 Rooms:
 
-1. Exit - It is guarded by a bloodthirsty beast. [manticore with school staff badge made out of metal] [write better description]
+1. Exit - On the north side of a room you see big golden door with "exit" engraved on them. Unfortunatelly it is guarded by a beast. 
+    It has a body of a lion but is definitely bigger than a normal animal. The head belongs to deceptively beautiful woman with blue eyes and cruel smile.
+    The beast rises its double scorpion tail as if already prepared to attack.
+    The only slightly amusing thing about it is big metal old-fashioned school staff badge attached to it's fur.
+    The room is filled with skeletons in wizard apprentice robes.
+    You can still back off to the south.
     [you can cast power word kill on it to bypass it or use magnet on a badge and then cast sleep]
 2. Beneath the trapdoor - First room. Walls are smooth. On the celling far above there is trapdoor, you were tossed here through.
     There is a skeleton in wizard robes and a journal*1.
@@ -63,11 +68,15 @@ Rooms:
     [to solve the riddle you have to set right sizes to blocks and put them on correct pedestals. This unlocks path to room 8]
     The only visible exit is on the west wall.
     [after solving the puzzle the secret east door is unraveled tho]
-8. Undead student - [add some cool description of a small liblary here]
-    [there is undead skeleton here. It wears very old tattered hat with "Maggus" on it.]
-    [It is an undead student who achieved immortality but they become bounded to this place.]
-    [Undead student can grant you a wish after you bring them beer. You can get a spell to kill the fierce beast.]
-    [spell might be power_word_kill because it is long and hard to guess and it is DnD reference xd]
+8. Undead student - The hidden room is filled with books and oracle orbs. It is illuminated by mistical blue light.
+    In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.
+    "Oh another lost student." it says. "Don't be afraid, I was once just like you - a lost student." 
+    "I believe we can help each other. I found many secrets in this hidden liblary but unfortunatelly become bound to it."
+    "I know a spell to defeat the beast but it is no use to me. I will share it with you, but first you need to bring me... a beer. As a memorial of my past."
+    "Some students sneak beer in here, it should be possible to find some."
+    [nex visit] "So, do you have it?" It's empty eye sockets look at you menacingly.
+    [after use beer skeleton or simillar] "Ah It's been a while. I probably can't taste it now though... "
+    "Anyway the spell name is power_word_kill and the component is a bunch of wolfsbane."
 13. Storage - Door to this room is locked [standard Open spell unlocks it].
     Inside there is a skeleton sitting in a corner. Next to it lays broken jar with some dead insects inside.
     Apart from that, the room is mostly filled with empty crates.
@@ -158,6 +167,3 @@ Specyfic room mechanic:
     use_object z potion w acid pool, to jump over the acid
     use_object w Beneath the trapdoor to reach it and escape the dungeon (but first the trapdoor must be open)
     Puzzle room grow, shrink and put
-
-ideas for me:
-    3 cobolds arguing about sandwich. 
