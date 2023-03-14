@@ -89,7 +89,7 @@ Objects:
     The words "more", "powerful" and "rusty" are underlined and next to them there is a handwritten note "Dumb as hell".
 13. big journal - "I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(object). and shrink(object).).
     Others form some kind of a riddle. Good think that I listened during rune theory lectures. It roughly translates as:
-        1. Green block has only one neighbour.
+        1. Red is the same size as Orange.
         2. Red has both small and big neighbour.
         3. Purple is small.
         4. Red and blue are both next to their colour mix.
