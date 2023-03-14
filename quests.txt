@@ -8,6 +8,25 @@ How to end game:
 2. Secret - Bypass beast (use magnet to steal its enchanted school staff badge and then cast sleep on it)
 3. Secret - Reach and open the trapdoor from the beginning of the dungeon (open with cast(open, rusty key) and reach it using jump potion
 
+Endings:
+1. You did it. You made it out alive. The exams surely can't be worse than this. However there is something that might... 
+    The High University of Magic was not thrilled with an idea of student actually getting out of their deadly dungeon. 
+    The High Wizards were aspetially irytated about the loss of their favourite beast. You will have to settle this with Dean of Magic himself.
+    You escaped the deadly dungeon only to start much more frightening battle - writing an official letter.
+
+2. You did it. You made it out alive. You used your wits to bypass the beast without fighting it and aquired authentic badge of High University of Magic staff member.
+    You reatake you exams and pass them with flying colors. You can not stop thinking about that badge. What if it became trully yours? What of you joined the staff?
+    The cursed badge slowly takes over you and before you realise it your body is twisted into this new beastly form.
+    To your surprise you retain your senses and consciousness. Teaching and research at University feels amaizing, although you sometimes wish to have human hands again.
+
+3. You did it. You made it out alive. There wasn't even a need of fighting the deadly beast. The escape through the trapdoor had some unforseen consequences though...
+    The University's magical database system was not capable of processing your way of escaping and spectacularry collapsed.
+    Personal data of many wizards and apprentices were lost. With the new-arisen chaos there is no way the High Wizard Council will let you continue studies.
+    Good think that your data was also lost. You can change your name, bluff your way through and retake the whole year. You seem like you need that anyway.
+
+Outro:
+    Thank you for playing our videogame. [If we feel brave] We sincerely wish you a great day and a tasty coffe.
+
 Rooms:
 
 1. Exit - On the north side of a room you see big golden door with "exit" engraved on them. Unfortunately it is guarded by a beast. 
@@ -17,6 +36,7 @@ Rooms:
     The room is filled with skeletons in wizard apprentice robes.
     You can still back off to the south.
     [you can cast power word kill on it to bypass it or use magnet on a badge and then cast sleep]
+    With the beast not being a problem anymore you touch golden door. You take a deep breath and finally open them, stepping out of this nightmare.
 2. Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is a trapdoor, you were tossed here through.
     There is a skeleton in wizard robes and a journal*1.
     There is a slightly open door on the east wall.
