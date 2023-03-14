@@ -87,13 +87,24 @@ investigate(big_journal) :-
 investigate(ripped_page) :-
     holding(ripped_page),
     write("The Open spell is giving me a hard time. I have no idea how to cast it's a more powerful version so northen door is inaccessible to me."), nl,
-    write("I might have a chance with souther door but I have to be carefull anyway. With how sloppy my spellcasting is the door might as well lock again just after I get in."), nl,
+    write("I might have a chance with southern door but I have to be careful anyway. With how sloppy my spellcasting is the door might as well lock again just after I get in."), nl,
     write("I have to move on so I'm going to risk it. Wish me luck."),
+    nl, !. 
+
+investigate(ripped_journal) :-
+    holding(ripped_journal),
+    write("My Open spell was so bad my spell component shattered. I am stuck here. I didn't even have a chance to try to enter the code to that machinery."), nl,
+    write("I wasn't very good at History of Magic but I think Morris Worm Spell disaster was in 1998 or 1988."),
+    nl, !. 
+
+investigate(wolfsbane) :-
+    holding(wolfsbane),
+    write("A solid bunch of wolfsbane. Good that you aren't a warewolf."),
     nl, !. 
 
 investigate(beer) :-
     holding(beer),
-    write("[the hero is a student who failed an exam. There must be beer somewhere in the game]"),
+    write("You are a student who failed an exam. There must be beer somewhere in the game."),
     nl, !. 
 
 investigate(lantern) :-
@@ -145,6 +156,7 @@ use_object(magnet, X) :-
 is_journal(burned_journal).
 is_journal(old_journal).
 is_journal(big_journal).
+is_journal(ripped_journal).
 
 /*rules about what objects are metal*/
 
