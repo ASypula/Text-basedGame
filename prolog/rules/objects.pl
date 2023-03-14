@@ -4,7 +4,7 @@
 /* Get information about objects */
 
 investigate(journal) :-
-    write("Be more specyfic about which journal. (To check out your invetory try command \"inventory\")."),
+    write("Be more specific about which journal. (To check out your invetory try command \"inventory\")."),
     nl, !.
 
 investigate(old_journal) :-
@@ -34,7 +34,9 @@ investigate(key) :-
 
 investigate(cheat_sheet) :-
     holding(cheat_sheet),
-    write("@TODO"),
+    write('light spell: prons: easy, efficient, stays for a long time; cons: requires rare component'), nl,
+    write("grab spell: prons: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"), nl,
+    write("sleep spell: prons: usefull to aviod combat; cons: doesn't work on school staff fore some reason, If casted on self, you cannot wake up."), 
     nl, !.
 
 investigate(magnet) :-
@@ -80,6 +82,13 @@ investigate(big_journal) :-
     write("5. Their size has symmetry about the middle block."), nl,
     write("6. Blue doesn't have any small blocks on it's right."), nl,
     write("7. Red is more to the left than orange is."),
+    nl, !. 
+
+investigate(ripped_page) :-
+    holding(ripped_page),
+    write("The Open spell is giving me a hard time. I have no idea how to cast it's a more powerful version so northen door is inaccessible to me."), nl,
+    write("I might have a chance with souther door but I have to be carefull anyway. With how sloppy my spellcasting is the door might as well lock again just after I get in."), nl,
+    write("I have to move on so I'm going to risk it. Wish me luck."),
     nl, !. 
 
 investigate(beer) :-

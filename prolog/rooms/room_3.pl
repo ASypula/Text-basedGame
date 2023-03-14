@@ -1,8 +1,5 @@
 :- dynamic obscured/1.
 
-obscured(room_3).
-dark_room(room_3).
-
 /* Room description */
 describe(room_3) :-
     obscured(room_3),
@@ -13,10 +10,15 @@ describe(room_3) :-
 describe(room_3) :-
     \+ obscured(room_3),
     write('Now, when the light provides better visibility, you can distinguish various objects littering the floor.'), nl, 
-    write("One of them in particular draws your attention... something polished, a magnet?"), nl.
+    write('One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.'), nl.
 
 hint(room_3) :-
     write('[when you cast light you can find useful objects here]'), nl.
+
+/* Room setup */
+obscured(room_3).
+dark_room(room_3).
+at(rope, room_3).
 
 /* Enemies */
 
@@ -24,16 +26,11 @@ hint(room_3) :-
 
 /* Objects */
 describe_additional(room_3) :-
-    at(torch, room_3),
+    at(rope, room_3),
     \+ obscured(room_3),
-    write('Something strange reflects the light of your torch.. is it a magnet?'), nl, false.
-
-describe_additional(room_3) :-
-    at(magnet, room_3),
-    \+ obscured(room_3),
-    write('You were right! This shiny thing is in fact the magnet.'), nl, false.
+    write('You were right! It''s a bunch of material, a rope.'), nl, false.
 
 describe_additional(room_3) :-
     obscured(room_3),
-    write("It's too dark to see anything."), 
+    write('It''s too dark to see anything.'), 
     nl, !.
