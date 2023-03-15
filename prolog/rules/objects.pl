@@ -155,6 +155,9 @@ take(magnet) :-
     write('Extracting the magnet from the goblin skeleton was not easy, and definitely not pleasurable.'), nl,
     write('But maybe something that can attract metals might come in handy.'), nl, false.
 
+take(note) :-
+    write('Ugh, the note must have been here for ages, I have never seen such a thick layer of dust.'), nl, false.
+
 /* These rules describe specific use_object actions */
 
 use_object(jar, firefly) :-
@@ -200,6 +203,28 @@ is_journal(old_journal).
 is_journal(big_journal).
 is_journal(ripped_journal).
 
-/*rules about what objects are metal*/
-
+/* rules about which objects are metal*/
 metal(key).
+
+/* rules for unlocking machinery */
+
+/*@TODO How much should we hint that the bridge was laid over the acid pool? */
+enter(password_1988) :-
+    blocked(room_4),
+    bypass(room_4),
+    write('Congratulations! You managed to guess the password!'), nl,
+    write('Or maybe you knew which was the year of Morris worm...'), nl,
+    write('Noooo, that''s impossible.'), nl,
+    write('Accidentally the floor starts to shake slightly and you hear a strange sound.'), nl,
+    write('As if some machinery was being laid over a terrain.'), nl,
+    write('Your intuition tells you the sounds came from the room with the acid pool.'), nl, !.
+
+/*@TODO should we hint where to look for the hint with the password?*/
+enter(_) :-
+    blocked(room_4),
+    write('Nope, it''s not the correct code.'), nl,
+    write('You can try guessing, but you don''t know If it won''t be your last one...'), nl, 
+    write('Maybe start searching for some hints?'), nl, !.
+
+enter(_) :-
+    write('This action will not help you now.'), nl, !.
