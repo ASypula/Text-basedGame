@@ -133,13 +133,13 @@ take(key) :-
     false.
 
 take(nightcap) :-
-    blocker(acid_pool),
-    write('You are sure, you would like to go swimming in the acid pool?'), nl,
-    false.
+    i_am_at(Place),
+    at(nightcap, Place),
+    assert(holding(nightcap)),
+    write('That trouble was worth it. Now you posses a velvet-like nightcap.'), nl.
 
 take(nightcap) :-
-    assert(holding(nightcap)),
-    write('That jump was worth it. Now you posses a velvet-like nightcap.'), nl,
+    write('You are sure, you would like to go swimming in the acid pool?'), nl,
     false.
 
 /* These rules describe specific use_object actions */
@@ -162,13 +162,22 @@ use_object(magnet, X) :-
     write("Great! You managed to pick up "),
     write(X), nl.
 
-/*@TODO think about way to enforce jumping each time and reverting the blocker */
-use_object(potion, acid_pool) :-
+use_object(potion, n) :-
     holding(potion),
-    i_am_at(Place),
-    at(acid_pool, Place),
-    retract(blocker(acid_pool)),
+    i_am_at(room_4S),
     write("That was a really loooooong jump."),
+    retract(holding(potion)),
+    assert(i_am_at(room_4N)),
+    retract(i_am_at(room_4S)),
+    nl, !.
+
+use_object(potion, s) :-
+    holding(potion),
+    i_am_at(room_4N),
+    write("That was a really loooooong jump."),
+    retract(holding(potion)),
+    assert(i_am_at(room_4S)),
+    retract(i_am_at(room_4N)),
     nl, !.
 
 /* rule for easier picking up various journals */

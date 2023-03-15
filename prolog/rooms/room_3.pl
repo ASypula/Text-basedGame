@@ -18,9 +18,6 @@ hint(room_3) :-
 /* Room setup */
 obscured(room_3).
 at(rope, room_3).
-path(room_3, w, room_2).
-path(room_3, n, room_4).
-path(room_3, e, room_16).
 
 /* Enemies */
 

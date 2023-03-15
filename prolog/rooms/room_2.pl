@@ -9,7 +9,6 @@ hint(room_2) :-
 
 /* Room setup */
 at(old_journal, room_2).
-path(room_2, e, room_3).
 
 /* Enemies */
 

@@ -1,7 +1,15 @@
 /* Room description */
 describe(room_4) :-
-    write('Acid Pool - At the center of the large room there is an acid pool. It expands from east to west wall and is too wide to jump over it.'), nl,
-    write('On the north side of acid pool there are passages north and west. On the south side there is a passage south.'), nl.
+    write('At the center of the large room there is a magical bridge, covering an acid pool. Congrats, this obstacle is not a problem any more.'), nl,
+    write('On the north side of the late acid pool there are passages north and west. On the south side there is a passage south.'), nl.
+
+describe(room_4N) :-
+    write('Northern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.'), nl,
+    write('On your side there are two passages: north and west. On the southern side there is a passage south.'), nl.
+
+describe(room_4S) :-
+    write('Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.'), nl,
+    write('On your side there is one passages south. On the northern side there are two passages: north and west.'), nl.
 
 hint(room_4) :-
     write('[You can traverse the acid pool by using jump potion.]'), nl,
@@ -9,20 +17,13 @@ hint(room_4) :-
 
 /* Room setup */
 at(firefly, room_4).
-at(nightcap, room_4).
-at(acid_pool, room_4).
+at(nightcap, room_4N).
 
-blocker(acid_pool).
-
-path(room_4, s, room_3).
-path(room_4, w, room_5).
-path(room_4, n, room_6).
-
-blocked(room_4, room_5) :-
-    blocker(acid_pool).
-
-blocked(room_4, room_6) :-
-    blocker(acid_pool).
+subroom(room_4N, room_4). 
+subroom(room_4S, room_4). 
+blocked(room_4S, room_4N).
+blocked(room_4N, room_4S).
+blocked(room_4).
 
 /* Enemies */
 
@@ -34,5 +35,21 @@ describe_additional(room_4) :-
     write('Over the pool fly some weird glowing bugs. They look similar to fireflies.'), nl, false.
 
 describe_additional(room_4) :-
-    at(nightcap, room_4),
+    (at(nightcap, room_4N) ; at(nightcap, room_4)),
     write('On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.'), nl, false.
+
+describe_additional(room_4N) :-
+    at(firefly, room_4),
+    write('Over the pool fly some weird glowing bugs. They look similar to fireflies.'), nl, false.
+
+describe_additional(room_4N) :-
+    (at(nightcap, room_4N) ; at(nightcap, room_4)),
+    write('On your side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.'), nl, false.
+
+describe_additional(room_4S) :-
+    at(firefly, room_4),
+    write('Over the pool fly some weird glowing bugs. They look similar to fireflies.'), nl, false.
+
+describe_additional(room_4S) :-
+    (at(nightcap, room_4N) ; at(nightcap, room_4)),
+    write('On the other side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.'), nl, false.
