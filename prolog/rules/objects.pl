@@ -38,7 +38,9 @@ investigate(key) :-
 
 investigate(cheat_sheet) :-
     holding(cheat_sheet),
-    write("@TODO"),
+    write('light spell: prons: easy, efficient, stays for a long time; cons: requires rare component'), nl,
+    write("grab spell: prons: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"), nl,
+    write("sleep spell: prons: usefull to aviod combat; cons: doesn't work on school staff fore some reason, If casted on self, you cannot wake up."), 
     nl, !.
 
 investigate(magnet) :-
@@ -52,32 +54,104 @@ investigate(rope) :-
     write("But it's quite long. I can't throw it too far but maybe I can grab something with a help of some spell?"),
     nl, !. 
 
+investigate(potion) :-
+    holding(potion),
+    write('You recognise it from your alchemy classes (the only ones that you pass). This is a Far Jump Potion.'), nl,
+    write('You can use it to jump very far, but only once.'), nl, !.
+
+investigate(nightcap) :-
+    holding(nightcap),
+    write("It doesn't look too fashionable, but kind of comfy. (hint: spell component)"),
+    nl, !. 
+
+investigate(note) :-
+    holding(note),
+    write("The code is the year of the Worm Spell disaster."),
+    write("You'd better provide the code in the form password_xxxx... Wrong code might have its own consequences."),
+    nl, !. 
+
+investigate(book_fragment) :-
+    holding(book_fragment),
+    write("There is a more powerful variant of 'open' spell that uses rusty key as a component, which is proven to..."), nl,
+    write("The words 'more', 'powerful' and 'rusty' are underlined and next to them there is a handwritten note 'Dumb as hell'."),
+    nl, !. 
+
+investigate(big_journal) :-
+    holding(big_journal),
+    write("I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(object). and shrink(object).)."), nl,
+    write("Others form some kind of a riddle. Good thing that I listened during rune theory lectures. It roughly translates as:"), nl,
+    write("1. Red is the same size as Orange."), nl,
+    write("2. Red has both small and big neighbour."), nl,
+    write("3. Purple is small."), nl,
+    write("4. Red and Blue are both next to their colour mix."), nl,
+    write("5. Their size has symmetry about the middle block."), nl,
+    write("6. Blue doesn't have any small blocks on it's right."), nl,
+    write("7. Red is more to the left than Green is."),
+    nl, !. 
+
+investigate(ripped_page) :-
+    holding(ripped_page),
+    write("The Open spell is giving me a hard time. I have no idea how to cast it's a more powerful version so northen door is inaccessible to me."), nl,
+    write("I might have a chance with southern door but I have to be careful anyway. With how sloppy my spellcasting is the door might as well lock again just after I get in."), nl,
+    write("I have to move on so I'm going to risk it. Wish me luck."),
+    nl, !. 
+
+investigate(ripped_journal) :-
+    holding(ripped_journal),
+    write("My Open spell was so bad my spell component shattered. I am stuck here. I didn't even have a chance to try to enter the code to that machinery."), nl,
+    write("I wasn't very good at History of Magic but I think Morris Worm Spell disaster was in 1998 or 1988."),
+    nl, !. 
+
+investigate(wolfsbane) :-
+    holding(wolfsbane),
+    write("A solid bunch of wolfsbane. Good that you aren't a warewolf."),
+    nl, !. 
+
 investigate(beer) :-
     holding(beer),
-    write("[the hero is a student who failed an exam. There must be beer somewhere in the game]"),
+    write("You are a student who failed an exam. There must be beer somewhere in the game."),
     nl, !. 
+
+investigate(lantern) :-
+    write("Your good trusty lantern. You will need it until you finally get a hold of light spell."),
+    nl, !.
 
 investigate(_) :-
     write('Nothing to describe. Object is not in your inventory'), nl.
 
-/* Specyfic take actions with objects */
+/* Specific take actions with objects */
 
 take(journal) :-    /* allows the user to take the correct journal in present room */
     is_journal(Journal),
     i_am_at(Place),
     at(Journal, Place),
-    take(Journal).
+    take(Journal), !.
 
 
 take(firefly) :-
+    i_am_at(Place),
+    at(firefly, Place),
     write("Hmmm If only you could use something to catch it in."), nl,
-    false.
+    !.
 
 take(key) :-
+    i_am_at(Place),
+    at(key, Place),
     write("Sorry, you are not able to easily pick up the key. Think of a different solution."), nl,
-    false.
+    !.
 
-/* These rules describe specyfic use_object actions */
+take(nightcap) :-
+    i_am_at(Place),
+    at(nightcap, Place),
+    write('That trouble was worth it. Now you posses a velvet-like nightcap.'), nl, false.
+
+take(nightcap) :-
+    i_am_at(room_4S),
+    at(nightcap, room_4N),
+    write('You are sure, you would like to go swimming in the acid pool?'), 
+    nl, !.
+
+/* These rules describe specific use_object actions */
 
 use_object(jar, firefly) :-
     holding(jar),
@@ -97,10 +171,30 @@ use_object(magnet, X) :-
     write("Great! You managed to pick up "),
     write(X), nl.
 
+use_object(potion, acid_pool) :-
+    holding(potion),
+    i_am_at(room_4S),
+    write("That was a really loooooong jump."),
+    retract(holding(potion)),
+    assert(i_am_at(room_4N)),
+    retract(i_am_at(room_4S)),
+    nl, !.
+
+use_object(potion, acid_pool) :-
+    holding(potion),
+    i_am_at(room_4N),
+    write("That was a really loooooong jump."),
+    retract(holding(potion)),
+    assert(i_am_at(room_4S)),
+    retract(i_am_at(room_4N)),
+    nl, !.
+
 /* rule for easier picking up various journals */
 
 is_journal(burned_journal).
 is_journal(old_journal).
+is_journal(big_journal).
+is_journal(ripped_journal).
 
 /*rules about what objects are metal*/
 

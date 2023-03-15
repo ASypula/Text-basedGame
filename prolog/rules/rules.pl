@@ -3,22 +3,28 @@
 /* NEW */
 /* These rules describe how to unlock room with obstacle. */
 
-bypass :- 
+bypass(LockedPlace) :- 
+        blocked(LockedPlace),
         at(Item, Place),
-        subroom(Place, UnlockedPlace),
+        subroom(Place, LockedPlace),
         retract(at(Item, Place)),
-        assert(at(Item, UnlockedPlace)),
+        assert(at(Item, LockedPlace)),
         false.
 
-bypass :-
+bypass(LockedPlace) :-
+        blocked(LockedPlace),
         i_am_at(Place),
-        subroom(Place, UnlockedPlace),
+        subroom(Place, LockedPlace),
         retract(i_am_at(Place)),
-        assert(i_am_at(UnlockedPlace)),
-        retract(blocked(UnlockedPlace)),
+        assert(i_am_at(LockedPlace)),
+        false.
+
+bypass(LockedPlace) :-
+        blocked(LockedPlace),
+        retract(blocked(LockedPlace)),
         write("Obstacle removed"), !, nl.
 
-bypass :- write('No obstacle to bypass here.'), nl.
+bypass(_) :- write('No obstacle to bypass here.'), nl.
 
 
 /* These rules describe how to unlock closed path. */
@@ -95,15 +101,16 @@ look :-         /* CHANGED HERE*/
 
 notice_objects_at(Place) :-
         at(X, Place),
+        \+ obscured(Place),
         write('There is a '), write(X), write(' here.'), nl,
-        fail.
+        false.
 
 notice_objects_at(_).
 
 
 /* This rule prints inventory contents */
 
-inventory :- write('Your objects:'), nl, fail.
+inventory :- write('Your objects:'), nl, false.
 inventory :-
         holding(Item),
         write('    '), write(Item), nl, false.
@@ -118,4 +125,4 @@ describe_additional(_) :-
 
 describe(_) :- write('[No description for this room yet]').
 
-use_object(_, _) :- write('Not helpfull here.'), nl.
+use_object(_, _) :- write('Not helpful here.'), nl.

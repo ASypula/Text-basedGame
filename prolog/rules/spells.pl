@@ -23,8 +23,12 @@ cast(Spell_name, _) :-
 cast(_, _) :-
     write("Don't know such spell."), nl.
 
-cast_at_place(light, dark_room) :-
-    write("@TODO, write some outcome here."), !.
+cast_at_place(light, Place) :-
+    obscured(Place),
+    cast(light, firefly),
+    i_am_at(Place),
+    retract(obscured(Place)),
+    write("The room has been instantaneously illuminated!"), !.
 
 cast_at_place(_, _) :-
     write("Not so useful here."), nl.
