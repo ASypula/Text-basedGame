@@ -15,7 +15,7 @@ Endings:
     You escaped the deadly dungeon only to start much more frightening battle - writing an official letter.
 
 2. You did it. You made it out alive. You used your wits to bypass the beast without fighting it and acquired authentic badge of the High University of Magic staff member.
-    You retake you exams and pass them with flying colors. You cannot stop thinking about that badge. What if it became trully yours? What of you joining the staff?
+    You retake you exams and pass them with flying colors. You cannot stop thinking about that badge. What if it became trully yours? How about joining the staff?
     The cursed badge slowly takes over you and before you realise it, your body is twisted into this new beastly form.
     To your surprise, you retain your senses and consciousness. Teaching and research at University feels amazing, although you sometimes wish you had human hands again.
 
@@ -25,7 +25,7 @@ Endings:
     Good think that your data was also lost. You can change your name, bluff your way through and retake the whole year. You seem like you need that anyway.
 
 Outro:
-    Thank you for playing our videogame. [If we feel brave] We sincerely wish you a great day and a tasty coffee.
+    Thank you for playing our textgame. [If we feel brave] We sincerely wish you a great day and a tasty coffee.
 
 Rooms:
 
@@ -118,7 +118,7 @@ Objects:
 0. Lantern - Your good trusty lantern. You will need it untill you finally get a hold of light spell.
 1. Old journal - "I found the exit! It is to the north, but fierce beast guides it.
     I'm gonna await next student who's gonna fail their exams and team up with them against the beast."
-2. Fireflies - Small, light-emitting beetles. Their light might not be very strong, but If reinforced...
+2. Fireflies - Small, light-emitting beetles. Their light might not be very strong, but if reinforced...
 3. Burned journal - "[illegible] is giving me a hard time. I know the [illegible] spell would be a save way to deal with it, 
     however casting "grab" on it's tail would be funnier. Besides I don't have nightcap for [illegible] spell"
 4. jar - Empty, a bit dusty jar.
@@ -144,7 +144,7 @@ Objects:
         5. Their size has symmetry about the middle block.
         6. Blue doesn't have any small blocks on it's right.
         7. Red is more to the left than green is."
-14 ripped page - "The Open spell is giving me a hard time. I have no idea how to cast it's a more powerful version so northen door is inaccessible to me.
+14 ripped page - "The Open spell is giving me a hard time. I have no idea how to cast it's more powerful version so northen door is inaccessible to me.
     I might have a chance with southern door but I have to be careful anyway. With how sloppy my spellcasting is, the door might as well lock again just after I get in.
     I have to move on so I'm going to risk it. Wish me luck."
 15 ripped journal - "My Open spell was so bad my spell component shattered. I am stuck here. I didn't even have a chance to try to enter the code to that machinery.
