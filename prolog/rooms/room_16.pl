@@ -1,6 +1,6 @@
 /* Room description */
 describe(room_16) :-
-    write('You enter a vast, cluttered room. You have to manouver between shelves, crates and tables to move around.'), nl,
+    write('You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.'), nl,
     write('Exits are on the west and north wall.'), nl,
     write('The room is filled with jars, bottles and glass aparature.'), nl.
 
