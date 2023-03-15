@@ -9,10 +9,6 @@ hint(room_5) :-
 /* Room setup */
 at(note, room_5).
 
-/* Enemies */
-
-/* Puzzles */
-
 /* Objects */
 describe_additional(room_5) :-
     blocked(room_4),
@@ -21,3 +17,5 @@ describe_additional(room_5) :-
 describe_additional(room_5) :-
     at(note, room_5),
     write('On the back of the control panel, there is a very old, dusty sticky note'), nl, false.
+
+/*@TODO: from quests, machinery [it also unlocks path to 13 room]*/

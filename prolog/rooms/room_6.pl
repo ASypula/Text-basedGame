@@ -9,9 +9,12 @@ hint(room_6) :-
 /* Room setup */
 at(magnet, room_6).
 
-/* Enemies */
-
-/* Puzzles */
+go(e) :-
+    i_am_at(room_6),
+    blocked(room_5, room_6),
+    write('These doors seem to be locked.'), nl,
+    write('There used to be a very useful spell for picking locks...'), nl,
+    write('And If you remember correctly it required one additional object to succeed.'), nl, !.
 
 /* Objects */
 describe_additional(room_6) :-

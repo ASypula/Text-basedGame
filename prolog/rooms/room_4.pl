@@ -33,10 +33,6 @@ go(s) :-
     i_am_at(room_4N),
     write("'You are sure, you would like to go swimming in the acid pool?'"), nl, false.
 
-/* Enemies */
-
-/* Puzzles */
-
 /* Objects */
 describe_additional(room_4) :-
     write('Over the pool fly some weird glowing bugs. They look similar to fireflies.'), nl, false.
