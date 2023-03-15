@@ -121,16 +121,20 @@ take(journal) :-    /* allows the user to take the correct journal in present ro
     is_journal(Journal),
     i_am_at(Place),
     at(Journal, Place),
-    take(Journal).
+    take(Journal), !.
 
 
 take(firefly) :-
+    i_am_at(Place),
+    at(firefly, Place),
     write("Hmmm If only you could use something to catch it in."), nl,
-    false.
+    !.
 
 take(key) :-
+    i_am_at(Place),
+    at(key, Place),
     write("Sorry, you are not able to easily pick up the key. Think of a different solution."), nl,
-    false.
+    !.
 
 take(nightcap) :-
     i_am_at(Place),

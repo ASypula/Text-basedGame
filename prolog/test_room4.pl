@@ -1,14 +1,10 @@
 :- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2.
-:- multifile([describe/1, describe_additional/1, take/1, use_object/2, hint/1]).
+:- multifile([describe/1, describe_additional/1, take/1, use_object/2, hint/1, go/1, at/2]).
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). 
 
 /*It is important that the rooms are loaded before rules, because in rooms there are more specyfic cases of some rules (ex. describe)*/
 :- ensure_loaded(rooms/room_1), ensure_loaded(rooms/room_2), ensure_loaded(rooms/room_3).
 :- ensure_loaded(rooms/paths).
-
-:- ensure_loaded(rules/spells).
-:- ensure_loaded(rules/objects).
-:- ensure_loaded(rules/rules).
 
 /* Maybe not needed 
 blocked(room_4S, room_4N).
@@ -79,3 +75,7 @@ describe_additional(room_4S) :-
     write('On the other side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.'), nl, false.
 
 i_am_at(room_4N).
+
+:- ensure_loaded(rules/spells).
+:- ensure_loaded(rules/objects).
+:- ensure_loaded(rules/rules).
