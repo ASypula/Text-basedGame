@@ -50,11 +50,12 @@ take(X) :-
         at(X, Place),
         retract(at(X, Place)),
         assert(holding(X)),
-        write('OK.'),
+        write('You picked up '),
+        write(X), write("."),
         !, nl.
 
 take(_) :-
-        write('I don''t see it here.'),
+        write('You don''t see it here or you can''t pick it up.'),
         nl.
 
 
