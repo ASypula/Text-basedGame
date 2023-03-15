@@ -151,6 +151,10 @@ take(nightcap) :-
     write('You are sure, you would like to go swimming in the acid pool?'), 
     nl, !.
 
+take(magnet) :-
+    write('Extracting the magnet from the goblin skeleton was not easy, and definitely not pleasurable.'), nl,
+    write('But maybe something that can attract metals might come in handy.'), nl, false.
+
 /* These rules describe specific use_object actions */
 
 use_object(jar, firefly) :-
