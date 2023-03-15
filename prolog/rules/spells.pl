@@ -1,5 +1,6 @@
 /* Spells available in the game */
 spell(light, firefly).
+spell(grab, rope).
 
 /* @TODO: Connect somehow with a room */
 /* there will be rule named like "spell_in_room" and it will take spell name and rule. The spell_in_room would be described in each room file if there is useful spell to cast there. Default would be something like "This spell can't help you here".
@@ -25,10 +26,15 @@ cast(_, _) :-
 
 cast_at_place(light, Place) :-
     obscured(Place),
-    cast(light, firefly),
     i_am_at(Place),
     retract(obscured(Place)),
-    write("The room has been instantaneously illuminated!"), !.
+    write("The room has been instantaneously illuminated!"), nl,
+    look, !.
+
+cast_at_place(grab, room_16) :-
+    retract(at(key, room_16)),
+    assert(holding(key)),
+    write("With the help of the Grab Spell you pick up a key."), nl, !.
 
 cast_at_place(_, _) :-
     write("Not so useful here."), nl.
