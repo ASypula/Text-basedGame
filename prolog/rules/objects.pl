@@ -135,8 +135,7 @@ take(firefly) :-
     !.
 
 take(key) :-
-    i_am_at(Place),
-    at(key, Place),
+    i_am_at(room_16),
     write("Sorry, you are not able to easily pick up the key. Think of a different solution."), nl,
     !.
 
@@ -169,7 +168,7 @@ use_object(magnet, X) :-
     retract(at(X, Place)),
     assert(holding(X)),
     write("Great! You managed to pick up "),
-    write(X), nl.
+    write(X), write("."), nl, !.
 
 use_object(potion, acid_pool) :-
     holding(potion),
