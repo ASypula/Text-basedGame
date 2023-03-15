@@ -78,7 +78,7 @@ investigate(book_fragment) :-
 
 investigate(big_journal) :-
     holding(big_journal),
-    write("I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(object). and shrink(object).)."), nl,
+    write("I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(color). and shrink(color).)."), nl,
     write("Others form some kind of a riddle. Good thing that I listened during rune theory lectures. It roughly translates as:"), nl,
     write("1. Red is the same size as Orange."), nl,
     write("2. Red has both small and big neighbour."), nl,
