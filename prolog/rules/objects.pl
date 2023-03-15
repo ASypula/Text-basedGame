@@ -4,11 +4,11 @@
 /* Get information about objects */
 
 investigate(lantern) :-
-    write("Your good trusty lantern. You will need it untill you finally get a hold of light spell."),
+    write("Your good trusty lantern. You will need it until you finally get a hold of light spell."),
     nl, !.
 
 investigate(journal) :-
-    write("Be more specyfic about which journal. (To check out your invetory try command \"inventory\")."),
+    write("Be more specific about which journal. (To check out your invetory try command \"inventory\")."),
     nl, !.
 
 investigate(old_journal) :-
