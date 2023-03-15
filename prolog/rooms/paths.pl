@@ -8,8 +8,6 @@ path(room_3, e, room_16).
 path(room_3, w, room_2).
 
 /* Paths for room 4 */
-path(room_4S, n, room_4N).
-path(room_4N, s, room_4S).
 path(room_4, n, room_6).
 path(room_4N, n, room_6).
 path(room_4, s, room_3).

@@ -4,7 +4,7 @@
 :- multifile([describe/1, describe_additional/1, take/1, use_object/2, hint/1]).
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). 
 
-/*It is important that the rooms are loaded before rules, because in rooms there are more specyfic cases of some rules (ex. describe)*/
+/*It is important that the rooms are loaded before rules, because in rooms there are more specific cases of some rules (ex. describe)*/
 :- ensure_loaded(rooms/room_1), ensure_loaded(rooms/room_2), ensure_loaded(rooms/room_3), ensure_loaded(rooms/room_4).
 :- ensure_loaded(rooms/paths).
 

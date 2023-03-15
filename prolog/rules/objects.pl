@@ -135,12 +135,13 @@ take(key) :-
 take(nightcap) :-
     i_am_at(Place),
     at(nightcap, Place),
-    assert(holding(nightcap)),
-    write('That trouble was worth it. Now you posses a velvet-like nightcap.'), nl.
+    write('That trouble was worth it. Now you posses a velvet-like nightcap.'), nl, false.
 
 take(nightcap) :-
-    write('You are sure, you would like to go swimming in the acid pool?'), nl,
-    false.
+    i_am_at(room_4S),
+    at(nightcap, room_4N),
+    write('You are sure, you would like to go swimming in the acid pool?'), 
+    nl, !.
 
 /* These rules describe specific use_object actions */
 
@@ -162,7 +163,7 @@ use_object(magnet, X) :-
     write("Great! You managed to pick up "),
     write(X), nl.
 
-use_object(potion, n) :-
+use_object(potion, acid_pool) :-
     holding(potion),
     i_am_at(room_4S),
     write("That was a really loooooong jump."),
@@ -171,7 +172,7 @@ use_object(potion, n) :-
     retract(i_am_at(room_4S)),
     nl, !.
 
-use_object(potion, s) :-
+use_object(potion, acid_pool) :-
     holding(potion),
     i_am_at(room_4N),
     write("That was a really loooooong jump."),
