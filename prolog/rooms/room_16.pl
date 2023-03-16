@@ -12,9 +12,6 @@ at(potion, room_16).
 at(jar, room_16).
 at(key, room_16).
 
-/* rules */
-
-/* Puzzles */
 
 /* Objects */
 describe_additional(room_16) :-
