@@ -23,7 +23,6 @@ at(nightcap, room_4N).
 
 subroom(room_4N, room_4). 
 subroom(room_4S, room_4). 
-blocked(room_4).
 
 go(n) :-
     i_am_at(room_4S),

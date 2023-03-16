@@ -12,6 +12,7 @@
         ensure_loaded(rooms/room_5),
         ensure_loaded(rooms/room_6).
 :- ensure_loaded(rooms/paths).
+:- ensure_loaded(rooms/blocked_paths).
 
 :- ensure_loaded(rules/spells).
 :- ensure_loaded(rules/objects).

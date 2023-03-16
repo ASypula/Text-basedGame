@@ -31,9 +31,15 @@ cast_at_place(light, Place) :-
     retract(obscured(Place)),
     write("The room has been instantaneously illuminated!"), !.
 
-cast_at_place(open, room_6) :-
-    blocked(room_5, room_6),
-    retract(blocked(room_5, room_6)),
+cast_at_place(open, room_4) :-
+    blocked(room_5, room_4),
+    retract(blocked(room_5, room_4)),
+    write('You hear a click sound and the doors are beginning to open slowly.'), nl, !.
+
+cast_at_place(open, room_4N) :-
+    blocked(room_5, room_4),
+    retract(blocked(room_5, room_4N)),
+    retract(blocked(room_5, room_4)),
     write('You hear a click sound and the doors are beginning to open slowly.'), nl, !.
 
 cast_at_place(_, _) :-

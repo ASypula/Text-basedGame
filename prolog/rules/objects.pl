@@ -208,7 +208,6 @@ metal(key).
 
 /* rules for unlocking machinery */
 
-/*@TODO How much should we hint that the bridge was laid over the acid pool? */
 enter(password_1988) :-
     blocked(room_4),
     bypass(room_4),
@@ -217,7 +216,8 @@ enter(password_1988) :-
     write('Noooo, that''s impossible.'), nl,
     write('Accidentally the floor starts to shake slightly and you hear a strange sound.'), nl,
     write('As if some machinery was being laid over a terrain.'), nl,
-    write('Your intuition tells you the sounds came from the room with the acid pool.'), nl, !.
+    write('Your intuition tells you the sounds came from the room with the acid pool.'), nl,
+    write('There was also another sound after that. It seemed to originate further away though.'), nl, !.
 
 /*@TODO should we hint where to look for the hint with the password?*/
 enter(_) :-
