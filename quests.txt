@@ -64,9 +64,12 @@ Rooms:
 15. Soot room - Rather big room with soot spots. 
     There is a soot covered skeleton. Beside it, there is a partially burned journal*3
     There are passages north and south.
-16. Alchemist room  - [add room description here]. There is something shiny [key*5] between floor tiles, but you cannot grab it with your fingers.
+16. Alchemist room  -  
+    You enter a vast, cluttered room. You have to manouver between shelves, crates and tables to move around.
+    Exits are on the west and north wall.
+    The room is filled with jars, bottles and glass aparature.
+    There is something shiny [key*5] between floor tiles, but you cannot grab it with your fingers.
     Some sort of jewellery? Or maybe a key?
-    Passages west and north.
     Jars*4, key*5 [you can obtain key by casting grab or by use(magnet, key) or grab spell]
     potion*9
 5. Machinery - [this room is accessible only by opening door to it with cast(open, key)]
