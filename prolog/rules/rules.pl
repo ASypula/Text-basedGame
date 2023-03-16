@@ -6,6 +6,7 @@
 bypass(LockedPlace) :- 
         blocked(LockedPlace),
         at(Item, Place),
+        \+ at(Item, LockedPlace),
         subroom(Place, LockedPlace),
         retract(at(Item, Place)),
         assert(at(Item, LockedPlace)),

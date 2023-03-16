@@ -19,10 +19,6 @@ hint(room_3) :-
 obscured(room_3).
 at(rope, room_3).
 
-/* Enemies */
-
-/* Puzzles */
-
 /* Objects */
 describe_additional(room_3) :-
     at(rope, room_3),
