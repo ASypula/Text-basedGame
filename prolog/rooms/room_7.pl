@@ -1,6 +1,6 @@
 /* Room description */
 describe(room_7) :-
-    write('This room has weird magical sigils on the walls.'), nl,
+    write('This room has weird magical sigils on the walls on some scratches on the ceiling.'), nl,
     write('You recognise them as symbols allowing to cast specific transmutation spells without components, but can''t recall which.'), nl,
     write('There are 5 pedestals in a line, with letters from a (most left) to e (most right).'), nl,
     write('In the room there are also 5 blocks in different colors - red, green, blue, purple and orange. The red, blue and purple are small. Green and orange are bigger.'), nl,
@@ -8,7 +8,7 @@ describe(room_7) :-
     write('The only visible exit is on the west wall.'), nl.
 
 hint(room_7) :-
-    write('[You can put blocks on pedestals using put(color, position)]'), nl,
+    write('[You can put blocks on pedestals using put(color, pedestal)]'), nl,
     write('[To solve the riddle you have to set right sizes to blocks and put them on correct pedestals.'), nl.
 
 /* Room setup */

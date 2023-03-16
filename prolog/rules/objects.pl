@@ -1,6 +1,3 @@
-:- multifile use_object/2.
-:- multifile take/1.
-
 /* Get information about objects */
 
 investigate(lantern) :-
@@ -78,15 +75,17 @@ investigate(book_fragment) :-
 
 investigate(big_journal) :-
     holding(big_journal),
-    write("I finally decoded the runes on the wall. Some of them allow casting grow, shrink spells (grow(color). and shrink(color).)."), nl,
-    write("Others form some kind of a riddle. Good thing that I listened during rune theory lectures. It roughly translates as:"), nl,
-    write("1. Red is the same size as Orange."), nl,
-    write("2. Red has both small and big neighbour."), nl,
-    write("3. Purple is small."), nl,
-    write("4. Red and Blue are both next to their colour mix."), nl,
-    write("5. Their size has symmetry about the middle block."), nl,
-    write("6. Blue doesn't have any small blocks on it's right."), nl,
-    write("7. Red is more to the left than Green is."),
+    write('I''ve finally decoded the runes on the wall! Some of them allow casting grow, shrink spells (grow(color). and shrink(color).).'), nl,
+    write('Others form some kind of a riddle. Good thing that I listened during rune theory lectures. It roughly translates as:'), nl,
+    write('1. Red is the same size as Orange.'), nl,
+    write('2. Red has both small and big neighbour.'), nl,
+    write('3. Purple is small.'), nl,
+    write('4. Red and Blue are both next to their colour mix.'), nl,
+    write('5. Their size has symmetry about the middle block.'), nl,
+    write('6. Blue doesn''t have any small blocks on it''s right.'), nl,
+    write('7. Red is more to the left than Green is.'), nl,
+    write('\'Oh, and there 2 more things. I believe that spell put(color, pedestal) should move the blocks.'), nl,
+    write('And finally I have discovered that the scratches on the ceiling form a word - incomplete but a word: c*eck. Unfortunately, I don''t know what to do with it...'),
     nl, !. 
 
 investigate(ripped_page) :-
