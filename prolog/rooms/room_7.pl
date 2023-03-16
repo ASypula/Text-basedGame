@@ -2,9 +2,9 @@
 describe(room_7) :-
     write('This room has weird magical sigils on the walls.'), nl,
     write('You recognise them as symbols allowing to cast specific transmutation spells without components, but can''t recall which.'), nl,
-    write('There are 5 pedestals in a line, numbered from 1 (most left) to 5 (most right).'), nl,
+    write('There are 5 pedestals in a line, with letters from a (most left) to e (most right).'), nl,
     write('In the room there are also 5 blocks in different colors - red, green, blue, purple and orange. The red, blue and purple are small. Green and orange are bigger.'), nl,
-    write('All of these block are placed on some other pedestal with number 0 on it.'), nl,
+    write('All of these block are placed on some other pedestal with letter t on it (probably t like trash).'), nl,
     write('The only visible exit is on the west wall.'), nl.
 
 hint(room_7) :-
@@ -27,17 +27,17 @@ is_size(blue, small).
 is_size(purple, small).
 is_size(orange, big).
 
-is_position(1).
-is_position(2).
-is_position(3).
-is_position(4).
-is_position(5).
+is_position(a).
+is_position(b).
+is_position(c).
+is_position(d).
+is_position(e).
 
-placed(red, 0).
-placed(green, 0).
-placed(blue, 0).
-placed(purple, 0).
-placed(orange, 0).
+placed(red, t).
+placed(green, t).
+placed(blue, t).
+placed(purple, t).
+placed(orange, t).
 
 /* Objects */
 describe_additional(room_7) :-

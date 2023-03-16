@@ -15,11 +15,11 @@ check :-
 
 check :-
     i_am_at(room_7),
-    placed(orange, 1), is_size(orange, big),
-    placed(red, 2), is_size(red, big),
-    placed(purple, 3), is_size(purple, small),
-    placed(blue, 4), is_size(blue, big),
-    placed(green, 5), is_size(green, big),
+    placed(orange, a), is_size(orange, big),
+    placed(red, b), is_size(red, big),
+    placed(purple, c), is_size(purple, small),
+    placed(blue, d), is_size(blue, big),
+    placed(green, e), is_size(green, big),
     write('Damn something is shaking! Is it? Is this a secret passage? It definitely looks like one!'), nl,
     write('You have discovered door on the south wall, congrats'), !, nl.
 
