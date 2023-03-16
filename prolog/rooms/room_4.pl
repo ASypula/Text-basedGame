@@ -23,7 +23,6 @@ at(nightcap, room_4N).
 
 subroom(room_4N, room_4). 
 subroom(room_4S, room_4). 
-blocked(room_4).
 
 go(n) :-
     i_am_at(room_4S),
@@ -32,10 +31,6 @@ go(n) :-
 go(s) :-
     i_am_at(room_4N),
     write("'You are sure, you would like to go swimming in the acid pool?'"), nl, false.
-
-/* Enemies */
-
-/* Puzzles */
 
 /* Objects */
 describe_additional(room_4) :-
