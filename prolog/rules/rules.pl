@@ -125,4 +125,8 @@ describe_additional(_) :-
 
 describe(_) :- write('[No description for this room yet]').
 
+use_object(Object, _) :-
+        \+ holding(Object),
+        write('You don''t have such object.'), nl, !.
+
 use_object(_, _) :- write('Not helpful here.'), nl.
