@@ -12,6 +12,8 @@
         ensure_loaded(rooms/room_05),
         ensure_loaded(rooms/room_06),
         ensure_loaded(rooms/room_08),
+        ensure_loaded(rooms/room_10),
+        ensure_loaded(rooms/room_11),
         ensure_loaded(rooms/room_16).
 :- ensure_loaded(rooms/paths).
 :- ensure_loaded(rooms/blocked_paths).
@@ -23,7 +25,6 @@
 
 i_am_at(room_2).
 holding(lantern).
-
 
 /* This rule just writes out game instructions. */
 

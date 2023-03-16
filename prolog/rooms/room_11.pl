@@ -11,11 +11,11 @@ at(ripped_page, room_11).
 
 /* Objects */
 describe_additional(room_11) :-
-    blocked(room_11, room_12).
+    blocked(room_11, room_12),
     write('The north door is bigger and clearly locked using techno-magic.'), nl, false.
 
 describe_additional(room_11) :-
-    blocked(room_11, room_13).
+    blocked(room_11, room_13),
     write('The south door looks normal but is still locked by a regular lock.'), nl, false.
 
 describe_additional(room_11) :-
