@@ -14,6 +14,12 @@ interact :-
     visited_previously(b),
     write('\"So, do you have it?\" Its empty eye sockets look at you menacingly.'), nl, !.
 
+
+interact :-
+    i_am_at(room_8),
+    visited_previously(c),
+    write('No more interactions possible here. Go somewhere else...'), nl, !.
+
 use_object(beer, _) :-
     i_am_at(room_8),
     holding(beer),
