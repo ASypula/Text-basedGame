@@ -209,6 +209,7 @@ metal(key).
 /* rules for unlocking machinery */
 
 enter(password_1988) :-
+    i_am_at(room_5),
     blocked(room_4),
     bypass(room_4),
     write('Congratulations! You managed to guess the password!'), nl,
@@ -221,6 +222,7 @@ enter(password_1988) :-
 
 /*@TODO should we hint where to look for the hint with the password?*/
 enter(_) :-
+    i_am_at(room_5),
     blocked(room_4),
     write('Nope, it''s not the correct code.'), nl,
     write('You can try guessing, but you don''t know If it won''t be your last one...'), nl, 
