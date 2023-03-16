@@ -55,5 +55,17 @@ cast_at_place(open, room_4N) :-
     retract(blocked(room_5, room_4)),
     write('You hear a click sound and the doors are beginning to open slowly.'), nl, !.
 
+cast_at_place(open, room_11) :-
+    blocked(room_11, room_12),
+    write('This lock seems to be immune to such delicate magic.'), nl, 
+    write('Maybe you should try something stronger?'), nl, !.
+
+cast_at_place(open, room_11) :-
+    blocked(room_11, room_13),
+    retract(blocked(room_11, room_13)),
+    write('The doors emit a loud, creaking sound and you wonder If they are not going to collapse...'), nl, 
+    write('But fortunately they start opening up, it must have been those rusty hinges.'), nl, !.
+
+
 cast_at_place(_, _) :-
     write("Not so useful here."), nl.

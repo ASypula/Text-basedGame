@@ -211,6 +211,7 @@ enter(password_1988) :-
     i_am_at(room_5),
     blocked(room_4),
     bypass(room_4),
+    retract(blocked(room_11, room_12)),
     write('Congratulations! You managed to guess the password!'), nl,
     write('Or maybe you knew which was the year of Morris worm...'), nl,
     write('Noooo, that''s impossible.'), nl,
