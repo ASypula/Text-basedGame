@@ -10,8 +10,8 @@
 
 :- ensure_loaded(rules/spells).
 :- ensure_loaded(rules/objects).
-:- ensure_loaded(rules/rules).
 :- ensure_loaded(rules/undead_student).
+:- ensure_loaded(rules/rules).  /* this has to be included at the end in order not to obscure more specific rules */
 
 i_am_at(room_8).
 holding(lantern).

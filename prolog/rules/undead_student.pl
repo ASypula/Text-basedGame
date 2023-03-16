@@ -12,10 +12,9 @@ interact :-
 interact :-
     i_am_at(room_8),
     visited_previously(b),
-    write('\"So, do you have it?\" Its empty eye sockets look at you menacingly.'), nl,
-    write('[To give the beer to the Undead Student use give(beer).]'), nl, !.
+    write('\"So, do you have it?\" Its empty eye sockets look at you menacingly.'), nl, !.
 
-give(beer) :-
+use_object(beer, _) :-
     i_am_at(room_8),
     holding(beer),
     visited_previously(b),
@@ -24,10 +23,3 @@ give(beer) :-
     assert(visited_previously(c)),
     write('\"Ah it''s been a while. I probably can''t taste it now though...\"'), nl,
     write('\"Anyway the spell name is power_word_kill and the component is a bunch of wolfsbane.\"'), nl, !.
-
-give(X) :-
-    holding(X),
-    write('You can''t give this object away...'), nl, !.
-
-give(_) :-
-    write('How do you imagine giving away something you don''t have?'), nl, !.
