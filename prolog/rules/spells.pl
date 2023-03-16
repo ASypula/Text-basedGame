@@ -36,6 +36,12 @@ cast_at_place(grab, room_16) :-
     assert(holding(key)),
     write("With the help of the Grab Spell you pick up a key."), nl, !.
 
+cast_at_place(grab, room_4S) :-
+    retract(at(nightcap, room_4N)),
+    assert(holding(nightcap)),
+    write("With the help of the Grab Spell you pick up a nightcap over the acid pool."), nl, !.
+
+
 cast_at_place(_, _) :-
     write("Not so useful here."), nl.
 
