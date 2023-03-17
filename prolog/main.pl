@@ -12,6 +12,8 @@
         ensure_loaded(rooms/room_05),
         ensure_loaded(rooms/room_06),
         ensure_loaded(rooms/room_08),
+        ensure_loaded(rooms/room_14),
+        ensure_loaded(rooms/room_15),
         ensure_loaded(rooms/room_16).
 :- ensure_loaded(rooms/paths).
 :- ensure_loaded(rooms/blocked_paths).
