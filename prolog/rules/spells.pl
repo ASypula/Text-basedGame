@@ -76,11 +76,5 @@ cast_at_place(open, room_11) :-
     write('The smaller doors emit a loud, creaking sound and you wonder If they are not going to collapse...'), nl, 
     write('But fortunately they start opening up, it must have been those rusty hinges.'), nl, !.
 
-cast_at_place(open, room_11) :-
-    blocked(room_11, room_12),
-    retract(blocked(room_11, room_12)),
-    write('The bigger doors emit a loud, creaking sound and you wonder If they are not going to collapse...'), nl, 
-    write('But fortunately they start opening up, it must have been those rusty hinges.'), nl, !.
-
 cast_at_place(_, _) :-
     write("Not so useful here."), nl.

@@ -17,7 +17,3 @@ describe_additional(room_11) :-
 describe_additional(room_11) :-
     blocked(room_11, room_13),
     write('The south door looks normal but is still locked by a regular lock.'), nl, false.
-
-describe_additional(room_11) :-
-    at(ripped_page, room_11),
-    write('There is a ripped page here.'), nl, false.
