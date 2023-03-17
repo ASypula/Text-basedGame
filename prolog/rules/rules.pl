@@ -132,3 +132,35 @@ use_object(Object, _) :-
         write('You don''t have such object.'), nl, !.
 
 use_object(_, _) :- write('Not helpful here.'), nl.
+
+
+/* rules describing game end */
+end_game :-
+        i_am_at(Place),
+        retract(i_am_at(Place)),
+        retractall(holding(_)).
+
+
+
+/* endings */
+ending(a) :-
+        write('You did it. You made it out alive. The exams surely can''t be worse than this. However there is something that might...'), nl,
+        write('The High University of Magic was not thrilled with an idea of student actually getting out of their deadly dungeon.'), nl,
+        write('The High Wizards were especially irritated about the loss of their favourite beast. You will have to settle this with the Dean of Magic himself.'), nl,
+        write('You escaped the deadly dungeon only to start much more frightening battle - writing an official letter.'), nl.
+
+ending(b) :-
+        write('You did it. You made it out alive. '), nl,
+        write('You used your wits to bypass the beast without fighting it and acquired authentic badge of the High University of Magic staff member.'), nl,
+        write('You retake you exams and pass them with flying colors. You cannot stop thinking about that badge. What if it became trully yours? How about joining the staff?'), nl,
+        write('The cursed badge slowly takes over you and before you realise it, your body is twisted into this new beastly form.'), nl,
+        write('To your surprise, you retain your senses and consciousness. Teaching and research at University feels amazing, although you sometimes wish you had human hands again.'), nl.
+
+ending(c) :-
+        write('You did it. You made it out alive. '), nl,
+        write('There wasn''t even a need of fighting the deadly beast. The escape through the trapdoor had some unforseen consequences though...'), nl,
+        write('The University''s magical database system was not capable of processing your way of escaping and spectacularly collapsed.'), nl,
+        write('Personal data of many wizards and apprentices were lost. With the new-arisen chaos there is no way the High Wizard Council will let you continue studies.'), nl,
+        write('Good think that your data was also lost. You can change your name, bluff your way through and retake the whole year. You seem like you need that anyway.'), nl.
+
+outro :- write('Thank you for playin our textgame.'), nl.

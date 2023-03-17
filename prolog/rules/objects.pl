@@ -195,6 +195,19 @@ use_object(potion, acid_pool) :-
     retract(i_am_at(room_4N)),
     nl, !.
 
+use_object(key, acid) :-
+    holding(key),
+    i_am_at(room_4) ; i_am_at(room_4N) ; i_am_at(room_4S),
+    retract(holding(key)),
+    assert(holding(rusty_key)),
+    write('You dip your tiny key in the pool and instantly hear ominous sizzling noise. As you retract your hand you see that your key is now rusty.'), nl,
+    write('You picked up rusty_key.'), nl, !.
+
+use_object(key, acid_pool) :- use_object(key, acid), !.
+
+use_object(key, pool) :- use_object(key, acid), !.
+
+
 /* rule for easier picking up various journals */
 
 is_journal(burned_journal).
