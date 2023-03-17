@@ -206,19 +206,16 @@ is_journal(ripped_journal).
 metal(key).
 
 /* rules for unlocking machinery */
+enter(password_1988) :-
+    i_am_at(room_5),
+    blocked(room_4),
+    blocked(room_11, room_12),
+    unlock4, unlock11_12, !.
 
 enter(password_1988) :-
     i_am_at(room_5),
     blocked(room_4),
-    bypass(room_4),
-    retract(blocked(room_11, room_12)),
-    write('Congratulations! You managed to guess the password!'), nl,
-    write('Or maybe you knew which was the year of Morris worm...'), nl,
-    write('Noooo, that''s impossible.'), nl,
-    write('Accidentally the floor starts to shake slightly and you hear a strange sound.'), nl,
-    write('As if some machinery was being laid over a terrain.'), nl,
-    write('Your intuition tells you the sounds came from the room with the acid pool.'), nl,
-    write('There was also another sound after that. It seemed to originate further away though.'), nl, !.
+    unlock4, !.
 
 /*@TODO should we hint where to look for the hint with the password?*/
 enter(_) :-
@@ -230,3 +227,16 @@ enter(_) :-
 
 enter(_) :-
     write('This action will not help you now.'), nl, !.
+
+unlock4 :-
+    bypass(room_4),
+    write('Congratulations! You managed to guess the password!'), nl,
+    write('Or maybe you knew which was the year of Morris worm...'), nl,
+    write('Noooo, that''s impossible.'), nl,
+    write('Accidentally the floor starts to shake slightly and you hear a strange sound.'), nl,
+    write('As if some machinery was being laid over a terrain.'), nl,
+    write('Your intuition tells you the sounds came from the room with the acid pool.'), nl.
+
+unlock11_12 :-
+    retract(blocked(room_11, room_12)),
+    write('There was also another sound after that. It seemed to originate further away though.'), nl.
