@@ -4,15 +4,6 @@ spell(grab, rope).
 spell(open, key).
 spell(open, rusty_key).
 
-/* Specific cast spells cases */
-
-cast(open, rusty_key) :-
-    holding(rusty_key), 
-    i_am_at(room_11),
-    blocked(room_11, room_12), 
-    retract(blocked(room_11, room_12)),
-    write('That was smart! Special key did the magic and the doors are ajar now.'), !.
-
 /* There will be rule named like "spell_in_room" and it will take spell name and rule. The spell_in_room would be described in each room file if there is useful spell to cast there. Default would be something like "This spell can't help you here".
 In the "cast" rule after checking if correct component is held the spell_in_room would be checked with room you are currently in as second argument. */
 
@@ -63,6 +54,12 @@ cast_at_place(open, room_4N) :-
     retract(blocked(room_5, room_4N)),
     retract(blocked(room_5, room_4)),
     write('You hear a click sound and the doors are beginning to open slowly.'), nl, !.
+
+cast_at_place(open, room_11) :-
+    holding(rusty_key),
+    blocked(room_11, room_12), 
+    retract(blocked(room_11, room_12)),
+    write('That was smart! Special key did the magic and the doors are ajar now.'), !.
 
 cast_at_place(open, room_11) :-
     blocked(room_11, room_12),
