@@ -195,8 +195,15 @@ use_object(potion, acid_pool) :-
     retract(i_am_at(room_4N)),
     nl, !.
 
-
 use_object(potion, pool) :- use_object(potion, acid_pool), !.
+
+use_object(potion, self) :- 
+    i_am_at(room_4N) ; i_am_at(room_4S),
+    use_object(potion, acid_pool), !.
+
+use_object(potion, myself) :- 
+    i_am_at(room_4N) ; i_am_at(room_4S),
+    use_object(potion, acid_pool), !.
 
 use_object(key, acid) :-
     holding(key),
@@ -218,6 +225,13 @@ use_object(potion, trapdoor) :-
     write('You grab the edge of the opening and pull yourself up. You are finally free.'), nl,
     end_game, nl, ending(c),nl, outro, nl, !.
 
+use_object(potion, myself) :- 
+    i_am_at(room_2),
+    use_object(potion, trapdoor), !.
+
+use_object(potion, self) :-
+    i_am_at(room_2),
+    use_object(potion, trapdoor), !.
 
 
 /* rule for easier picking up various journals */
