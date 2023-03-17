@@ -1,7 +1,7 @@
 /* Room description */
 describe(room_15) :-
     write('Rather big room covered with soot spots. It has exits on south and north wall.'), nl,
-    write('There is a soot covered skeleton here.').
+    write('There is a soot covered skeleton here.'), !.
 
 hint(room_15) :-
     write('[It seems there is no hint here]'), nl.
