@@ -1,3 +1,6 @@
+/* Paths for room 1*/
+path(room_1, s, room_10).
+
 /* Paths for room 2*/
 path(room_2, e, room_3).
 
