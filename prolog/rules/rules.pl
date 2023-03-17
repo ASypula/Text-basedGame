@@ -163,4 +163,6 @@ ending(c) :-
         write('Personal data of many wizards and apprentices were lost. With the new-arisen chaos there is no way the High Wizard Council will let you continue studies.'), nl,
         write('Good think that your data was also lost. You can change your name, bluff your way through and retake the whole year. You seem like you need that anyway.'), nl.
 
-outro :- write('Thank you for playin our textgame.'), nl.
+outro :- 
+        write('Thank you for playin our textgame.'), nl,
+        write('To exit prolog shell enter \"halt.\"'), nl.

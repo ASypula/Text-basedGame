@@ -63,7 +63,6 @@ cast_at_place(open, room_2) :-
     write('With the more powerfull version of Open Spell even the trapdoor opens!'), nl,
     write('Now let''s figure out how to reach it...'), nl, !.
 
-
 cast_at_place(open, room_2) :-
     \+ holding(rusty_key),
     shut(trapdoor),
