@@ -168,16 +168,28 @@ use_object(jar, firefly) :-
 
 use_object(magnet, badge) :-
     i_am_at(room_1),
+    write('This little magnet won''t help with anything here. You would need something bigger'), nl, !.
+
+use_object(magnet, beast) :- use_object(magnet, badge), !.
+
+use_object(magnet, monster) :- use_object(magnet, badge), !.
+
+use_object(big_magnet, badge) :-
+    i_am_at(room_1),
     sleep_immunity(beast),
     retract(sleep_immunity(beast)),
     assert(holding(badge)),
     write('With the help of a magnet you managed to steal beast''s badge. That was a close call though. Its claws nearly got you.'), nl, !.
 
-use_object(magnet, beast) :- use_object(magnet, badge).
+use_object(big_magnet, beast) :- use_object(big_magnet, badge), !.
+
+use_object(big_magnet, monster) :- use_object(big_magnet, badge), !.
+
+use_object(big_magnet, X) :- use_object(magnet, X), !.
 
 use_object(magnet, X) :-
     metal(X),
-    holding(magnet),
+    (holding(magnet); holding(big_magnet)),
     i_am_at(Place),
     at(X, Place),
     retract(at(X, Place)),

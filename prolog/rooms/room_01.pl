@@ -20,5 +20,5 @@ sleep_immunity(beast).
 /* Objects */
 describe_additional(room_1) :-
     sleep_immunity(beast),
-    write('The only slightly amusing thing about it is a big, metal, old-fashioned school staff badge attached to its fur.'), nl.
+    write('The only slightly amusing thing about it is a big, metal, old-fashioned school staff badge attached to its fur.'), nl, false.
 
