@@ -5,28 +5,13 @@
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). 
 
 /*It is important that the rooms are loaded before rules, because in rooms there are more specific cases of some rules (ex. describe)*/
-:- ensure_loaded(rooms/room_01), 
-        ensure_loaded(rooms/room_02),
-        ensure_loaded(rooms/room_03),
-        ensure_loaded(rooms/room_04),
-        ensure_loaded(rooms/room_05),
-        ensure_loaded(rooms/room_06),
-        ensure_loaded(rooms/room_07),
-        ensure_loaded(rooms/room_08),
-        ensure_loaded(rooms/room_10),
-        ensure_loaded(rooms/room_11),
-        ensure_loaded(rooms/room_12),
-        ensure_loaded(rooms/room_13),
-        ensure_loaded(rooms/room_14),
-        ensure_loaded(rooms/room_15),
-        ensure_loaded(rooms/room_16).
-:- ensure_loaded(rooms/paths).
-:- ensure_loaded(rooms/blocked_paths).
+:- ensure_loaded([rooms/room_01, rooms/room_02, rooms/room_03, rooms/room_04, rooms/room_05]).
+:- ensure_loaded([rooms/room_06, rooms/room_07, rooms/room_08, rooms/room_10, rooms/room_11]).
+:- ensure_loaded([rooms/room_12, rooms/room_13, rooms/room_14, rooms/room_15, rooms/room_16]).
 
-:- ensure_loaded(rules/spells).
-:- ensure_loaded(rules/objects).
-:- ensure_loaded(rules/puzzles).
-:- ensure_loaded(rules/undead_student).
+:- ensure_loaded([rooms/paths, rooms/blocked_paths]).
+
+:- ensure_loaded([rules/spells, rules/objects, rules/puzzles, rules/undead_student]).
 :- ensure_loaded(rules/rules).  /* this has to be included at the end in order not to obscure more specific rules */
 
 i_am_at(room_2).
