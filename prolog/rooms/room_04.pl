@@ -32,6 +32,16 @@ go(s) :-
     i_am_at(room_4N),
     write("'You are sure, you would like to go swimming in the acid pool?'"), nl, false.
 
+go(w) :-
+    i_am_at(room_4N),
+    blocked(room_5, room_4),
+    write('That door is locked.'), nl, false.
+
+go(w) :-
+    i_am_at(room_4),
+    blocked(room_5, room_4),
+    write('That door is locked.'), nl, false.
+
 /* Objects */
 describe_additional(room_4) :-
     write('Over the pool fly some weird glowing bugs. They look similar to fireflies.'), nl, false.
