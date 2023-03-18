@@ -1,7 +1,7 @@
 /* Room description */
 describe(room_12) :-
     obscured(room_12),
-    write('It''s strange. You''ve just walk into this room and just by being in here you feel some pain.'), nl.
+    write('It''s strange. You''ve just walked into this room and just by being in here you feel some pain.'), nl.
 
 describe(room_12) :-
     \+ obscured(room_12),
@@ -18,7 +18,7 @@ describe_additional(room_12) :-
     at(wolfsbane, room_12),
     \+ obscured(room_12),
     write('The wolfsbane catches your eye.'), nl,
-    write('And now you see the thorns are because roses grow... black roses but you remember from your herbology lectures that they are not harmfull until you eat them. You have a lot of luck this time.'), nl, false.
+    write('And now you see the thorns are because roses grow... black roses but you remember from your herbology lectures that they are not harmful until you eat them. You have a lot of luck this time.'), nl, false.
 
 describe_additional(room_12) :-
     obscured(room_12),
