@@ -192,7 +192,7 @@ use_object(potion, acid_pool) :-
     retract(holding(potion)),
     assert(i_am_at(room_4N)),
     retract(i_am_at(room_4S)),
-    nl, !.
+    nl, look, !.
 
 use_object(potion, acid_pool) :-
     holding(potion),
@@ -201,7 +201,7 @@ use_object(potion, acid_pool) :-
     retract(holding(potion)),
     assert(i_am_at(room_4S)),
     retract(i_am_at(room_4N)),
-    nl, !.
+    nl, look, !.
 
 use_object(potion, pool) :- use_object(potion, acid_pool), !.
 

@@ -49,3 +49,7 @@ describe_additional(room_7) :-
     \+ blocked(room_8),
     write('There are 2 exists. The only visible exit is on the west wall.'), nl,
     write('There is also the hidden passage to the south - the one you have discovered by solving the riddle.'), nl, false.
+
+describe_additional(room_7) :-
+    at(big_journal, room_7), 
+    write('There is a comedically big journal there. Under it, squished, lays comedically small skeleton wearing a tiny wizard hat.'), nl, false.

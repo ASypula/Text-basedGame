@@ -20,6 +20,9 @@ interact :-
     visited_previously(c),
     write('\"The spell name is power_word_kill and the component is a bunch of wolfsbane.\"'), nl, !.
 
+interact :-
+    write('No one to interact with here.'), nl, !.
+
 use_object(beer, _) :-
     i_am_at(room_8),
     holding(beer),

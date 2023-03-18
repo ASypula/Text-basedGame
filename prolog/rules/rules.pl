@@ -28,16 +28,6 @@ bypass(LockedPlace) :-
 bypass(_) :- write('No obstacle to bypass here.'), nl.
 
 
-/* These rules describe how to unlock closed path. */
-
-unlock(Direction) :-
-        i_am_at(Place),
-        path(Place, Direction, There),
-        (retract(blocked(Place, There)) ; retract(blocked(There, Place))), !,
-        write('Unlocked'), nl.
-
-unlock(_) :- write('Nothing to unlock here.'), nl.
-
 
 /* These rules describe how to pick up an object. */
 
