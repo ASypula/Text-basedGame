@@ -12,12 +12,10 @@ describe(room_4S) :-
     write('On your side there is one passages south. On the northern side there are two passages: north and west.'), nl.
 
 hint(room_4) :-
-    write('[You can traverse the acid pool by using jump potion.]'), nl,
-    write('[You can take nightcap from northern side or by using grab spell.]'), nl.
+    write('[You can traverse the acid pool by using jump potion.]'), nl.
 
 hint(room_4N) :-
-    write('[You can traverse the acid pool by using jump potion.]'), nl,
-    write('[You can take nightcap from northern side or by using grab spell.]'), nl.
+    write('[You can traverse the acid pool by using jump potion.]'), nl.
 
 hint(room_4S) :-
     write('[You can traverse the acid pool by using jump potion.]'), nl,
