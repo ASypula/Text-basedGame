@@ -101,14 +101,11 @@ cast_at_place(sleep, room_1) :-
     sleep_immunity(beast),
     write('The beast stays awake and untouched as if it was immune or something was dispelling this enchantment...'), nl, !.
 
-
 cast_at_place(sleep, room_1) :-
-    sleep_immunity(beast),
     write('The beast looks at you in disbelief before collapsing to the ground. It starts snoring loudly. The exit is left unguarded.'), nl,
     end_game, nl, ending(b),nl, outro, nl, !.
 
 cast_at_place(power_word_kill, room_1) :-
-    sleep_immunity(beast),
     write('The beast looks at you in disbelief before collapsing to the ground. It doesn''t move ever again. The exit is left unguarded.'), nl,
     end_game, nl, ending(a),nl, outro, nl, !.
 
