@@ -1,6 +1,6 @@
 /* "Escape from detention" by Aleksandra Sypuła, Eryk Sztanga and Mateusz Wasilewski. */
 
-:- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2, visited_previously/1.
+:- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2, visited_previously/1, placed/2, is_size/2.
 :- multifile([describe/1, describe_additional/1, take/1, use_object/2, hint/1, go/1, at/2, blocked/1]).
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). 
 
@@ -25,7 +25,7 @@
 :- ensure_loaded(rules/undead_student).
 :- ensure_loaded(rules/rules).  /* this has to be included at the end in order not to obscure more specific rules */
 
-i_am_at(room_02).
+i_am_at(room_2).
 holding(lantern).
 
 /* This rule just writes out game instructions. */
