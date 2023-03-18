@@ -29,6 +29,6 @@ go(w) :-
     write('Getting burned alive by a cat-sized dragon doesn''t sound like a heroic death.'), nl, false.
 
 go(s) :-
-    i_am_at(room_4W),
+    i_am_at(room_14W),
     write('Getting burned alive by a cat-sized dragon doesn''t sound like a heroic death.'), nl, false.
 
