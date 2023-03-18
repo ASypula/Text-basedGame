@@ -166,6 +166,15 @@ use_object(jar, firefly) :-
     write("Wow! You managed to grab a firefly! Be careful not to free it."),
     nl, !.
 
+use_object(magnet, badge) :-
+    i_am_at(room_1),
+    sleep_immunity(beast),
+    retract(sleep_immunity(beast)),
+    assert(holding(badge)),
+    write('With the help of a magnet you managed to steal beast''s badge. That was a close call though. Its claws nearly got you.'), nl, !.
+
+use_object(magnet, beast) :- use_object(magnet, badge).
+
 use_object(magnet, X) :-
     metal(X),
     holding(magnet),
