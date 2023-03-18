@@ -48,6 +48,7 @@ instructions :-
         write('cast(spell, component). -- to cast a spell using correct component.'), nl,
         write('interact.          -- to interact with sentient beings.'), nl,
         write('instructions.      -- to see this message again.'), nl,
+        write('hint.              -- to see hints for current location.'), nl,
         write('halt.              -- to end the game and quit.'), nl,
         nl.
 

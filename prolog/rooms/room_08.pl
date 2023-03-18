@@ -4,6 +4,8 @@ describe(room_8) :-
     write('In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.'), nl,
     write('[Use interact. to speek with the student.]').
 
+hint(room_8) :-
+    write('[Have a look at the journal.]'), nl.
 
 /* Interaction with undead student */
 visited_previously(a). /* a = means not visited previously, b = means visited previously, c = means no further interaction possible */

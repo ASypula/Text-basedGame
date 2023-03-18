@@ -109,6 +109,12 @@ notice_objects_at(Place) :-
 
 notice_objects_at(_).
 
+/* This rules allow for easy access to hints in all rooms */
+
+hint :-
+        i_am_at(Place),
+        hint(Place).
+
 
 /* This rule prints inventory contents */
 
