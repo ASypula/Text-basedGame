@@ -10,13 +10,14 @@ put(Block, Position) :-
 put(_, _) :-
     write('This action can''t help you here'), nl.
 
-check :-
+describe_pedestals :-
     i_am_at(room_7),
     placed(Block, Position),
     is_size(Block, Size),
-    write('The '), write(Size), write(' '), write(Block), write(' block is places on pedestal '), write(Position), write('.'), nl, false.
+    write('The '), write(Size), write(' '), write(Block), write(' block is places on pedestal '), write(Position), write('.'), nl.
 
 check :-
+    describe_pedestals,
     i_am_at(room_7),
     placed(orange, a), is_size(orange, big),
     placed(red, b), is_size(red, big),
