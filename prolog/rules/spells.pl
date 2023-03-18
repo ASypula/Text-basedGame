@@ -56,6 +56,18 @@ cast_at_place(open, room_4N) :-
     retract(blocked(room_5, room_4)),
     write('You hear a click sound and the doors are beginning to open slowly.'), nl, !.
 
+cast_at_place(open, room_2) :-
+    holding(rusty_key),
+    shut(trapdoor),
+    retract(shut(trapdoor)),
+    write('With the more powerful version of Open Spell even the trapdoor opens!'), nl,
+    write('Now let''s figure out how to reach it...'), nl, !.
+
+cast_at_place(open, room_2) :-
+    \+ holding(rusty_key),
+    shut(trapdoor),
+    write('This won''t do. The basic Open Spell can barely open doors. No way it would open a trapdoor.'), nl, !.
+
 cast_at_place(sleep, room_14S) :-
     blocked(room_14),
     bypass(room_14),
