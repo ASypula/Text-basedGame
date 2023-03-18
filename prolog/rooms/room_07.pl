@@ -51,5 +51,5 @@ describe_additional(room_7) :-
     write('There is also the hidden passage to the south - the one you have discovered by solving the riddle.'), nl, false.
 
 describe_additional(room_7) :-
-    at(big_journal, room_7), nl,
-    write('There is comedically big journal there. Under it, squished, lays comedically small skeleton wearing tiny wizard hat.'), nl, false.
+    at(big_journal, room_7), 
+    write('There is a comedically big journal there. Under it, squished, lays comedically small skeleton wearing a tiny wizard hat.'), nl, false.
