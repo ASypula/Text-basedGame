@@ -3,8 +3,9 @@ spell(light, firefly).
 spell(grab, rope).
 spell(open, key).
 spell(open, rusty_key).
+spell(sleep, nightcap).
 
-/* there will be rule named like "spell_in_room" and it will take spell name and rule. The spell_in_room would be described in each room file if there is useful spell to cast there. Default would be something like "This spell can't help you here".
+/* There will be rule named like "spell_in_room" and it will take spell name and rule. The spell_in_room would be described in each room file if there is useful spell to cast there. Default would be something like "This spell can't help you here".
 In the "cast" rule after checking if correct component is held the spell_in_room would be checked with room you are currently in as second argument. */
 
 cast(Spell_name, Component) :-
@@ -44,7 +45,6 @@ cast_at_place(grab, room_4S) :-
     assert(holding(nightcap)),
     write("With the help of the Grab Spell you pick up a nightcap over the acid pool."), nl, !.
 
-
 cast_at_place(open, room_4) :-
     blocked(room_5, room_4),
     retract(blocked(room_5, room_4)),
@@ -68,6 +68,33 @@ cast_at_place(open, room_2) :-
     shut(trapdoor),
     write('This won''t do. The basic Open Spell can barely open doors. No way it would open a trapdoor.'), nl, !.
 
+cast_at_place(sleep, room_14S) :-
+    blocked(room_14),
+    bypass(room_14),
+    write('You put the dragonling to magical sleep. Now it looks more cute than threatening.'), nl, !.
+    
+cast_at_place(sleep, room_14W) :-
+    blocked(room_14),
+    bypass(room_14),
+    write('You put the dragonling to magical sleep. Now it looks more cute than threatening.'), nl, !.
+    
+cast_at_place(open, room_11) :-
+    holding(rusty_key),
+    blocked(room_11, room_12), 
+    retract(blocked(room_11, room_12)),
+    write('That was smart! Special key did the magic and the doors are ajar now.'), !.
+
+cast_at_place(open, room_11) :-
+    blocked(room_11, room_12),
+    \+ blocked(room_11, room_13),
+    write('This mechanic lock seems to be immune to such delicate magic.'), nl, 
+    write('Maybe you should try something stronger?'), nl, !.
+
+cast_at_place(open, room_11) :-
+    blocked(room_11, room_13),
+    retract(blocked(room_11, room_13)),
+    write('The smaller doors emit a loud, creaking sound and you wonder If they are not going to collapse...'), nl, 
+    write('But fortunately they start opening up, it must have been those rusty hinges.'), nl, !.
 
 cast_at_place(_, _) :-
     write("Not so useful here."), nl.
