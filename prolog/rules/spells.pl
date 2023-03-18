@@ -71,12 +71,12 @@ cast_at_place(open, room_2) :-
 cast_at_place(sleep, room_14S) :-
     blocked(room_14),
     bypass(room_14),
-    write('You put the dragonling to magical sleep. Now it looks more cute than threatening.'), nl, !.
+    write('You put the dragonling to magical sleep. Now it looks more cute than threatening.'), nl, look, !.
     
 cast_at_place(sleep, room_14W) :-
     blocked(room_14),
     bypass(room_14),
-    write('You put the dragonling to magical sleep. Now it looks more cute than threatening.'), nl, !.
+    write('You put the dragonling to magical sleep. Now it looks more cute than threatening.'), nl, look, !.
     
 cast_at_place(open, room_11) :-
     holding(rusty_key),

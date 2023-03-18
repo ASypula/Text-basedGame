@@ -20,6 +20,9 @@ interact :-
     visited_previously(c),
     write('No more interactions possible here. Go somewhere else...'), nl, !.
 
+interact :-
+    write('No one to interact with here.'), nl, !.
+
 use_object(beer, _) :-
     i_am_at(room_8),
     holding(beer),
