@@ -53,6 +53,15 @@ shrink(Block) :-
 shrink(_) :-
     write('This action can''t help you here'), nl.
 
+grow(magnet) :-
+    i_am_at(room_7),
+    holding(magnet),
+    retract(holding(magnet)),
+    assert(holding(big_magnet)),
+    write('Very bright light has emited from the magnet. After a while you notice that is bigger than before.'), nl,
+    write('You picked up big_magnet.'), nl, !.
+
+
 grow(Block) :-
     i_am_at(room_7),
     is_block(Block),
