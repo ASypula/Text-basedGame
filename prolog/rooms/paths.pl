@@ -43,6 +43,7 @@ path(room_10, s, room_6).
 /* Path for room 11 */
 path(room_11, n, room_12).
 path(room_11, e, room_14).
+path(room_11, e, room_14W).
 path(room_11, s, room_13).
 path(room_11, w, room_10).
 
@@ -54,10 +55,13 @@ path(room_13, n, room_11).
 
 /* Path for room 14 */
 path(room_14, s, room_15).
+path(room_14S, s, room_15).
 path(room_14, w, room_11).
+path(room_14W, w, room_11).
 
 /* Path for room 15 */
 path(room_15, n, room_14).
+path(room_15, n, room_14S).
 path(room_15, s, room_16).
 
 /* Path for room 16 */

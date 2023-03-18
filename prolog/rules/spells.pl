@@ -3,6 +3,7 @@ spell(light, firefly).
 spell(grab, rope).
 spell(open, key).
 spell(open, rusty_key).
+spell(sleep, nightcap).
 
 /* There will be rule named like "spell_in_room" and it will take spell name and rule. The spell_in_room would be described in each room file if there is useful spell to cast there. Default would be something like "This spell can't help you here".
 In the "cast" rule after checking if correct component is held the spell_in_room would be checked with room you are currently in as second argument. */
@@ -55,6 +56,16 @@ cast_at_place(open, room_4N) :-
     retract(blocked(room_5, room_4)),
     write('You hear a click sound and the doors are beginning to open slowly.'), nl, !.
 
+cast_at_place(sleep, room_14S) :-
+    blocked(room_14),
+    bypass(room_14),
+    write('You put the dragonling to magical sleep. Now it looks more cute than threatening.'), nl, !.
+    
+cast_at_place(sleep, room_14W) :-
+    blocked(room_14),
+    bypass(room_14),
+    write('You put the dragonling to magical sleep. Now it looks more cute than threatening.'), nl, !.
+    
 cast_at_place(open, room_11) :-
     holding(rusty_key),
     blocked(room_11, room_12), 
