@@ -54,7 +54,7 @@ path(room_13, n, room_11).
 
 /* Path for room 14 */
 path(room_14, s, room_15).
-path(room_114, w, room_11).
+path(room_14, w, room_11).
 
 /* Path for room 15 */
 path(room_15, n, room_14).
