@@ -15,7 +15,7 @@
         ensure_loaded(rooms/room_08),
         ensure_loaded(rooms/room_10),
         ensure_loaded(rooms/room_11),
-        ensure_loaded(rooms/room_12)
+        ensure_loaded(rooms/room_12),
         ensure_loaded(rooms/room_13),
         ensure_loaded(rooms/room_14),
         ensure_loaded(rooms/room_15),
