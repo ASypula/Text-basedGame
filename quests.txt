@@ -104,7 +104,7 @@ Rooms:
     Inside there is a skeleton sitting in a corner. Next to it lays a broken jar with some dead insects inside.
     Apart from that, the room is mostly filled with empty crates.
     There is a ripped journal*15 here.
-    The door is on the south wall.
+    The door is on the north wall.
 12. Evil roots - Room is locked by technomagic door [code in Machinery or rusty key open spell unlocks it]
     The room is very dark and smells of dirt and herbs. After even one step in you get scratched by thorns. Let's hope that wasn't anything poisonous.
     There is no way to safely explore this room without magical light.

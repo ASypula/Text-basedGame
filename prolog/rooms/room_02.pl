@@ -9,9 +9,13 @@ hint(room_2) :-
 
 /* Room setup */
 at(old_journal, room_2).
-
+shut(trapdoor).
 
 /* Objects */
 describe_additional(room_2) :-
     at(old_journal, room_2),
     write('You see a journal near the skeleton in wizard robes'), nl, false.
+
+describe_additional(room_2) :-
+    \+ shut(trapdoor),
+    write('Now the trapdoor is wide open and you can see light coming through it.'), nl, false.
