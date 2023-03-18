@@ -7,6 +7,9 @@ put(Block, Position) :-
     assert(placed(Block, Position)),
     write('You''ve put the '), write(Block), write(' block on pedestal '), write(Position), write('.'), !, nl.
 
+put(_, _) :-
+    write('This action can''t help you here'), nl.
+
 check :-
     i_am_at(room_7),
     placed(Block, Position),
@@ -29,6 +32,9 @@ check :-
     write('You hear insanely loud thunders! It does not seem like you''ve managed to solve the riddle.'), nl,
     write('If you want to be able to hear anything else than your death, you had better give your all next time'), !, nl.
 
+check :-
+    write('This action can''t help you here'), nl.
+
 shrink(Block) :-
     i_am_at(room_7),
     is_block(Block),
@@ -43,6 +49,9 @@ shrink(Block) :-
     is_size(Block, small),
     write('Nothing has happened. Perhaps you cannot make an already small block even smaller...'), nl, !.
 
+shrink(_) :-
+    write('This action can''t help you here'), nl.
+
 grow(Block) :-
     i_am_at(room_7),
     is_block(Block),
@@ -56,3 +65,6 @@ grow(Block) :-
     is_block(Block),
     is_size(Block, big),
     write('Nothing has happened. Perhaps you cannot make an already big block even bigger...'), nl, !.
+
+grow(_) :-
+    write('This action can''t help you here'), nl.
