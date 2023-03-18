@@ -109,7 +109,7 @@ investigate(ripped_journal) :-
 
 investigate(wolfsbane) :-
     holding(wolfsbane),
-    write("A solid bunch of wolfsbane. Good that you aren't a warewolf."),
+    write("A solid bunch of wolfsbane. Good that you aren't a werewolf."),
     nl, !. 
 
 investigate(beer) :-
@@ -241,6 +241,9 @@ use_object(key, acid) :-
 use_object(key, acid_pool) :- use_object(key, acid), !.
 
 use_object(key, pool) :- use_object(key, acid), !.
+
+use_object(key, door) :-
+    write()
 
 use_object(potion, trapdoor) :-
     holding(potion),
