@@ -42,6 +42,7 @@ instructions :-
         write('use_object(object_to_use, use_on_what).-- to use an object on something.'), nl,
         write('cast(spell, component). -- to cast a spell using correct component.'), nl,
         write('instructions.      -- to see this message again.'), nl,
+        write('hint.              -- to see hints for current location.'), nl,
         write('halt.              -- to end the game and quit.'), nl,
         write('bypass.            -- debug command to bypass example obstacle in demo.'), nl,
         write('unlock(direction). -- debug command to unlock example blocked path in demo.'), nl,

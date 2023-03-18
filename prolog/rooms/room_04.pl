@@ -15,6 +15,14 @@ hint(room_4) :-
     write('[You can traverse the acid pool by using jump potion.]'), nl,
     write('[You can take nightcap from northern side or by using grab spell.]'), nl.
 
+hint(room_4N) :-
+    write('[You can traverse the acid pool by using jump potion.]'), nl,
+    write('[You can take nightcap from northern side or by using grab spell.]'), nl.
+
+hint(room_4S) :-
+    write('[You can traverse the acid pool by using jump potion.]'), nl,
+    write('[You can take nightcap from northern side or by using grab spell.]'), nl.
+
 /* Room setup */
 at(firefly, room_4).
 at(firefly, room_4N).
