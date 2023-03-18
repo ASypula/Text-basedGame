@@ -14,7 +14,7 @@ describe_pedestals :-
     i_am_at(room_7),
     placed(Block, Position),
     is_size(Block, Size),
-    write('The '), write(Size), write(' '), write(Block), write(' block is places on pedestal '), write(Position), write('.'), nl.
+    write('The '), write(Size), write(' '), write(Block), write(' block is placed on pedestal '), write(Position), write('.'), nl.
 
 check :-
     describe_pedestals,
