@@ -14,6 +14,8 @@ hint(room_7) :-
 /* Room setup */
 at(big_journal, room_7).
 
+blocked(room_8).
+
 /* Puzzle set up*/
 is_block(red).
 is_block(green).

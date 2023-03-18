@@ -20,6 +20,7 @@ check :-
     placed(purple, c), is_size(purple, small),
     placed(blue, d), is_size(blue, big),
     placed(green, e), is_size(green, big),
+    retract(blocked(room_8)),
     write('Damn something is shaking! Is it? Is this a secret passage? It definitely looks like one!'), nl,
     write('You have discovered door on the south wall, congrats'), !, nl.
 
