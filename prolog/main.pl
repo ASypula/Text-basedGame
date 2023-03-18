@@ -1,21 +1,32 @@
 /* "Escape from detention" by Aleksandra Sypuła, Eryk Sztanga and Mateusz Wasilewski. */
 
-:- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2, placed/2, is_size/2.
+:- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2, visited_previously/1.
 :- multifile([describe/1, describe_additional/1, take/1, use_object/2, hint/1, go/1, at/2, blocked/1]).
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). 
 
 /*It is important that the rooms are loaded before rules, because in rooms there are more specific cases of some rules (ex. describe)*/
-:- ensure_loaded(rooms/room_1), ensure_loaded(rooms/room_2), ensure_loaded(rooms/room_3), ensure_loaded(rooms/room_4), ensure_loaded(rooms/room_7).
+:- ensure_loaded(rooms/room_01), 
+        ensure_loaded(rooms/room_02),
+        ensure_loaded(rooms/room_03),
+        ensure_loaded(rooms/room_04),
+        ensure_loaded(rooms/room_05),
+        ensure_loaded(rooms/room_06),
+        ensure_loaded(rooms/room_07),
+        ensure_loaded(rooms/room_08),
+        ensure_loaded(rooms/room_10),
+        ensure_loaded(rooms/room_11),
+        ensure_loaded(rooms/room_16).
 :- ensure_loaded(rooms/paths).
+:- ensure_loaded(rooms/blocked_paths).
 
 :- ensure_loaded(rules/spells).
 :- ensure_loaded(rules/objects).
 :- ensure_loaded(rules/puzzles).
-:- ensure_loaded(rules/rules).
+:- ensure_loaded(rules/undead_student).
+:- ensure_loaded(rules/rules).  /* this has to be included at the end in order not to obscure more specific rules */
 
-i_am_at(room_7).
+i_am_at(room_02).
 holding(lantern).
-
 
 /* This rule just writes out game instructions. */
 

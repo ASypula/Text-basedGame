@@ -10,9 +10,6 @@ hint(room_2) :-
 /* Room setup */
 at(old_journal, room_2).
 
-/* Enemies */
-
-/* Puzzles */
 
 /* Objects */
 describe_additional(room_2) :-

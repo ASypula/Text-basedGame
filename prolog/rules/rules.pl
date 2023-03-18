@@ -6,6 +6,7 @@
 bypass(LockedPlace) :- 
         blocked(LockedPlace),
         at(Item, Place),
+        \+ at(Item, LockedPlace),
         subroom(Place, LockedPlace),
         retract(at(Item, Place)),
         assert(at(Item, LockedPlace)),
@@ -50,11 +51,12 @@ take(X) :-
         at(X, Place),
         retract(at(X, Place)),
         assert(holding(X)),
-        write('OK.'),
+        write('You picked up '),
+        write(X), write("."),
         !, nl.
 
 take(_) :-
-        write('I don''t see it here.'),
+        write('You don''t see it here or you can''t pick it up.'),
         nl.
 
 
@@ -124,5 +126,9 @@ describe_additional(_) :-
 /*default describe outputs */
 
 describe(_) :- write('[No description for this room yet]').
+
+use_object(Object, _) :-
+        \+ holding(Object),
+        write('You don''t have such object.'), nl, !.
 
 use_object(_, _) :- write('Not helpful here.'), nl.
