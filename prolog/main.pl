@@ -1,7 +1,7 @@
 /* "Escape from detention" by Aleksandra Sypuła, Eryk Sztanga and Mateusz Wasilewski. */
 
 :- dynamic i_am_at/1, at/2, holding/1, blocked/1, blocked/2, visited_previously/1, shut/1.
-:- multifile([describe/1, describe_additional/1, take/1, use_object/2, hint/1, go/1, at/2, subroom/2]).
+:- multifile([describe/1, describe_additional/1, take/1, use_object/2, hint/1, go/1, at/2, obscured/1, subroom/2]).
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(blocked(_)), retractall(blocked(_,_)), retractall(holding(_)). 
 
 /*It is important that the rooms are loaded before rules, because in rooms there are more specific cases of some rules (ex. describe)*/
@@ -14,6 +14,7 @@
         ensure_loaded(rooms/room_08),
         ensure_loaded(rooms/room_10),
         ensure_loaded(rooms/room_11),
+        ensure_loaded(rooms/room_12)
         ensure_loaded(rooms/room_13),
         ensure_loaded(rooms/room_14),
         ensure_loaded(rooms/room_15),
