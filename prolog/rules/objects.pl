@@ -297,7 +297,7 @@ unlock4 :-
     write('Congratulations! You managed to guess the password!'), nl,
     write('Or maybe you knew which was the year of Morris worm...'), nl,
     write('Noooo, that''s impossible.'), nl,
-    write('Accidentally the floor starts to shake slightly and you hear a strange sound.'), nl,
+    write('Incidentally the floor starts to shake slightly and you hear a strange sound.'), nl,
     write('As if some machinery was being laid over a terrain.'), nl,
     write('Your intuition tells you the sounds came from the room with the acid pool.'), nl.
 
