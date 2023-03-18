@@ -198,16 +198,16 @@ use_object(potion, acid_pool) :-
 use_object(potion, pool) :- use_object(potion, acid_pool), !.
 
 use_object(potion, self) :- 
-    i_am_at(room_4N) ; i_am_at(room_4S),
+    (i_am_at(room_4N) ; i_am_at(room_4S)),
     use_object(potion, acid_pool), !.
 
 use_object(potion, myself) :- 
-    i_am_at(room_4N) ; i_am_at(room_4S),
+    (i_am_at(room_4N) ; i_am_at(room_4S)),
     use_object(potion, acid_pool), !.
 
 use_object(key, acid) :-
     holding(key),
-    i_am_at(room_4) ; i_am_at(room_4N) ; i_am_at(room_4S),
+    (i_am_at(room_4) ; i_am_at(room_4N) ; i_am_at(room_4S)),
     retract(holding(key)),
     assert(holding(rusty_key)),
     write('You dip your tiny key in the pool and instantly hear ominous sizzling noise. As you retract your hand you see that your key is now rusty.'), nl,
