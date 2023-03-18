@@ -1,7 +1,6 @@
 /* Room description */
 describe(room_7) :-
-    write('This room has weird magical sigils on the walls on some scratches on the ceiling.'), nl,
-    write('You recognise them as symbols allowing to cast specific transmutation spells without components, but can''t recall which.'), nl.
+    write('This room has weird magical sigils on the walls and some scratches on the ceiling.'), nl.
 
 hint(room_7) :-
     write('[You can put blocks on pedestals using put(color, pedestal)]'), nl,
@@ -36,6 +35,10 @@ placed(purple, t).
 placed(orange, t).
 
 /* Objects */
+describe_additional(room_7) :-
+    \+ holding(big_journal),
+    write('You recognise them as symbols allowing to cast specific transmutation spells without components, but can''t recall which.'), nl, false.
+
 describe_additional(room_7) :-
     blocked(room_8),
     write('The only visible exit is on the west wall.'), nl,
