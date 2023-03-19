@@ -18,14 +18,14 @@ cast(Spell_name, Component) :-
 cast(Spell_name, Component) :-
     spell(Spell_name, Component),
     \+ holding(Component), 
-    write("You don't have that component"), nl, !.
+    write('You don''t have that component'), nl, !.
 
 cast(Spell_name, _) :-
     spell(Spell_name, _),
-    write("This is not right component for this spell. No wonder you failed your exams."), nl, !.
+    write('This is not right component for this spell. No wonder you failed your exams.'), nl, !.
 
 cast(_, _) :-
-    write("Don't know such spell."), nl.
+    write('Don''t know such spell.'), nl.
 
 /* Specific spells */
 
@@ -121,4 +121,4 @@ cast_at_place(power_word_kill, room_14W) :-
     write('You don''t really want to kill it. Maybe there is some gentler way.'), nl, !.
 
 cast_at_place(_, _) :-
-    write("Not so useful here."), nl.
+    write('Not so useful here.'), nl.
