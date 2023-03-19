@@ -43,7 +43,7 @@ investigate(cheat_sheet) :-
     holding(cheat_sheet),
     write('light spell: pros: easy, efficient, stays for a long time; cons: requires life component'), nl,
     write("grab spell: pros: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"), nl,
-    write("sleep spell: pros: usefull to avoid combat; cons: doesn't work on school staff fore some reason, If casted on self, you cannot wake up."), 
+    write("sleep spell: pros: useful to avoid combat; cons: doesn't work on school staff for some reason, If casted on self, you cannot wake up."), 
     nl, !.
 
 investigate(magnet) :-
