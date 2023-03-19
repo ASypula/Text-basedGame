@@ -114,11 +114,11 @@ cast_at_place(power_word_kill, room_14) :-
 
 cast_at_place(power_word_kill, room_14S) :-
     write('The dragonling may be dangerous but it looks so helpless in a face of such spell.'), nl,
-    write('You don'' really want to kill it. Maby there is some gentler way.'), nl, !.
+    write('You don''t really want to kill it. Maybe there is some gentler way.'), nl, !.
 
 cast_at_place(power_word_kill, room_14W) :-
     write('The dragonling may be dangerous but it looks so helpless in a face of such spell.'), nl,
-    write('You don'' really want to kill it. Maby there is some gentler way.'), nl, !.
+    write('You don''t really want to kill it. Maybe there is some gentler way.'), nl, !.
 
 cast_at_place(_, _) :-
     write("Not so useful here."), nl.
