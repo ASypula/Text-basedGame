@@ -5,7 +5,7 @@ describe(room_2) :-
     write('There is a skeleton in wizard robes.'), nl.
 
 hint(room_2) :-
-    write('[It seems there is no hint here]'), nl.
+    write('[Have a look at the journal.]'), nl.
 
 /* Room setup */
 at(old_journal, room_2).

@@ -18,7 +18,7 @@ interact :-
 interact :-
     i_am_at(room_8),
     visited_previously(c),
-    write('No more interactions possible here. Go somewhere else...'), nl, !.
+    write('\"The spell name is power_word_kill and the component is a bunch of wolfsbane.\"'), nl, !.
 
 interact :-
     write('No one to interact with here.'), nl, !.

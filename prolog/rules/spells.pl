@@ -4,6 +4,7 @@ spell(grab, rope).
 spell(open, key).
 spell(open, rusty_key).
 spell(sleep, nightcap).
+spell(power_word_kill, wolfsbane).
 
 /* There will be rule named like "spell_in_room" and it will take spell name and rule. The spell_in_room would be described in each room file if there is useful spell to cast there. Default would be something like "This spell can't help you here".
 In the "cast" rule after checking if correct component is held the spell_in_room would be checked with room you are currently in as second argument. */
@@ -95,6 +96,29 @@ cast_at_place(open, room_11) :-
     retract(blocked(room_11, room_13)),
     write('The smaller doors emit a loud, creaking sound and you wonder If they are not going to collapse...'), nl, 
     write('But fortunately they start opening up, it must have been those rusty hinges.'), nl, !.
+
+cast_at_place(sleep, room_1) :-
+    sleep_immunity(beast),
+    write('The beast stays awake and untouched as if it was immune or something was dispelling this enchantment...'), nl, !.
+
+cast_at_place(sleep, room_1) :-
+    write('The beast looks at you in disbelief before collapsing to the ground. It starts snoring loudly. The exit is left unguarded.'), nl,
+    end_game, nl, ending(b),nl, outro, nl, !.
+
+cast_at_place(power_word_kill, room_1) :-
+    write('The beast looks at you in disbelief before collapsing to the ground. It doesn''t move ever again. The exit is left unguarded.'), nl,
+    end_game, nl, ending(a),nl, outro, nl, !.
+
+cast_at_place(power_word_kill, room_14) :-
+    write('It''s already asleep. Casting that spell would just be cruel.'), nl, !.
+
+cast_at_place(power_word_kill, room_14S) :-
+    write('The dragonling may be dangerous but it looks so helpless in a face of such spell.'), nl,
+    write('You don''t really want to kill it. Maybe there is some gentler way.'), nl, !.
+
+cast_at_place(power_word_kill, room_14W) :-
+    write('The dragonling may be dangerous but it looks so helpless in a face of such spell.'), nl,
+    write('You don''t really want to kill it. Maybe there is some gentler way.'), nl, !.
 
 cast_at_place(_, _) :-
     write("Not so useful here."), nl.
