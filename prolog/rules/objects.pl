@@ -25,6 +25,12 @@ investigate(burned_journal) :-
 
 investigate(jar) :-
     holding(jar),
+    holding(firefly),
+    write("Jar with a firefly trapped in it."),
+    nl, !.
+
+investigate(jar) :-
+    holding(jar),
     write("Empty, a bit dusty jar."),
     nl, !.
 
@@ -35,9 +41,9 @@ investigate(key) :-
 
 investigate(cheat_sheet) :-
     holding(cheat_sheet),
-    write('light spell: prons: easy, efficient, stays for a long time; cons: requires rare component'), nl,
-    write("grab spell: prons: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"), nl,
-    write("sleep spell: prons: usefull to aviod combat; cons: doesn't work on school staff fore some reason, If casted on self, you cannot wake up."), 
+    write('light spell: pros: easy, efficient, stays for a long time; cons: requires life component'), nl,
+    write("grab spell: pros: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them"), nl,
+    write("sleep spell: pros: useful to avoid combat; cons: doesn't work on school staff for some reason, If casted on self, you cannot wake up."), 
     nl, !.
 
 investigate(magnet) :-
@@ -103,7 +109,7 @@ investigate(ripped_journal) :-
 
 investigate(wolfsbane) :-
     holding(wolfsbane),
-    write("A solid bunch of wolfsbane. Good that you aren't a warewolf."),
+    write("A solid bunch of wolfsbane. Good that you aren't a werewolf."),
     nl, !. 
 
 investigate(beer) :-
@@ -111,8 +117,9 @@ investigate(beer) :-
     write("You are a student who failed an exam. There must be beer somewhere in the game."),
     nl, !. 
 
-investigate(lantern) :-
-    write("Your good trusty lantern. You will need it until you finally get a hold of light spell."),
+investigate(badge) :-
+    holding(badge),
+    write("It has \"School staff member\" written on it. It also emits some kind of protection aura."),
     nl, !.
 
 investigate(_) :-
@@ -160,6 +167,14 @@ take(note) :-
 
 use_object(jar, firefly) :-
     holding(jar),
+    holding(firefly),
+    i_am_at(Place),
+    at(firefly, Place),
+    write("You managed to cath a firefly, but freed the previous one in the process."),
+    nl, !.
+
+use_object(jar, firefly) :-
+    holding(jar),
     i_am_at(Place),
     at(firefly, Place),
     assert(holding(firefly)),
@@ -186,6 +201,8 @@ use_object(big_magnet, beast) :- use_object(big_magnet, badge), !.
 use_object(big_magnet, monster) :- use_object(big_magnet, badge), !.
 
 use_object(big_magnet, X) :- use_object(magnet, X), !.
+
+use_object(magnet, monster) :- use_object(magnet, badge).
 
 use_object(magnet, X) :-
     metal(X),
@@ -292,7 +309,7 @@ unlock4 :-
     write('Congratulations! You managed to guess the password!'), nl,
     write('Or maybe you knew which was the year of Morris worm...'), nl,
     write('Noooo, that''s impossible.'), nl,
-    write('Accidentally the floor starts to shake slightly and you hear a strange sound.'), nl,
+    write('Incidentally the floor starts to shake slightly and you hear a strange sound.'), nl,
     write('As if some machinery was being laid over a terrain.'), nl,
     write('Your intuition tells you the sounds came from the room with the acid pool.'), nl.
 

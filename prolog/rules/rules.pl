@@ -23,7 +23,7 @@ bypass(LockedPlace) :-
 bypass(LockedPlace) :-
         blocked(LockedPlace),
         retract(blocked(LockedPlace)),
-        write("Obstacle removed"), !, nl.
+        !, nl.
 
 bypass(_) :- write('No obstacle to bypass here.'), nl.
 

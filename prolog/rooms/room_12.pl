@@ -22,5 +22,6 @@ describe_additional(room_12) :-
 
 describe_additional(room_12) :-
     obscured(room_12),
-    write('The room is very dark and smells of dirt and herbs. After even one step in you get scratched by thorns. Let''s hope that wasn''t anything poisonous.'), nl,
+    write('The room is very dark and smells of dirt and herbs. Even your lantern can''t illuminate it.'), nl,
+    write('After even one step in you get scratched by thorns. Let''s hope that wasn''t anything poisonous.'), nl,
     write('There is no way to safely explore this room without magical light.'), nl.
