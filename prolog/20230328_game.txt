@@ -1,0 +1,424 @@
+Welcome to SWI-Prolog (threaded, 64 bits, version 8.4.2)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- [prolog/main].
+true.
+
+?- start.
+
+Enter commands using standard Prolog syntax.
+Available commands are:
+start.             -- to start the game.
+n.  s.  e.  w.     -- to go in that direction.
+take(object).      -- to pick up an object.
+inventory.         -- to see all picked up objects.
+look.              -- to look around you again.
+investigate(object).-- to take a closer look at an object.
+use_object(object_to_use, use_on_what).-- to use an object on something.
+cast(spell, component). -- to cast a spell using correct component.
+interact.          -- to interact with sentient beings.
+instructions.      -- to see this message again.
+hint.              -- to see hints for current location.
+halt.              -- to end the game and quit.
+
+You are a wizard apprentice who failed their final exams, thus General University of magic put you in deadly dungeon.
+Were you to escape, Wizard Council would let you retake exams.
+
+Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
+There is a slightly open door on the east wall.
+There is a skeleton in wizard robes.
+You see a journal near the skeleton in wizard robes
+
+There is a old_journal here.
+
+true.
+
+?- look.
+Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
+There is a slightly open door on the east wall.
+There is a skeleton in wizard robes.
+You see a journal near the skeleton in wizard robes
+
+There is a old_journal here.
+
+true.
+
+?- hint.
+[Have a look at the journal.]
+true.
+
+?- take(journal).
+You picked up old_journal.
+true.
+
+?- look.
+Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
+There is a slightly open door on the east wall.
+There is a skeleton in wizard robes.
+
+
+true.
+
+?- investigate(old_journal).
+I found the exit! It is to the north, but fierce beast guides it. I'm gonna await next student who's gonna fail their exams and team up with them against the beast.
+true.
+
+?- inventory.
+Your objects:
+    lantern
+    old_journal
+
+true.
+
+?- look.
+Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
+There is a slightly open door on the east wall.
+There is a skeleton in wizard robes.
+
+
+true.
+
+?- e.
+Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+
+
+true.
+
+?- hint.
+[when you cast light you can find useful objects here]
+true.
+
+?- inventory.
+Your objects:
+    lantern
+    old_journal
+
+true.
+
+?- cast(light, firefly).
+You don't have that component
+true.
+
+?- cast(light, a).
+This is not right component for this spell. No wonder you failed your exams.
+true.
+
+?- cast(b, a).
+Don't know such spell.
+true.
+
+?- look.
+Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+
+
+true.
+
+?- n.
+Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+Over the pool fly some weird glowing bugs. They look similar to fireflies.
+On the other side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+
+There is a firefly here.
+
+true.
+
+?- take(fireflies).
+You don't see it here or you can't pick it up.
+true.
+
+?- take(firefly).
+Hmmm If only you could use something to catch it in.
+true.
+
+?- s.
+Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+
+
+true.
+
+?- e.
+You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it.
+
+As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers. Some sort of jewellery? Or maybe a key?
+
+There is a potion here.
+There is a jar here.
+There is a key here.
+
+true.
+
+?- take(jar).
+You picked up jar.
+true.
+
+?- take(potion).
+You picked up potion.
+true.
+
+?- take(key).
+Sorry, you are not able to easily pick up the key. Think of a different solution.
+true.
+
+?- w.
+Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+
+
+true.
+
+?- n.
+Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+Over the pool fly some weird glowing bugs. They look similar to fireflies.
+On the other side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+
+There is a firefly here.
+
+true.
+
+?- inventory.
+Your objects:
+    lantern
+    old_journal
+    jar
+    potion
+
+true.
+
+?- take(firefly).
+Hmmm If only you could use something to catch it in.
+true.
+
+?- instructions.
+
+Enter commands using standard Prolog syntax.
+Available commands are:
+start.             -- to start the game.
+n.  s.  e.  w.     -- to go in that direction.
+take(object).      -- to pick up an object.
+inventory.         -- to see all picked up objects.
+look.              -- to look around you again.
+investigate(object).-- to take a closer look at an object.
+use_object(object_to_use, use_on_what).-- to use an object on something.
+cast(spell, component). -- to cast a spell using correct component.
+interact.          -- to interact with sentient beings.
+instructions.      -- to see this message again.
+hint.              -- to see hints for current location.
+halt.              -- to end the game and quit.
+
+true.
+
+?- use_object(jar, firefly).
+Wow! You managed to grab a firefly! Be careful not to free it.
+true.
+
+?- use_object(jar, firefly).
+You managed to cath a firefly, but freed the previous one in the process.
+true.
+
+?- inventory.
+Your objects:
+    lantern
+    old_journal
+    jar
+    potion
+    firefly
+
+true.
+
+?- s.
+Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+
+
+true.
+
+?- cast(light, firefly).
+The room has been instantaneously illuminated!
+Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+You were right! It's a bunch of material, a rope.
+
+There is a rope here.
+
+true.
+
+?- take(rope).
+You picked up rope.
+true.
+
+?- investigate(rope).
+Old tattered rope. You wouldn't trust it to hold your weight.
+But it's quite long. I can't throw it too far but maybe I can grab something with a help of some spell?
+true.
+
+?- n.
+Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+Over the pool fly some weird glowing bugs. They look similar to fireflies.
+On the other side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+
+There is a firefly here.
+
+true.
+
+?- s.
+Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+
+true.
+
+?- e.
+You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+
+As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers. Some sort of jewellery? Or maybe a key?
+
+There is a key here.
+
+true.
+
+?- cast(grab, key).
+This is not right component for this spell. No wonder you failed your exams.
+true.
+
+?- cast(grab, rope).
+With the help of the Grab Spell you pick up a key.
+true.
+
+?- inventory.
+Your objects:
+    lantern
+    old_journal
+    jar
+    potion
+    firefly
+    rope
+    key
+
+true.
+
+?- e.
+You can't go that way.
+true.
+
+?- e.
+You can't go that way.
+true.
+
+?- w.
+Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+
+true.
+
+?- w.
+Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
+There is a slightly open door on the east wall.
+There is a skeleton in wizard robes.
+
+
+true.
+
+?- investigate(potion).
+You recognise it from your alchemy classes (the only ones that you pass). This is a Far Jump Potion.
+You can use it to jump very far, but only once.
+true.
+
+?- e.
+Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+
+true.
+
+?- n.
+Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+Over the pool fly some weird glowing bugs. They look similar to fireflies.
+On the other side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+
+There is a firefly here.
+
+true.
+
+?- hint.
+[You can traverse the acid pool by using jump potion.]
+[You can take nightcap from northern side or by using grab spell.]
+true.
+
+?- use_object(key, pool).
+You dip your tiny key in the pool and instantly hear ominous sizzling noise. As you retract your hand you see that your key is now rusty.
+You picked up rusty_key.
+true.
+
+?- s.
+Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+
+true.
+
+?- w.
+Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
+There is a slightly open door on the east wall.
+There is a skeleton in wizard robes.
+
+
+true.
+
+?- cast(open, rusty_key).
+With the more powerful version of Open Spell even the trapdoor opens!
+Now let's figure out how to reach it...
+true.
+
+?- investigate(potion).
+You recognise it from your alchemy classes (the only ones that you pass). This is a Far Jump Potion.
+You can use it to jump very far, but only once.
+true.
+
+?- use_object(potion, trapdoor).
+You take a sip from the bottle and spring into the air, hoping to reach the trapdoor.
+You grab the edge of the opening and pull yourself up. You are finally free.
+
+You did it. You made it out alive. 
+There wasn't even a need of fighting the deadly beast. The escape through the trapdoor had some unforseen consequences though...
+The University's magical database system was not capable of processing your way of escaping and spectacularly collapsed.
+Personal data of many wizards and apprentices were lost. With the new-arisen chaos there is no way the High Wizard Council will let you continue studies.
+Good think that your data was also lost. You can change your name, bluff your way through and retake the whole year. You seem like you need that anyway.
+
+Thank you for playin our textgame.
+To exit prolog shell enter "halt."
+
+true.
+
+?- halt.
