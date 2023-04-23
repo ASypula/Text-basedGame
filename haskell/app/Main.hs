@@ -28,11 +28,11 @@ state = State{room=room_2, inventory = Just [lantern]}
 printIntroduction = printLines introductionText
 printInstructions = printLines instructionsText
 
-readCommand :: IO String
+readCommand :: IO [String]
 readCommand = do
     putStr "> "
     xs <- getLine
-    return xs
+    return [xs]
 
 
 -- note that the game loop may take the game state as
@@ -41,13 +41,13 @@ gameLoop :: IO ()
 gameLoop = do
     cmd <- readCommand
     case cmd of
-        "instructions" -> do printInstructions
-                             gameLoop
-        "look" -> do describeState state
-                     gameLoop
-        "investigate" -> do investigateObject old_journal
-                            gameLoop
-        "quit" -> return ()
+        ["instructions"] -> do printInstructions
+                               gameLoop
+        ["look"] -> do describeState state
+                       gameLoop
+        ["investigate"] -> do investigateObject old_journal
+                              gameLoop
+        ["quit"] -> return ()
         _ -> do printLines ["Unknown command.", ""]
                 gameLoop
 
