@@ -9,12 +9,12 @@ roomDescription room
         "The room is filled with skeletons in wizard apprentice robes.",
         "You can still back off to the south.",
         "The head belongs to deceptively beautiful woman with blue eyes and cruel smile.",
-        "The beast rises its double scorpion tail as if already prepared to attack."]
+        "The beast rises its double scorpion tail as if already prepared to attack.", ""]
     | name == "room_2" = [
         "Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.",
         "There is a slightly open door on the east wall.",
         "There is a skeleton in wizard robes."]
-    | otherwise        = ["Sorry, you encountered an unknown room."]
+    | otherwise        = ["Sorry, you encountered an unknown room.", ""]
     where name = roomName room
 
 additionalDescription :: Room -> [String]

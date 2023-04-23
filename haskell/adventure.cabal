@@ -23,7 +23,7 @@ license:            NONE
 -- category:
 
 library
-    exposed-modules:  Types, Utils, RoomsSetup
+    exposed-modules:  Types, Utils, RoomsSetup, ObjectsSetup
 
     -- Modules included in this library but not exported.
     -- other-modules:
