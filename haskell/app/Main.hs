@@ -15,12 +15,15 @@ instructionsText = [
     "",
     "instructions  -- to see these instructions.",
     "look          -- look around again.",
+    "investigate   -- investigate object's details.",
     "quit          -- to end the game and quit.",
     ""
     ]
 
-object1 = Object{objectName="old_journal"}
-room1 = Room{roomName="room_2", objects= Just [object1], hints=Nothing}
+old_journal = Object{objectName="old_journal"}
+lantern = Object{objectName="lantern"}
+room_2 = Room{roomName="room_2", objects= Just [old_journal], hints=Nothing}
+state = State{room=room_2, inventory = Just [lantern]}
                   
 printIntroduction = printLines introductionText
 printInstructions = printLines instructionsText
@@ -40,10 +43,9 @@ gameLoop = do
     case cmd of
         "instructions" -> do printInstructions
                              gameLoop
-        "look" -> do describeRoom room1
-                     printLines (additionalDescription room1)
+        "look" -> do describeState state
                      gameLoop
-        "investigate" -> do printLines (objectDescription object1)
+        "investigate" -> do investigateObject old_journal
                             gameLoop
         "quit" -> return ()
         _ -> do printLines ["Unknown command.", ""]
@@ -52,6 +54,5 @@ gameLoop = do
 main = do
     printIntroduction
     printInstructions
-    describeRoom room1
-    printLines (additionalDescription room1)
+    describeState state
     gameLoop
