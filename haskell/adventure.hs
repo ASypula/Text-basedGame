@@ -1,5 +1,7 @@
--- The germ of a text adventure game
--- Marcin Szlenk 2022
+import Data.List (length)
+import GHC.Base (when)
+import System.IO
+
 
 introductionText = [
     "You are a wizard apprentice who failed their final exams, ",
@@ -12,6 +14,9 @@ instructionsText = [
     "Available commands are:",
     "",
     "instructions  -- to see these instructions.",
+    "n  s  e  w    -- to go in that direction.",
+    "take object   -- to pick up an object",
+    "look          -- to look around you again.",
     "quit          -- to end the game and quit.",
     ""
     ]
@@ -23,11 +28,11 @@ printLines xs = putStr (unlines xs)
 printIntroduction = printLines introductionText
 printInstructions = printLines instructionsText
 
-readCommand :: IO String
+readCommand :: IO [String]
 readCommand = do
     putStr "> "
     xs <- getLine
-    return xs
+    return [xs]
     
 -- note that the game loop may take the game state as
 -- an argument, eg. gameLoop :: State -> IO ()
@@ -35,9 +40,31 @@ gameLoop :: IO ()
 gameLoop = do
     cmd <- readCommand
     case cmd of
-        "instructions" -> do printInstructions
-                             gameLoop
-        "quit" -> return ()
+        ["instructions"] -> do
+                printInstructions
+                gameLoop
+        ["n"] -> do
+                printLines ["You have moved to the north.", ""]
+                gameLoop
+        ["s"] -> do 
+                printLines ["You have moved to the south.", ""]
+                gameLoop
+        ["e"] -> do
+                printLines ["You have moved to the east.", ""]
+                gameLoop
+        ["w"] -> do
+                printLines ["You have moved to the west.", ""]
+                gameLoop
+        ["take", object'] -> do
+                printLines ["You have almost taken up object ", object', "Almost because it is not implemented yet", ""]
+                gameLoop
+        ("take": _) -> do
+                printLines ["Correct usage: take OBJECT", "But it hasn't been implemented yet...", ""]
+                gameLoop
+        ["look"] -> do
+                printLines ["You look around but see nothing as this has not been implemented yet...", ""]
+                gameLoop
+        ["quit"] -> return ()
         _ -> do printLines ["Unknown command.", ""]
                 gameLoop
 
