@@ -30,7 +30,7 @@ library
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.13.0.0
+    build-depends:    base >=4.14.0.0
     hs-source-dirs:   src
     default-language: Haskell2010
 
@@ -43,6 +43,10 @@ executable adventure
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
+<<<<<<< HEAD
     build-depends:    base ^>=4.13.0.0, adventure
+=======
+    build-depends:    base >=4.14.0.0, adventure
+>>>>>>> feature/rooms_begin
     hs-source-dirs:   app
     default-language: Haskell2010
