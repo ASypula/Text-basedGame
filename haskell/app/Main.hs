@@ -13,17 +13,18 @@ introductionText = [
 instructionsText = [
     "Available commands are:",
     "",
-    "instructions  -- to see these instructions.",
-    "look          -- look around again.",
-    "investigate   -- investigate object's details.",
-    "quit          -- to end the game and quit.",
+    "instructions       -- to see these instructions.",
+    "look               -- look around again.",
+    "take OBJECT_NAME   -- take object (into your inventory).",
+    "investigate        -- investigate object's details.",
+    "quit               -- to end the game and quit.",
     ""
     ]
 
 old_journal = Object{objectName="old_journal"}
 lantern = Object{objectName="lantern"}
 room_2 = Room{roomName="room_2", objects= Just [old_journal], hints=Nothing}
-state = State{room=room_2, inventory = Just [lantern]}
+state = State{room=room_2, inventory = Just [lantern], existingObjects = Just [lantern, old_journal]}
                   
 printIntroduction = printLines introductionText
 printInstructions = printLines instructionsText
@@ -32,7 +33,7 @@ readCommand :: IO [String]
 readCommand = do
     putStr "> "
     xs <- getLine
-    return [xs]
+    return $ words xs
 
 
 -- note that the game loop may take the game state as
@@ -45,6 +46,10 @@ gameLoop = do
                                gameLoop
         ["look"] -> do describeState state
                        gameLoop
+        ["take", objectName'] -> do printLines(takeObjectIfExists objectName' state)
+                                    gameLoop
+        ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\"."]
+                          gameLoop
         ["investigate"] -> do investigateObject old_journal
                               gameLoop
         ["quit"] -> return ()
