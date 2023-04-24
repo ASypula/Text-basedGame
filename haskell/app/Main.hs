@@ -38,26 +38,29 @@ readCommand = do
 
 -- note that the game loop may take the game state as
 -- an argument, eg. gameLoop :: State -> IO ()
-gameLoop :: IO ()
-gameLoop = do
+gameLoop :: State -> IO ()
+gameLoop st = do
     cmd <- readCommand
     case cmd of
         ["instructions"] -> do printInstructions
-                               gameLoop
-        ["look"] -> do describeState state
-                       gameLoop
-        ["take", objectName'] -> do printLines(takeObjectIfExists objectName' state)
-                                    gameLoop
+                               gameLoop st
+        ["look"] -> do describeState st
+                       gameLoop st
+        ["take", objectName'] -> do printLines(getMsgForObjectPickUp objectName' st)
+                                    let newState = takeObjectIfExists objectName' st
+                                    gameLoop newState
         ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\"."]
-                          gameLoop
+                          gameLoop st
+        ["inventory"] -> do printLines(getInventoryItemsDescription st)
+                            gameLoop st
         ["investigate"] -> do investigateObject old_journal
-                              gameLoop
+                              gameLoop st
         ["quit"] -> return ()
         _ -> do printLines ["Unknown command.", ""]
-                gameLoop
+                gameLoop st
 
 main = do
     printIntroduction
     printInstructions
     describeState state
-    gameLoop
+    gameLoop state
