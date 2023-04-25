@@ -12,17 +12,23 @@ describeRoom :: Room -> IO ()
 describeRoom room = printLines (roomDescription room)
 
 takeObjectIfExists :: String -> State -> State
-takeObjectIfExists objectName state | ifObjectExists objectName state = takeObject newObject state
-                                    | otherwise                       = state
+takeObjectIfExists objectName state | ifObjectExists objectName state == True && ifObjectIsPresentInInventory objectName state == False = takeObject newObject state
+                                    | otherwise                               = state
                                     where newObject = Object{objectName=objectName}
 
 
 getMsgForObjectPickUp :: String -> State -> [String]
-getMsgForObjectPickUp objectName state | ifObjectExists objectName state = ["Object successfully added to your inventory.", ""]
-                                       | otherwise                       = ["Such object does not exists. Please check the spelling.", ""]
+getMsgForObjectPickUp objectName state | ifObjectExists objectName state && not (ifObjectIsPresentInInventory objectName state) = ["Object successfully added to your inventory.", ""]
+                                       | ifObjectExists objectName state && ifObjectIsPresentInInventory objectName state       = ["You already have that object.", ""]
+                                       | otherwise                                                                              = ["Such object does not exists. Please check the spelling.", ""]
 
 ifObjectExists :: String -> State -> Bool
 ifObjectExists lookForObjectName state = case existingObjects state of
+                                              Just objects -> elem lookForObjectName (map objectName objects)
+                                              Nothing -> False
+
+ifObjectIsPresentInInventory :: String -> State -> Bool
+ifObjectIsPresentInInventory lookForObjectName state = case inventory state of
                                               Just objects -> elem lookForObjectName (map objectName objects)
                                               Nothing -> False
 
