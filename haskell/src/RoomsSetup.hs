@@ -2,8 +2,9 @@ module RoomsSetup where
 
 import Types
 
-roomDescription :: Room -> [String]
-roomDescription room
+roomDescription :: Maybe Room -> [String]
+roomDescription Nothing = ["Sorry..."]
+roomDescription (Just room)
     | name == "room_1" = [
         "Exit - On the north side of a room you see big golden door with \"exit\" engraved on them. Unfortunately it is guarded by a beast.",
         "The room is filled with skeletons in wizard apprentice robes.",
@@ -54,9 +55,10 @@ roomDescription room
     | otherwise        = ["Sorry, you encountered an unknown room."]
     where name = roomName room
 
-additionalDescription :: Room -> [String]
+additionalDescription :: Maybe Room -> [String]
 additionalDescription room =
-    allObjectsRoomDescription (roomName room) (objects room)
+    -- allObjectsRoomDescription (roomName room) (objects room)
+    maybe [] (\r -> allObjectsRoomDescription (roomName r) (objects r)) room
 
 allObjectsRoomDescription :: String -> Maybe [Object] -> [String]
 allObjectsRoomDescription _ Nothing = [""]
