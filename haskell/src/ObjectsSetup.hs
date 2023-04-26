@@ -39,3 +39,4 @@ objectDescription object
         "Sorry, it's some unknown object. We don't know what to say about it..."]
     where name = objectName object
 
+-- TODO: add some missing objects

@@ -125,7 +125,7 @@ allObjectsRoomDescription name (Just objs) = concatMap (roomObjectDescription na
 roomObjectDescription :: String -> Object -> [String]
 roomObjectDescription roomName object
     | roomName == "room_2" && name == "old_journal" = ["You see a journal near the skeleton in wizard robes."]
+    | roomName == "room_6" && name == "magnet" = ["One of the goblins holds curious looking magnet."]
+    | roomName == "room_15" && name == "burned_journal" = ["Beside it, there is a partially burned journal."]
     | otherwise = [""]
     where name = objectName object
-
--- TODO: add big_journal to room8
