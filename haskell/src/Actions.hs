@@ -28,3 +28,4 @@ move direction state =
     in if isBlocked
             then (state, False)
         else (newState, True)
+

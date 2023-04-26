@@ -14,8 +14,14 @@ roomDescription (Just room)
         "Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.",
         "There is a slightly open door on the east wall.",
         "There is a skeleton in wizard robes."]
+    | name == "room_3" && "obscured" `elem` additionsList = [
+        "Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.",
+        "You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.",
+        "By touch you find passage north, east and west."]
     | name == "room_3" = [
-        "TODO"]
+        "Now, when the light provides better visibility, you can distinguish various objects littering the floor.",
+        "One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.",
+        "Now the possible exits are more clearly visible: three different passages leading north, east and west."]    
     | name == "room_4" = [
         "TODO"]
     | name == "room_5" = [
@@ -34,8 +40,13 @@ roomDescription (Just room)
     | name == "room_11" = [
         "You are in a long corridor going east and west. In the middle it has two doors in front of each other.",
         "The corridor is stained with soot in some places."]
+    | name == "room_12" && "obscured" `elem` additionsList = [
+        "It's strange. You've just walked into this room and just by being in here you feel some pain.",
+        "The room is very dark and smells of dirt and herbs. Even your lantern can't illuminate it.",
+        "After even one step in you get scratched by thorns. Let's hope that wasn't anything poisonous.",
+        "There is no way to safely explore this room without magical light."]
     | name == "room_12" = [
-        "TODO"]
+        "The room is of a medium size. You see many normal and magical herbs and flowers growing here."]
     | name == "room_13" = [
         "Inside there is a skeleton sitting in a corner. Next to it lays a broken jar with some dead insects inside.",
         "Apart from that, the room is mostly filled with empty crates.",
@@ -50,7 +61,9 @@ roomDescription (Just room)
         "Exits are on the west and north wall.",
         "The room is filled with jars, bottles and glass aparature."]
     | otherwise        = ["Sorry, you encountered an unknown room."]
-    where name = roomName room
+    where 
+        name = roomName room
+        additionsList = additions room
 roomDescription Nothing = ["Sorry this room does not exist."]
 
 
@@ -116,16 +129,25 @@ possibleMoves startRoom direction
 
 additionalDescription :: Maybe Room -> [String]
 additionalDescription room =
-    maybe [] (\r -> allObjectsRoomDescription (roomName r) (objects r)) room
+    maybe [] (\r -> allObjectsRoomDescription r (objects r)) room
 
-allObjectsRoomDescription :: String -> Maybe [Object] -> [String]
+allObjectsRoomDescription :: Room -> Maybe [Object] -> [String]
 allObjectsRoomDescription _ Nothing = [""]
-allObjectsRoomDescription name (Just objs) = concatMap (roomObjectDescription name) objs
+allObjectsRoomDescription room (Just objs) = concatMap (roomObjectDescription room) objs
 
-roomObjectDescription :: String -> Object -> [String]
-roomObjectDescription roomName object
-    | roomName == "room_2" && name == "old_journal" = ["You see a journal near the skeleton in wizard robes."]
-    | roomName == "room_6" && name == "magnet" = ["One of the goblins holds curious looking magnet."]
-    | roomName == "room_15" && name == "burned_journal" = ["Beside it, there is a partially burned journal."]
+roomObjectDescription :: Room -> Object -> [String]
+roomObjectDescription room object
+    | rName == "room_2" && objName == "old_journal" = ["You see a journal near the skeleton in wizard robes."]
+    | rName == "room_3" && objName == "rope" && "obscured" `elem` additionsList = ["It's too dark to see anything."]
+    | rName == "room_3" && objName == "rope" = ["You were right! It''s a bunch of material, a rope."]
+    | rName == "room_6" && objName == "magnet" = ["One of the goblins holds curious looking magnet."]
+    | rName == "room_12" && objName == "wolfsbane" && not ("obscured" `elem` additionsList) = ["The wolfsbane catches your eye.", "And now you see the thorns are because roses grow... black roses but you remember from your herbology lectures that they are not harmful until you eat them. You have a lot of luck this time."]
+    | rName == "room_13" && objName == "ripped_journal" = ["There is a ripped_journal here."]
+    | rName == "room_15" && objName == "burned_journal" = ["Beside it, there is a partially burned journal."]
+    | rName == "room_16" && objName == "potion" = ["Only one of the bottles appears to have something in it."]
+    | rName == "room_16" && objName == "key" = ["As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.", "Some sort of jewellery? Or maybe a key?"]
     | otherwise = [""]
-    where name = objectName object
+    where
+        rName = roomName room 
+        objName = objectName object
+        additionsList = additions room

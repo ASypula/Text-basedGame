@@ -16,6 +16,13 @@ describeRoom state = do
     printLines (roomDescription currentRoom)
     printLines (additionalDescription currentRoom)
 
+hintRoom :: State -> IO ()
+hintRoom state
+    | null hint = printLines ["Sorry, no hint available here."]
+    | otherwise = printLines hint
+    where
+      hint = maybe [] hints (Map.lookup (room (player state)) (rooms state))
+
 
 investigateObject :: Object -> IO ()
 investigateObject object = printLines (objectDescription object)
@@ -63,3 +70,31 @@ getStringInventory player =
   case inventory player of
     Nothing -> []
     Just objs -> map objectName objs
+
+-- removeAdditionFromRoom :: Room -> String -> Room
+-- removeAdditionFromRoom room stringToRemove =
+--   room {additions = newAdditions}
+--   where
+--     currentAdditions = additions room
+--     newAdditions = case currentAdditions of
+--                        [] -> []
+--                        Just additionsList -> Just (filter (/= stringToRemove) additionsList)
+
+removeAdditionFromRoom :: Room -> String -> Room
+removeAdditionFromRoom room stringToRemove =
+  room {additions = newAdditions}
+  where
+    currentAdditions = additions room
+    newAdditions = filter (/= stringToRemove) currentAdditions
+
+-- TODO adjust to use for removing obscure
+removeAddition :: String -> State -> State
+removeAddition text state =
+  case Map.lookup (room (player state)) (rooms state) of
+    Nothing -> state
+    Just oldRoom ->
+      let rName = roomName oldRoom
+          newRoom = removeAdditionFromRoom oldRoom text
+          newRoomsMap = Map.insert rName newRoom (rooms state)
+          newState = state { rooms = newRoomsMap }
+      in newState

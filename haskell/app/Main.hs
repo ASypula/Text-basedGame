@@ -6,6 +6,8 @@ import ObjectsSetup
 import InitSetup
 import qualified Data.Map as Map
 
+-- Rooms fully done: room6, room10, room13, room15, room16
+-- "obscured" implemented partially
 
 introductionText = [
     "You are a wizard apprentice who failed their final exams, ",
@@ -65,12 +67,17 @@ readCommand = do
 --     describeState state
     -- gameLoop state
 
+-- TEST for 3rd room (obscured)
+main = do
+    describeState state
+    let newState = removeAddition "obscured" state
+    describeState newState
 
 -- TEST moving a player
-main = do
-    let (newState, moved) = move E state
-    print $ room $ player $ newState
-    moveOutcome newState moved
+-- main = do
+--     let (newState, moved) = move E state
+--     print $ room $ player $ newState
+--     moveOutcome newState moved
 
 -- TEST: for testing object pick up
 -- main = do
