@@ -2,6 +2,7 @@ module ObjectsSetup where
 
 import Types
 
+
 objectDescription :: Object -> [String]
 objectDescription object
     | name == "lantern"        = [
@@ -35,5 +36,6 @@ objectDescription object
     --     "The code is the year of the Worm Spell disaster.",
     --     "You'd better provide the code in the form password_xxxx... Wrong code might have its own consequences."]
     | otherwise                = [
-        "Sorry, it's some unknown obejct. We don't know what to say about it..."]
+        "Sorry, it's some unknown object. We don't know what to say about it..."]
     where name = objectName object
+

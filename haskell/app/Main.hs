@@ -1,10 +1,10 @@
 import Utils
+import Actions
 import Types
 import RoomsSetup
 import ObjectsSetup
 import InitSetup
 import qualified Data.Map as Map
-import Data.Text(Text, pack, unpack, intercalate, split)
 
 
 introductionText = [
@@ -33,15 +33,6 @@ readCommand = do
     putStr "> "
     xs <- getLine
     return $ words xs
-
-
-
--- object1 = Object{objectName="old_journal"}
--- object2 = Object{objectName="old_journal1"}
--- room2 = Room{roomName="room_2", objects= Just [object1, object2], hints=Nothing, blocked=False}
-
--- main = do
---     describeRoom room2
 
 -- note that the game loop may take the game state as
 -- an argument, eg. gameLoop :: State -> IO ()
@@ -75,15 +66,21 @@ readCommand = do
     -- gameLoop state
 
 
-
+-- TEST moving a player
 main = do
-    printIntroduction
-    printInstructions
-    describeState state
-    let inventoryObjectNames = describeInventory (player state)
-    printLines inventoryObjectNames
-    let (newState, message) = removeObjectFromRoom "old_journal" "room_2" state
-    putStrLn message
-    describeState newState
-    let inventoryObjectNames = describeInventory (player newState)
-    printLines inventoryObjectNames
+    let (newState, moved) = move E state
+    print $ room $ player $ newState
+    moveOutcome newState moved
+
+-- TEST: for testing object pick up
+-- main = do
+--     printIntroduction
+--     printInstructions
+--     describeState state
+--     let inventoryObjectNames = getStringInventory (player state)
+--     printLines inventoryObjectNames
+--     let (newState, message) = takeObjectFromRoom "old_journal" "room_2" state
+--     putStrLn message
+--     describeState newState
+--     let inventoryObjectNames = getStringInventory (player newState)
+--     printLines inventoryObjectNames
