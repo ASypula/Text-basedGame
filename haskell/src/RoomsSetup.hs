@@ -2,6 +2,7 @@ module RoomsSetup where
 
 import Types
 
+-- order matters (room_3)
 roomDescription :: Maybe Room -> [String]
 roomDescription (Just room)
     | name == "room_1" = [
@@ -66,7 +67,7 @@ roomDescription (Just room)
         additionsList = additions room
 roomDescription Nothing = ["Sorry this room does not exist."]
 
-
+-- TODO return only String value = roomName or nothing
 possibleMoves :: String -> Direction -> Maybe (String, Bool)
 possibleMoves startRoom direction
     | startRoom == "room_1" && direction == S = Just ("room_10", True)
