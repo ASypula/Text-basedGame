@@ -46,9 +46,9 @@ gameLoop st = do
                                gameLoop st
         ["look"] -> do describeState st
                        gameLoop st
-        -- ["take", objectName'] -> do printLines(getMsgForObjectPickUp objectName' st)
-        --                             let newState = takeObjectIfExists objectName' st
-        --                             gameLoop newState
+        ["take", objectName'] -> do let (newState, pickUpMsg) = takeObjectFromRoom objectName' (room (player st)) st
+                                    printLines[pickUpMsg, ""]
+                                    gameLoop newState
         ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\"."]
                           gameLoop st
         ["inventory"] -> do printLines(getInventoryItemsDescription (player st))
