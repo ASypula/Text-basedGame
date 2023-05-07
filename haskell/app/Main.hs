@@ -46,12 +46,12 @@ gameLoop st = do
                                gameLoop st
         ["look"] -> do describeState st
                        gameLoop st
-        ["take", objectName'] -> do printLines(getMsgForObjectPickUp objectName' st)
-                                    let newState = takeObjectIfExists objectName' st
-                                    gameLoop newState
+        -- ["take", objectName'] -> do printLines(getMsgForObjectPickUp objectName' st)
+        --                             let newState = takeObjectIfExists objectName' st
+        --                             gameLoop newState
         ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\"."]
                           gameLoop st
-        ["inventory"] -> do printLines(getInventoryItemsDescription st)
+        ["inventory"] -> do printLines(getInventoryItemsDescription (player st))
                             gameLoop st
         ["investigate"] -> do investigateObject old_journal
                               gameLoop st
@@ -63,6 +63,6 @@ main = do
     printIntroduction
     printInstructions
     describeState state
-    removeObjectFromRoom "lantern" "room_2" state
-    describeState state
+    -- removeObjectFromRoom "lantern" "room_2" state
+    -- describeState state
     gameLoop state

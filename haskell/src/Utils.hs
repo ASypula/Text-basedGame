@@ -33,11 +33,11 @@ ifObjectIsPresentInInventory lookForObjectName state = case inventory (player st
                                               Nothing -> False
 
 
--- getInventoryItemsDescription :: State -> [String]
--- getInventoryItemsDescription state = do
---     case inventory state of
---         Nothing -> [""]
---         Just objects -> map objectName objects
+getInventoryItemsDescription :: Player -> [String]
+getInventoryItemsDescription player = do
+    case inventory player of
+        Nothing -> [""]
+        Just objects -> map objectName objects
 
 describeState :: State -> IO()
 describeState state = do
