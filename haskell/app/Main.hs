@@ -19,11 +19,11 @@ introductionText = [
 instructionsText = [
     "Available commands are:",
     "",
-    "instructions       -- to see these instructions.",
-    "look               -- look around again.",
-    "take OBJECT_NAME   -- take object (into your inventory).",
-    "investigate        -- investigate object's details.",
-    "quit               -- to end the game and quit.",
+    "instructions               -- to see these instructions.",
+    "look                       -- look around again.",
+    "take OBJECT_NAME           -- take object (into your inventory).",
+    "investigate OBJECT_NAME    -- investigate object's details.",
+    "quit                       -- to end the game and quit.",
     ""
     ]
                
@@ -53,8 +53,11 @@ gameLoop st = do
                           gameLoop st
         ["inventory"] -> do printLines(getInventoryItemsDescription (player st))
                             gameLoop st
-        ["investigate"] -> do investigateObject old_journal
-                              gameLoop st
+        ["investigate", objectName'] -> do let investigationMsg = investigateObject objectName' (room (player st)) st
+                                           printLines[investigationMsg, ""]
+                                           gameLoop st
+        ("investigate": _) -> do printLines ["Correct syntax is \"investigate OBJECT_NAME\"."]
+                                 gameLoop st
         ["quit"] -> return ()
         _ -> do printLines ["Unknown command.", ""]
                 gameLoop st
