@@ -83,63 +83,48 @@ contains = \elem -> \myList ->
     _:xs -> contains elem xs -- Check for element membership in remaining list
 
 -- TODO return only String value = roomName or nothing
-possibleMoves :: String -> Direction -> [String] -> Maybe (String, Bool)
+possibleMoves :: String -> Direction -> [String] -> Maybe String
 possibleMoves startRoom direction blocades
-    | startRoom == "room_1" && direction == S = Just ("room_10", True)
+    | startRoom == "room_1" && direction == S = Just "room_10"
     | startRoom == "room_1" = Nothing
-    | startRoom == "room_2" && direction == E = Just ("room_3", True)
+    | startRoom == "room_2" && direction == E = Just "room_3"
     | startRoom == "room_2" = Nothing
-    | startRoom == "room_3" && direction == N && contains "room_4" blocades = Just ("room_4S", True)
-    | startRoom == "room_3" && direction == N = Just ("room_4", True)
-    | startRoom == "room_3" && direction == E = Just ("room_16", True)
-    | startRoom == "room_3" && direction == W = Just ("room_2", True)
-    | startRoom == "room_3" = Nothing
-    | startRoom == "room_4" && direction == N = Just ("room_6", True)
-    | startRoom == "room_4N" && direction == N = Just ("room_6", True)
-    | startRoom == "room_4" && direction == S = Just ("room_3", True)
-    | startRoom == "room_4S" && direction == S = Just ("room_3", True)
-    | startRoom == "room_4" && direction == W = Just ("room_5", True)
-    | startRoom == "room_4N" && direction == N = Just ("room_5", True)
-    | startRoom == "room_4" = Nothing
-    | startRoom == "room_4N" = Nothing
-    | startRoom == "room_4S" = Nothing
-    | startRoom == "room_5" && direction == E && contains "room_4" blocades = Just ("room_4N", True)
-    | startRoom == "room_5" && direction == E = Just ("room_4", True)
-    | startRoom == "room_5" = Nothing
-    | startRoom == "room_6" && direction == N = Just ("room_10", True)
-    | startRoom == "room_6" && direction == E = Just ("room_8", True)
-    | startRoom == "room_6" && direction == S  && contains "room_4" blocades = Just ("room_4N", True)
-    | startRoom == "room_6" && direction == S = Just ("room_4", True)
-    | startRoom == "room_6" = Nothing
-    | startRoom == "room_8" && direction == W = Just ("room_6", True)
-    | startRoom == "room_8" = Nothing
-    | startRoom == "room_10" && direction == N = Just ("room_1", True)
-    | startRoom == "room_10" && direction == E = Just ("room_11", True)
-    | startRoom == "room_10" && direction == S = Just ("room_6", True)
-    | startRoom == "room_10" = Nothing
-    | startRoom == "room_11" && direction == N = Just ("room_12", True)
-    | startRoom == "room_11" && direction == E = Just ("room_14", True)
-    | startRoom == "room_11" && direction == E = Just ("room_14W", True)
-    | startRoom == "room_11" && direction == S = Just ("room_13", True)
-    | startRoom == "room_11" && direction == W = Just ("room_10", True)
-    | startRoom == "room_11" = Nothing
-    | startRoom == "room_12" && direction == S = Just ("room_11", True)
-    | startRoom == "room_12" = Nothing
-    | startRoom == "room_13" && direction == N = Just ("room_11", True)
-    | startRoom == "room_13" = Nothing
-    | startRoom == "room_14S" && direction == S  && contains "room_14" blocades = Just ("room_15", True)
-    | startRoom == "room_14" && direction == S = Just ("room_15", True)
-    | startRoom == "room_14" && direction == W = Just ("room_11", True)
-    | startRoom == "room_14W" && direction == W = Just ("room_11", True)
-    | startRoom == "room_14" = Nothing
-    | startRoom == "room_14W" = Nothing
-    | startRoom == "room_14S" = Nothing
-    | startRoom == "room_15" && direction == N   && contains "room_14" blocades = Just ("room_14S", True)
-    | startRoom == "room_15" && direction == N = Just ("room_14", True)
-    | startRoom == "room_15" && direction == S = Just ("room_16", True)
-    | startRoom == "room_15" = Nothing
-    | startRoom == "room_16" && direction == N = Just ("room_15", True)
-    | startRoom == "room_16" && direction == W = Just ("room_3", True)
+    | startRoom == "room_3" && direction == N && contains "room_4" blocades = Just "room_4S" 
+    | startRoom == "room_3" && direction == N = Just "room_4"
+    | startRoom == "room_3" && direction == E = Just "room_16"
+    | startRoom == "room_3" && direction == W = Just "room_2"
+    | startRoom == "room_4" && direction == N = Just "room_6"
+    | startRoom == "room_4N" && direction == N = Just "room_6"
+    | startRoom == "room_4" && direction == S = Just "room_3"
+    | startRoom == "room_4S" && direction == S = Just "room_3"
+    | startRoom == "room_4" && direction == W = Just "room_5"
+    | startRoom == "room_4N" && direction == N = Just "room_5"
+    | startRoom == "room_5" && direction == E && contains "room_4" blocades = Just "room_4N"
+    | startRoom == "room_5" && direction == E = Just "room_4"
+    | startRoom == "room_6" && direction == N = Just "room_10"
+    | startRoom == "room_6" && direction == E = Just "room_8"
+    | startRoom == "room_6" && direction == S  && contains "room_4" blocades = Just "room_4N"
+    | startRoom == "room_6" && direction == S = Just "room_4"
+    | startRoom == "room_8" && direction == W = Just "room_6"
+    | startRoom == "room_10" && direction == N = Just "room_1"
+    | startRoom == "room_10" && direction == E = Just "room_11"
+    | startRoom == "room_10" && direction == S = Just "room_6"
+    | startRoom == "room_11" && direction == N = Just "room_12"
+    | startRoom == "room_11" && direction == E = Just "room_14"
+    | startRoom == "room_11" && direction == E = Just "room_14W"
+    | startRoom == "room_11" && direction == S = Just "room_13"
+    | startRoom == "room_11" && direction == W = Just "room_10"
+    | startRoom == "room_12" && direction == S = Just "room_11"
+    | startRoom == "room_13" && direction == N = Just "room_11"
+    | startRoom == "room_14S" && direction == S  && contains "room_14" blocades = Just "room_15"
+    | startRoom == "room_14" && direction == S = Just "room_15"
+    | startRoom == "room_14" && direction == W = Just "room_11"
+    | startRoom == "room_14W" && direction == W = Just "room_11"
+    | startRoom == "room_15" && direction == N   && contains "room_14" blocades = Just "room_14S"
+    | startRoom == "room_15" && direction == N = Just "room_14"
+    | startRoom == "room_15" && direction == S = Just "room_16"
+    | startRoom == "room_16" && direction == N = Just "room_15"
+    | startRoom == "room_16" && direction == W = Just "room_3"
     | startRoom == "room_16" = Nothing
     | otherwise = Nothing
 
