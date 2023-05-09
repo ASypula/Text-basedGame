@@ -24,8 +24,18 @@ hintRoom state
       hint = maybe [] hints (Map.lookup (room (player state)) (rooms state))
 
 
-investigateObject :: Object -> IO ()
-investigateObject object = printLines (objectDescription object)
+investigateObject :: String -> String -> State -> String
+investigateObject objName roomName state =
+  case Map.lookup roomName (rooms state) of
+    Nothing -> "Room not found"
+    Just room ->
+      case inventory (player state) of
+        Nothing -> "You don't hold any object"
+        Just objs ->
+          let filteredObjs = filter (\obj -> objectName obj == objName) objs
+          in case filteredObjs of
+            [] -> "You don't hold such object"
+            _ -> unlines (objectDescription filteredObjs)
 
 ifObjectIsPresentInInventory :: String -> State -> Bool
 ifObjectIsPresentInInventory lookForObjectName state = case inventory (player state) of
@@ -33,11 +43,11 @@ ifObjectIsPresentInInventory lookForObjectName state = case inventory (player st
                                               Nothing -> False
 
 
--- getInventoryItemsDescription :: State -> [String]
--- getInventoryItemsDescription state = do
---     case inventory state of
---         Nothing -> [""]
---         Just objects -> map objectName objects
+getInventoryItemsDescription :: Player -> [String]
+getInventoryItemsDescription player = do
+    case inventory player of
+        Nothing -> [""]
+        Just objects -> map objectName objects
 
 describeState :: State -> IO()
 describeState state = do
