@@ -60,6 +60,7 @@ room16 = Room {roomName = "room_16", objects = Just [potion, key, jar], hints = 
 gamer = Player {room="room_3", inventory = Just [lantern]}
 roomsMap =  Map.fromList [("room_1", room1), ("room_2", room2), ("room_3", room3), ("room_5", room5),
                         ("room_6", room6), ("room_8", room8), ("room_10", room10), ("room_11", room11),
-                        ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16)]
+                        ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16), 
+                        ("room_4", room4),("room_4N", room4N),("room_4S", room4S),("room_14", room14),("room_14W", room14W),("room_14S", room14S)]
 -- TODO: additional rooms to roomsMap
 state = State{player = gamer, rooms=roomsMap, blocades=["room_4", "room_14", "room_12", "room_13", "room_5"]}

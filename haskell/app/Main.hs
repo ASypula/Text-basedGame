@@ -60,18 +60,17 @@ gameLoop st = do
         ("investigate": _) -> do printLines ["Correct syntax is \"investigate OBJECT_NAME\"."]
                                  gameLoop st
         ["e"] -> do let (newState, moved) = move E st
-                    print $ room $ player $ newState
                     moveOutcome newState moved
-                    if  moved  then gameLoop newState else gameLoop st
+                    gameLoop newState
         ["w"] -> do let (newState, moved) = move W st
                     moveOutcome newState moved
-                    if  moved  then gameLoop newState else gameLoop st
+                    gameLoop newState
         ["n"] -> do let (newState, moved) = move N st
                     moveOutcome newState moved
-                    if  moved  then gameLoop newState else gameLoop st
+                    gameLoop newState
         ["s"] -> do let (newState, moved) = move S st
                     moveOutcome newState moved
-                    if  moved  then gameLoop newState else gameLoop st
+                    gameLoop newState
         ["quit"] -> return ()
         _ -> do printLines ["Unknown command.", ""]
                 gameLoop st
