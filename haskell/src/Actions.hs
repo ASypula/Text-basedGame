@@ -17,10 +17,10 @@ move direction state =
         currentRoom = fromMaybe (error "Current room not found") (Map.lookup currentRoomName (rooms state))
         possibleMove = possibleMoves currentRoomName direction (blocades state)
         isBlocked = case possibleMove of
+                    Just (_, True) -> False
                     Nothing -> True
-                    _ -> False
         destinationRoomName = case possibleMove of
-                                Just roomName -> roomName
+                                Just (roomName, _) -> roomName
                                 Nothing -> currentRoomName
         destinationRoom = fromMaybe (error "Destination room not found") (Map.lookup destinationRoomName (rooms state))
         newPlayer = (player state) { room = destinationRoomName }

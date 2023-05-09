@@ -4,6 +4,8 @@ import qualified Data.Map as Map
 
 data Direction = N | S | W | E deriving (Eq, Show)
 
+data PathState = OPEN | BLOCKED | NONE deriving (Eq)
+
 data Object = Object { objectName :: String } deriving (Show)
 
 data Player = Player { room :: String, inventory :: Maybe [Object] }
