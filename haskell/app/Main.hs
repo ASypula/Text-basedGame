@@ -4,6 +4,7 @@ import Types
 import RoomsSetup
 import ObjectsSetup
 import InitSetup
+-- import Data.Maybe (fromMaybe)
 import qualified Data.Map as Map
 
 -- Rooms fully done: room6, room10, room13, room15, room16
@@ -58,6 +59,19 @@ gameLoop st = do
                                            gameLoop st
         ("investigate": _) -> do printLines ["Correct syntax is \"investigate OBJECT_NAME\"."]
                                  gameLoop st
+        ["e"] -> do let (newState, moved) = move E st
+                    print $ room $ player $ newState
+                    moveOutcome newState moved
+                    if  moved  then gameLoop newState else gameLoop st
+        ["w"] -> do let (newState, moved) = move W st
+                    moveOutcome newState moved
+                    if  moved  then gameLoop newState else gameLoop st
+        ["n"] -> do let (newState, moved) = move N st
+                    moveOutcome newState moved
+                    if  moved  then gameLoop newState else gameLoop st
+        ["s"] -> do let (newState, moved) = move S st
+                    moveOutcome newState moved
+                    if  moved  then gameLoop newState else gameLoop st
         ["quit"] -> return ()
         _ -> do printLines ["Unknown command.", ""]
                 gameLoop st

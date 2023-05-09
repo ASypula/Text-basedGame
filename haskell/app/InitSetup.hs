@@ -57,4 +57,4 @@ roomsMap =  Map.fromList [("room_1", room1), ("room_2", room2), ("room_3", room3
                         ("room_6", room6), ("room_8", room8), ("room_10", room10), ("room_11", room11),
                         ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16)]
 -- TODO: additional rooms to roomsMap
-state = State{player = gamer, rooms=roomsMap}
+state = State{player = gamer, rooms=roomsMap, blocades=["room_4"]}
