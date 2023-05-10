@@ -1,6 +1,7 @@
 module RoomsSetup where
 
 import Types
+import qualified Data.Map as Map
 
 -- order matters (room_3)
 roomDescription :: Maybe Room -> [String]
@@ -132,18 +133,29 @@ possibleMoves startRoom direction blockades
     | startRoom == "room_16" && direction == W = Just ("room_3", True)
     | otherwise = Nothing
 
+
 additionalDescription :: Room -> State -> [String]
 additionalDescription room state =
-    (\r -> allObjectsRoomDescription r (objects r)) room
+    let 
+        rName = roomName room
+        special = case rName of
+            "room_4S" ->
+                case twinRoom of
+                    Just tr ->
+                        let specObjs =  objects tr
+                        in allObjectsRoomDescription room specObjs 
+                where 
+                    twinRoom = (Map.lookup "room_4N" (rooms state))
+            _ ->
+                []
+    in ((\r -> allObjectsRoomDescription r (objects r)) room) ++ special
+
 
 
 allObjectsRoomDescription :: Room -> [Object] -> [String]
 allObjectsRoomDescription _ [] = [""]
 allObjectsRoomDescription room objs = 
     concatMap (roomObjectDescription room) objs
-    -- let rName = roomName room
-    -- in case rName of
-    --     "room_4S"
 
 roomObjectDescription :: Room -> Object -> [String]
 roomObjectDescription room object
