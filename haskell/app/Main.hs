@@ -43,6 +43,9 @@ gameLoop :: State -> IO ()
 gameLoop st = do
     cmd <- readCommand
     case cmd of
+        ["debug", roomName'] -> do  let (newState, result) = unlock roomName' st
+                                    unlockOutcome result
+                                    gameLoop newState
         ["instructions"] -> do printInstructions
                                gameLoop st
         ["look"] -> do describeState st

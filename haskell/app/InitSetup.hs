@@ -39,9 +39,9 @@ hint_room16 = "[An appropriate spell or something magnetic would help with obtai
 room1 = Room {roomName = "room_1", objects = Nothing, hints = [], blocked = False, additions = []}
 room2 = Room {roomName = "room_2", objects = Just [old_journal], hints = [hint_room2], blocked = False, additions = []}
 room3 = Room {roomName = "room_3", objects = Just [rope], hints = [hint_room3], blocked = False, additions = ["obscured"]}
-room4 = Room {roomName = "room_4", objects = Nothing, hints = [], blocked = False, additions = []}
+room4 = Room {roomName = "room_4", objects = Just [nightcap, firefly], hints = [], blocked = False, additions = []}
 room4N = Room {roomName = "room_4N", objects = Just [nightcap], hints = [], blocked = False, additions = []}
-room4S = Room {roomName = "room_4S", objects = Nothing, hints = [], blocked = False, additions = []}
+room4S = Room {roomName = "room_4S", objects = Just [firefly], hints = [], blocked = False, additions = []}
 --TODO: write function to move objects from 4N and 4S to 4 upon unlocking
 room5 = Room {roomName = "room_5", objects = Just [note], hints = [], blocked = False, additions = []}
 room6 = Room {roomName = "room_6", objects = Just [magnet], hints = [], blocked = False, additions = []}
@@ -63,4 +63,4 @@ roomsMap =  Map.fromList [("room_1", room1), ("room_2", room2), ("room_3", room3
                         ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16), 
                         ("room_4", room4),("room_4N", room4N),("room_4S", room4S),("room_14", room14),("room_14W", room14W),("room_14S", room14S)]
 -- TODO: additional rooms to roomsMap
-state = State{player = gamer, rooms=roomsMap, blocades=["room_4", "room_14", "room_12", "room_13", "room_5"]}
+state = State{player = gamer, rooms=roomsMap, blockades=["room_4", "room_14", "room_12", "room_13", "room_5"]}

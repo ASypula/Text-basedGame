@@ -16,7 +16,7 @@ move :: Direction -> State -> (State, PathState)
 move direction state =
     let currentRoomName = room (player state)
         currentRoom = fromMaybe (error "Current room not found") (Map.lookup currentRoomName (rooms state))
-        possibleMove = possibleMoves currentRoomName direction (blocades state)
+        possibleMove = possibleMoves currentRoomName direction (blockades state)
         destinationRoomName = case possibleMove of
                                 Just (roomName, _) -> roomName
                                 Nothing -> currentRoomName

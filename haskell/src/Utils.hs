@@ -4,6 +4,7 @@ import Types
 import RoomsSetup
 import ObjectsSetup
 import qualified Data.Map as Map
+import qualified Data.List as List
 import Data.Maybe (fromMaybe, fromJust)
 
 printLines :: [String] -> IO ()
@@ -108,3 +109,22 @@ removeAddition text state =
           newRoomsMap = Map.insert rName newRoom (rooms state)
           newState = state { rooms = newRoomsMap }
       in newState
+
+
+
+unlock :: String -> State -> (State, Bool)
+unlock roomName state = 
+  case contains roomName blockedRooms of
+    True ->
+      let newBlocked = List.delete roomName blockedRooms
+          newState = state {blockades = newBlocked}
+      in (newState, True)
+    False ->
+      (state, False)
+    where blockedRooms = blockades state
+
+
+unlockOutcome :: Bool -> IO ()
+unlockOutcome result
+    | result = printLines ["Room succesfully unlocked."]
+    | otherwise = printLines ["That room is already unlocked."]
