@@ -15,7 +15,9 @@ describeRoom state = do
     let currentRoomName = room (player state)
     let currentRoom = (Map.lookup currentRoomName (rooms state))
     printLines (roomDescription currentRoom)
-    printLines (additionalDescription currentRoom)
+    case currentRoom of
+      Just currRoom -> 
+        printLines (additionalDescription currRoom state)
 
 hintRoom :: State -> IO ()
 hintRoom state
@@ -61,12 +63,12 @@ takeObjectFromRoom objName roomName state =
     Nothing -> (state, "Room not found.")
     Just oldRoom ->
       case objects oldRoom of
-        Nothing -> (state, "Room has no objects.")
-        Just objs ->
+        [] -> (state, "Room has no objects.")
+        objs ->
           if objName `elem` map objectName objs
             then let newObjs = filter (\obj -> objectName obj /= objName) objs
                      takenObj = filter (\obj -> objectName obj == objName) objs
-                     newRoom = oldRoom { objects = Just newObjs }
+                     newRoom = oldRoom { objects = newObjs }
                      newRoomsMap = Map.insert roomName newRoom (rooms state)
                      inv = maybe [] id (inventory (player state))
                      newInventory = takenObj ++ inv
@@ -113,10 +115,10 @@ removeAddition text state =
 
 
 unlock :: String -> State -> (State, Bool)
-unlock roomName state = 
-  case elem roomName blockedRooms of
+unlock rName state = 
+  case elem rName blockedRooms of
     True ->
-      let newBlocked = List.delete roomName blockedRooms
+      let newBlocked = List.delete rName blockedRooms
           newState = state {blockades = newBlocked}
       in (newState, True)
     False ->

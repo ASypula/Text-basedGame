@@ -132,13 +132,18 @@ possibleMoves startRoom direction blockades
     | startRoom == "room_16" && direction == W = Just ("room_3", True)
     | otherwise = Nothing
 
-additionalDescription :: Maybe Room -> [String]
-additionalDescription room =
-    maybe [] (\r -> allObjectsRoomDescription r (objects r)) room
+additionalDescription :: Room -> State -> [String]
+additionalDescription room state =
+    (\r -> allObjectsRoomDescription r (objects r)) room
 
-allObjectsRoomDescription :: Room -> Maybe [Object] -> [String]
-allObjectsRoomDescription _ Nothing = [""]
-allObjectsRoomDescription room (Just objs) = concatMap (roomObjectDescription room) objs
+
+allObjectsRoomDescription :: Room -> [Object] -> [String]
+allObjectsRoomDescription _ [] = [""]
+allObjectsRoomDescription room objs = 
+    concatMap (roomObjectDescription room) objs
+    -- let rName = roomName room
+    -- in case rName of
+    --     "room_4S"
 
 roomObjectDescription :: Room -> Object -> [String]
 roomObjectDescription room object
@@ -149,6 +154,7 @@ roomObjectDescription room object
     | rName == "room_4N" && objName == "firefly" = ["Over the pool fly some weird glowing bugs. They look similar to fireflies."]
     | rName == "room_4S" && objName == "firefly" = ["Over the pool fly some weird glowing bugs. They look similar to fireflies."]
     | rName == "room_4" && objName == "nightcap" = ["On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here."]
+    | rName == "room_4S" && objName == "nightcap" = ["On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here."]
     | rName == "room_4N" && objName == "nightcap" = ["On your side of the acid pool there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here."]
     | rName == "room_4S" && objName == "nightcap" = ["On the opposite side of the acid pool there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here."]
     | rName == "room_6" && objName == "magnet" = ["One of the goblins holds curious looking magnet."]
