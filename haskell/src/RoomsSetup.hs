@@ -124,6 +124,7 @@ possibleMoves startRoom direction blockades
     | startRoom == "room_12" && direction == S = Just ("room_11", True)
     | startRoom == "room_13" && direction == N = Just ("room_11", True)
     | startRoom == "room_14" && direction == S = Just ("room_15", True)
+    | startRoom == "room_14S" && direction == S = Just ("room_15", True)
     | startRoom == "room_14" && direction == W = Just ("room_11", True)
     | startRoom == "room_14W" && direction == W = Just ("room_11", True)
     | startRoom == "room_15" && direction == N && elem "room_14" blockades = Just ("room_14S", True)
