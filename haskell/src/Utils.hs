@@ -114,7 +114,7 @@ removeAddition text state =
 
 unlock :: String -> State -> (State, Bool)
 unlock roomName state = 
-  case contains roomName blockedRooms of
+  case elem roomName blockedRooms of
     True ->
       let newBlocked = List.delete roomName blockedRooms
           newState = state {blockades = newBlocked}

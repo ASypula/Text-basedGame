@@ -83,18 +83,12 @@ roomDescription (Just room)
         additionsList = additions room
 roomDescription Nothing = ["Sorry this room does not exist."]
 
-contains :: Eq a => a -> [a] -> Bool
-contains = \elem -> \myList ->
-  case myList of
-    [] -> False 
-    x:xs | x == elem -> True 
-    _:xs -> contains elem xs 
 
 possibleMoves :: String -> Direction -> [String] -> Maybe (String, Bool)
 possibleMoves startRoom direction blockades
     | startRoom == "room_1" && direction == S = Just ("room_10", True)
     | startRoom == "room_2" && direction == E = Just ("room_3", True)
-    | startRoom == "room_3" && direction == N && contains "room_4" blockades = Just ("room_4S", True)
+    | startRoom == "room_3" && direction == N && elem "room_4" blockades = Just ("room_4S", True)
     | startRoom == "room_3" && direction == N = Just ("room_4", True)
     | startRoom == "room_3" && direction == E = Just ("room_16", True)
     | startRoom == "room_3" && direction == W = Just ("room_2", True)
@@ -103,27 +97,27 @@ possibleMoves startRoom direction blockades
     | startRoom == "room_4" && direction == S = Just ("room_3", True)
     | startRoom == "room_4S" && direction == S = Just ("room_3", True)
     | startRoom == "room_4S" && direction == N = Just ("room_3", False)
-    | startRoom == "room_4" && direction == W && contains "room_5" blockades = Just ("room_5", False)
+    | startRoom == "room_4" && direction == W && elem "room_5" blockades = Just ("room_5", False)
     | startRoom == "room_4" && direction == W = Just ("room_5", True)
     | startRoom == "room_4N" && direction == S = Just ("room_3", False)
-    | startRoom == "room_4N" && direction == W && contains "room_5" blockades = Just ("room_5", False)
+    | startRoom == "room_4N" && direction == W && elem "room_5" blockades = Just ("room_5", False)
     | startRoom == "room_4N" && direction == W = Just ("room_5", True)
     | startRoom == "room_4N" && direction == N = Just ("room_6", True)
-    | startRoom == "room_5" && direction == E && contains "room_4" blockades = Just ("room_4N", True)
+    | startRoom == "room_5" && direction == E && elem "room_4" blockades = Just ("room_4N", True)
     | startRoom == "room_5" && direction == E = Just ("room_4", True)
     | startRoom == "room_6" && direction == N = Just ("room_10", True)
     | startRoom == "room_6" && direction == E = Just ("room_8", True)
-    | startRoom == "room_6" && direction == S && contains "room_4" blockades = Just ("room_4N", True)
+    | startRoom == "room_6" && direction == S && elem "room_4" blockades = Just ("room_4N", True)
     | startRoom == "room_6" && direction == S = Just ("room_4", True)
     | startRoom == "room_8" && direction == W = Just ("room_6", True)
     | startRoom == "room_10" && direction == N = Just ("room_1", True)
     | startRoom == "room_10" && direction == E = Just ("room_11", True)
     | startRoom == "room_10" && direction == S = Just ("room_6", True)
-    | startRoom == "room_11" && direction == N && contains "room_12" blockades = Just ("room_12", False)
+    | startRoom == "room_11" && direction == N && elem "room_12" blockades = Just ("room_12", False)
     | startRoom == "room_11" && direction == N = Just ("room_12", True)
-    | startRoom == "room_11" && direction == E && contains "room_14" blockades = Just ("room_14W", True)
+    | startRoom == "room_11" && direction == E && elem "room_14" blockades = Just ("room_14W", True)
     | startRoom == "room_11" && direction == E = Just ("room_14", True)
-    | startRoom == "room_11" && direction == S && contains "room_13" blockades = Just ("room_13", False)
+    | startRoom == "room_11" && direction == S && elem "room_13" blockades = Just ("room_13", False)
     | startRoom == "room_11" && direction == S = Just ("room_13", True)
     | startRoom == "room_11" && direction == W = Just ("room_10", True)
     | startRoom == "room_12" && direction == S = Just ("room_11", True)
@@ -131,7 +125,7 @@ possibleMoves startRoom direction blockades
     | startRoom == "room_14" && direction == S = Just ("room_15", True)
     | startRoom == "room_14" && direction == W = Just ("room_11", True)
     | startRoom == "room_14W" && direction == W = Just ("room_11", True)
-    | startRoom == "room_15" && direction == N && contains "room_14" blockades = Just ("room_14S", True)
+    | startRoom == "room_15" && direction == N && elem "room_14" blockades = Just ("room_14S", True)
     | startRoom == "room_15" && direction == N = Just ("room_14", True)
     | startRoom == "room_15" && direction == S = Just ("room_16", True)
     | startRoom == "room_16" && direction == N = Just ("room_15", True)
