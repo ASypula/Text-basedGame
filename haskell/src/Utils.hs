@@ -57,6 +57,8 @@ describeState state = do
     describeRoom state
 
 
+
+
 takeObjectFromRoom :: String -> String -> State -> (State, String)
 takeObjectFromRoom objName roomName state =
   case Map.lookup roomName (rooms state) of
@@ -66,17 +68,49 @@ takeObjectFromRoom objName roomName state =
         [] -> (state, "Room has no objects.")
         objs ->
           if objName `elem` map objectName objs
-            then let newObjs = filter (\obj -> objectName obj /= objName) objs
+            then let newRoomsMap = removeSpecyficObjectFromRoom2 roomName objName objs (rooms state)
                      takenObj = filter (\obj -> objectName obj == objName) objs
-                     newRoom = oldRoom { objects = newObjs }
-                     newRoomsMap = Map.insert roomName newRoom (rooms state)
                      inv = maybe [] id (inventory (player state))
                      newInventory = takenObj ++ inv
                      oldPlayer = player state
                      newPlayer = oldPlayer {inventory = Just newInventory}
                      newState = state { rooms = newRoomsMap, player = newPlayer }
                  in (newState, "Object successfully added to your inventory.")
-            else (state, "Such object does not exists. Please check the spelling.")
+            else (state, "Such object does not exists or you can not reach it.")
+
+removeSpecyficObjectFromRoom2 ::  String -> String -> [Object] -> Map.Map String Room -> Map.Map String Room
+removeSpecyficObjectFromRoom2 roomName "firefly" objs oldRoomsMap =
+  let 
+    map1 = removeSpecyficObjectFromRoom "room_4" "firefly" objs oldRoomsMap
+    map2 = removeSpecyficObjectFromRoom "room_4N" "firefly" objs map1
+    map3 = removeSpecyficObjectFromRoom "room_4S" "firefly" objs map2
+  in map3
+removeSpecyficObjectFromRoom2 roomName "nightcap" objs oldRoomsMap =
+  let 
+    map1 = removeSpecyficObjectFromRoom "room_4" "nightcap" objs oldRoomsMap
+    map2 = removeSpecyficObjectFromRoom "room_4N" "nightcap" objs map1
+  in map2
+removeSpecyficObjectFromRoom2 roomName objName objs oldRoomsMap =
+  removeSpecyficObjectFromRoom roomName objName objs oldRoomsMap
+
+removeSpecyficObjectFromRoom ::  String -> String -> [Object] -> Map.Map String Room -> Map.Map String Room
+removeSpecyficObjectFromRoom roomName objName objs oldRoomsMap = 
+  case Map.lookup roomName oldRoomsMap of
+    Nothing -> oldRoomsMap
+    Just oldRoom ->
+      let
+        newRoom = removeObjectFromRoom oldRoom roomName objName objs
+        newRoomsMap = Map.insert roomName newRoom oldRoomsMap
+      in newRoomsMap
+
+
+
+removeObjectFromRoom :: Room -> String -> String -> [Object] -> Room
+removeObjectFromRoom oldRoom roomName objName objs  = 
+            let 
+              newObjs = filter (\obj -> objectName obj /= objName) objs
+              newRoom = oldRoom { objects = newObjs }
+            in newRoom
 
 getStringInventory :: Player -> [String]
 getStringInventory player =
