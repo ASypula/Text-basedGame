@@ -182,11 +182,19 @@ castOpen withObj st roomName =
     "key" ->
       case roomName of
         "room_4" -> do
-          let newBlockades = filter (/= roomName) (blockades st)
-          let newState = st { blockades = newBlockades }
-          if areStatesIdentical st newState
-            then (st, "There is nothing to be opened here")
-            else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+            let newBlockades = filter (/= "room_5") (blockades st)
+            let evenNewerBlockades = filter (/= "room_4") newBlockades
+            let newState = st { blockades = evenNewerBlockades }
+            if areStatesIdentical st newState
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+        "room_4N" -> do
+            let newBlockades = filter (/= "room_5") (blockades st)
+            let evenNewerBlockades = filter (/= "room_4") newBlockades
+            let newState = st { blockades = evenNewerBlockades }
+            if areStatesIdentical st newState
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the doors are beginning to open slowly.")
         _ -> (st, "It does not seem to work here at all...")
 
     "rusty_key" -> (st, "openning with rusty_key")
