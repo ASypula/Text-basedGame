@@ -19,9 +19,13 @@ Over the pool fly some weird glowing bugs. They look similar to fireflies.
 inventory
 > lantern
 rope
-cast grab lantern
-> Not so useful here...
-
 cast grab rope
 > With the help of the Grab Spell you pick up a nightcap over the acid pool.
+
+inventory
+> nightcap
+lantern
+rope
+cast grab rope
+> There is nothing you can grab here.
 

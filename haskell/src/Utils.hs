@@ -63,49 +63,27 @@ takeObjectFromRoom objName roomName state =
         [] -> (state, "Room has no objects.")
         objs ->
           if objName `elem` map objectName objs
-            then let newRoomsMap = removeSpecyficObjectFromRoom2 roomName objName objs (rooms state)
+            then let newRoomsMap = removeObjectFromAllRooms objName objs (rooms state)
                      takenObj = filter (\obj -> objectName obj == objName) objs
                      inv = maybe [] id (inventory (player state))
                      newInventory = takenObj ++ inv
                      oldPlayer = player state
                      newPlayer = oldPlayer {inventory = Just newInventory}
                      newState = state { rooms = newRoomsMap, player = newPlayer }
-                 in (newState, "Object successfully added to your inventory.")
+                  in (newState, "Object successfully added to your inventory.")
             else (state, "Such object does not exists or you can not reach it.")
 
-removeSpecyficObjectFromRoom2 ::  String -> String -> [Object] -> Map.Map String Room -> Map.Map String Room
-removeSpecyficObjectFromRoom2 roomName "firefly" objs oldRoomsMap =
-  let 
-    map1 = removeSpecyficObjectFromRoom "room_4" "firefly" objs oldRoomsMap
-    map2 = removeSpecyficObjectFromRoom "room_4N" "firefly" objs map1
-    map3 = removeSpecyficObjectFromRoom "room_4S" "firefly" objs map2
-  in map3
-removeSpecyficObjectFromRoom2 roomName "nightcap" objs oldRoomsMap =
-  let 
-    map1 = removeSpecyficObjectFromRoom "room_4" "nightcap" objs oldRoomsMap
-    map2 = removeSpecyficObjectFromRoom "room_4N" "nightcap" objs map1
-  in map2
-removeSpecyficObjectFromRoom2 roomName objName objs oldRoomsMap =
-  removeSpecyficObjectFromRoom roomName objName objs oldRoomsMap
+removeObjectFromAllRooms :: String -> [Object] -> Map.Map String Room -> Map.Map String Room
+removeObjectFromAllRooms objName objs oldRoomsMap =
+  Map.map (\room -> removeSpecyficObjectFromRoom room objName objs) oldRoomsMap
 
-removeSpecyficObjectFromRoom ::  String -> String -> [Object] -> Map.Map String Room -> Map.Map String Room
-removeSpecyficObjectFromRoom roomName objName objs oldRoomsMap = 
-  case Map.lookup roomName oldRoomsMap of
-    Nothing -> oldRoomsMap
-    Just oldRoom ->
-      let
-        newRoom = removeObjectFromRoom oldRoom roomName objName objs
-        newRoomsMap = Map.insert roomName newRoom oldRoomsMap
-      in newRoomsMap
-
-
-
-removeObjectFromRoom :: Room -> String -> String -> [Object] -> Room
-removeObjectFromRoom oldRoom roomName objName objs  = 
-            let 
-              newObjs = filter (\obj -> objectName obj /= objName) objs
-              newRoom = oldRoom { objects = newObjs }
-            in newRoom
+removeSpecyficObjectFromRoom :: Room -> String -> [Object] -> Room
+removeSpecyficObjectFromRoom oldRoom objName objs =
+  let
+    newObjs = filter (\obj -> objectName obj /= objName) (objects oldRoom)
+    newRoom = oldRoom { objects = newObjs }
+  in
+    newRoom
 
 getStringInventory :: Player -> [String]
 getStringInventory player =
@@ -170,14 +148,37 @@ cast st spellName spellComponent =
               then case spellName of
                 "light" -> (st, "light spell has not implemented yet")
                 "grab" -> case spellComponent of
-                  "rope" -> case room (player st) of
-                    "room_16" -> (st, "With the help of the Grab Spell you pick up a key.")
-                    "room_4S" -> (st, "With the help of the Grab Spell you pick up a nightcap over the acid pool.")
-                    _ -> (st, "There is nothing you can grab here.")
-                  _ -> (st, "Not so useful here...")
-                "open" -> (st, "open spell has not implemented yet")
-                "sleep" -> (st, "sleep spell has not implemented yet")
-                "power_word_kill" -> (st, "power_word_kill spell has not implemented yet")
+                  "rope" -> castGrab st (room (player st))
+                  _ -> (st, "Grab spell does not seem to work with chosen spell component...")
+                "open" -> (st, "open spell has not been implemented yet")
+                "sleep" -> (st, "sleep spell has not been implemented yet")
+                "power_word_kill" -> (st, "power_word_kill spell has not been implemented yet")
                 _ -> (st, "Something went wrong - the word doesn't know how to react to your spell. You should reconsider your actions...")
               else (st, "You don't have such item")
         else (st, "Such spell does not exits... You should have studied harder before your exams...")
+
+castGrab :: State -> String -> (State, String)
+castGrab st roomName =
+  case Map.lookup roomName (rooms st) of
+    Nothing -> (st, "Room not found.")
+    Just oldRoom ->
+      case objects oldRoom of
+        [] -> (st, "Room has no objects that can be grabbed.")
+        objs ->
+          case roomName of
+            "room_16" -> do let (newState, pickUpMsg) = takeObjectFromRoom "key" (room (player st)) st
+                            if areStatesIdentical st newState
+                              then (st, "There is nothing you can grab here.")
+                              else (newState, "With the help of the Grab Spell you pick up a key.")
+            "room_4S" -> do let (newState, pickUpMsg) = takeObjectFromRoom "nightcap" "room_4N" st
+                            if areStatesIdentical st newState
+                              then (st, "There is nothing you can grab here.")
+                              else (newState, "With the help of the Grab Spell you pick up a nightcap over the acid pool.")
+            _ -> (st, "There is nothing you can grab here.")
+
+areStatesIdentical :: State -> State -> Bool
+areStatesIdentical state1 state2 =
+  player state1 == player state2 &&
+  rooms state1 == rooms state2 &&
+  blockades state1 == blockades state2 &&
+  spells state1 == spells state2
