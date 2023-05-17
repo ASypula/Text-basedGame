@@ -167,6 +167,17 @@ cast st spellName spellComponent =
           Nothing -> (st, "You don't have any obejct in your inventory")
           Just inv ->
             if spellComponent `elem` map objectName inv
-              then (st, "Spell casted")
+              then case spellName of
+                "light" -> (st, "light spell has not implemented yet")
+                "grab" -> case spellComponent of
+                  "rope" -> case room (player st) of
+                    "room_16" -> (st, "With the help of the Grab Spell you pick up a key.")
+                    "room_4S" -> (st, "With the help of the Grab Spell you pick up a nightcap over the acid pool.")
+                    _ -> (st, "There is nothing you can grab here.")
+                  _ -> (st, "Not so useful here...")
+                "open" -> (st, "open spell has not implemented yet")
+                "sleep" -> (st, "sleep spell has not implemented yet")
+                "power_word_kill" -> (st, "power_word_kill spell has not implemented yet")
+                _ -> (st, "Something went wrong - the word doesn't know how to react to your spell. You should reconsider your actions...")
               else (st, "You don't have such item")
         else (st, "Such spell does not exits... You should have studied harder before your exams...")
