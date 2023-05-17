@@ -24,6 +24,7 @@ instructionsText = [
     "look                       -- look around again.",
     "take OBJECT_NAME           -- take object (into your inventory).",
     "investigate OBJECT_NAME    -- investigate object's details.",
+    "cast SPELL SPELL_COMPONENT -- to cast a spell using correct component.",
     "quit                       -- to end the game and quit.",
     ""
     ]
@@ -53,14 +54,14 @@ gameLoop st = do
         ["take", objectName'] -> do let (newState, pickUpMsg) = takeObjectFromRoom objectName' (room (player st)) st
                                     printLines[pickUpMsg, ""]
                                     gameLoop newState
-        ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\"."]
+        ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\".", ""]
                           gameLoop st
         ["inventory"] -> do printLines(getInventoryItemsDescription (player st))
                             gameLoop st
         ["investigate", objectName'] -> do let investigationMsg = investigateObject objectName' (room (player st)) st
                                            printLines[investigationMsg, ""]
                                            gameLoop st
-        ("investigate": _) -> do printLines ["Correct syntax is \"investigate OBJECT_NAME\"."]
+        ("investigate": _) -> do printLines ["Correct syntax is \"investigate OBJECT_NAME\".", ""]
                                  gameLoop st
         ["e"] -> do let (newState, moved) = move E st
                     moveOutcome newState moved
@@ -74,6 +75,11 @@ gameLoop st = do
         ["s"] -> do let (newState, moved) = move S st
                     moveOutcome newState moved
                     gameLoop newState
+        ["cast", spell, spellComponent] -> do let (newState, spellResultMsg) = cast st spell spellComponent
+                                              printLines[spellResultMsg, ""]
+                                              gameLoop newState
+        ("cast": _) -> do printLines["Correct syntax is \"cast SPELL SPELL_COMPONENT\"", ""]
+                          gameLoop st
         ["quit"] -> return ()
         _ -> do printLines ["Unknown command.", ""]
                 gameLoop st

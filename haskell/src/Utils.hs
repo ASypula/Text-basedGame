@@ -26,7 +26,6 @@ hintRoom state
     where
       hint = maybe [] hints (Map.lookup (room (player state)) (rooms state))
 
-
 investigateObject :: String -> String -> State -> String
 investigateObject objName roomName state =
   case Map.lookup roomName (rooms state) of
@@ -45,7 +44,6 @@ ifObjectIsPresentInInventory lookForObjectName state = case inventory (player st
                                               Just objects -> elem lookForObjectName (map objectName objects)
                                               Nothing -> False
 
-
 getInventoryItemsDescription :: Player -> [String]
 getInventoryItemsDescription player = do
     case inventory player of
@@ -55,9 +53,6 @@ getInventoryItemsDescription player = do
 describeState :: State -> IO()
 describeState state = do
     describeRoom state
-
-
-
 
 takeObjectFromRoom :: String -> String -> State -> (State, String)
 takeObjectFromRoom objName roomName state =
@@ -146,8 +141,6 @@ removeAddition text state =
           newState = state { rooms = newRoomsMap }
       in newState
 
-
-
 unlock :: String -> State -> (State, Bool)
 unlock rName state = 
   case elem rName blockedRooms of
@@ -159,8 +152,21 @@ unlock rName state =
       (state, False)
     where blockedRooms = blockades state
 
-
 unlockOutcome :: Bool -> IO ()
 unlockOutcome result
     | result = printLines ["Room succesfully unlocked."]
     | otherwise = printLines ["That room is already unlocked."]
+
+cast :: State -> String -> String -> (State, String)
+cast st spellName spellComponent =
+  case spells st of
+    [] -> (st, "Something has gone terribly wrong! You cannot cast any spell...")
+    sp ->
+      if spellName `elem` sp
+        then case inventory (player st) of
+          Nothing -> (st, "You don't have any obejct in your inventory")
+          Just inv ->
+            if spellComponent `elem` map objectName inv
+              then (st, "Spell casted")
+              else (st, "You don't have such item")
+        else (st, "Such spell does not exits... You should have studied harder before your exams...")

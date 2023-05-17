@@ -14,4 +14,4 @@ data Player = Player { room :: String, inventory :: Maybe [Object] }
 -- TODO: change additions to tags
 data Room = Room { roomName :: String, objects :: [Object], hints :: [String], blocked :: Bool, additions :: [String]}
 
-data State = State { player :: Player, rooms :: Map.Map String Room, blockades :: [String]}
+data State = State { player :: Player, rooms :: Map.Map String Room, blockades :: [String], spells :: [String]}
