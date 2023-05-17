@@ -195,12 +195,19 @@ castOpen withObj st roomName =
             if areStatesIdentical st newState
               then (st, "There is nothing to be opened here")
               else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+        "room_2" -> (st, "This won't do. The basic \"open\" spell can barely open doors. No way it would open a trapdoor.")
         _ -> (st, "It does not seem to work here at all...")
 
     "rusty_key" ->
       case roomName of
-        "room_2" -> (st, "This won't do. The basic \"open\" spell can barely open doors. No way it would open a trapdoor.")
+        "room_2" -> do
+            let newBlockades = filter (/= "room_0") (blockades st)
+            let newState = st { blockades = newBlockades }
+            if areStatesIdentical st newState
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the doors are beginning to open slowly.")
         _ -> (st, "It does not seem to work here at all...")
+
     _ -> (st, "The \"open\" spell does not seem to work with chosen spell component...")
 
 areStatesIdentical :: State -> State -> Bool

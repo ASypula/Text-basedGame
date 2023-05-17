@@ -37,6 +37,7 @@ hint_room12 = "[Try using light spell here]"
 hint_room16 = "[An appropriate spell or something magnetic would help with obtaining the key]"
 
 -- Rooms
+room0 = Room {roomName = "room_0", objects =  [], hints = [], blocked = False, additions = []}
 room1 = Room {roomName = "room_1", objects =  [], hints = [], blocked = False, additions = []}
 room2 = Room {roomName = "room_2", objects = [old_journal], hints = [hint_room2], blocked = False, additions = []}
 room3 = Room {roomName = "room_3", objects = [rope], hints = [hint_room3], blocked = False, additions = ["obscured"]}
@@ -58,10 +59,10 @@ room15 = Room {roomName = "room_15", objects = [burned_journal], hints = [], blo
 room16 = Room {roomName = "room_16", objects = [potion, key, jar], hints = [], blocked = False, additions = []}
 
 
-gamer = Player {room="room_2", inventory = Just [lantern, rusty_key]}
-roomsMap =  Map.fromList [("room_1", room1), ("room_2", room2), ("room_3", room3), ("room_5", room5),
+gamer = Player {room="room_2", inventory = Just [lantern, rusty_key, key]}
+roomsMap =  Map.fromList [("room_0", room0), ("room_1", room1), ("room_2", room2), ("room_3", room3), ("room_5", room5),
                         ("room_6", room6), ("room_8", room8), ("room_10", room10), ("room_11", room11),
                         ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16), 
                         ("room_4", room4),("room_4N", room4N),("room_4S", room4S),("room_14", room14),("room_14W", room14W),("room_14S", room14S)]
 -- TODO: additional rooms to roomsMap
-state = State{player = gamer, rooms=roomsMap, blockades=["room_4", "room_14", "room_12", "room_13", "room_5"], spells=["light", "grab", "open", "sleep", "power_word_kill"]}
+state = State{player = gamer, rooms=roomsMap, blockades=["room_0", "room_4", "room_14", "room_12", "room_13", "room_5"], spells=["light", "grab", "open", "sleep", "power_word_kill"]}
