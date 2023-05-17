@@ -4,6 +4,7 @@ import Types
 import RoomsSetup
 import ObjectsSetup
 import InitSetup
+-- import Data.Maybe (fromMaybe)
 import qualified Data.Map as Map
 
 -- Rooms fully done: room6, room10, room13, room15, room16
@@ -19,11 +20,11 @@ introductionText = [
 instructionsText = [
     "Available commands are:",
     "",
-    "instructions       -- to see these instructions.",
-    "look               -- look around again.",
-    "take OBJECT_NAME   -- take object (into your inventory).",
-    "investigate        -- investigate object's details.",
-    "quit               -- to end the game and quit.",
+    "instructions               -- to see these instructions.",
+    "look                       -- look around again.",
+    "take OBJECT_NAME           -- take object (into your inventory).",
+    "investigate OBJECT_NAME    -- investigate object's details.",
+    "quit                       -- to end the game and quit.",
     ""
     ]
                
@@ -38,56 +39,49 @@ readCommand = do
 
 -- note that the game loop may take the game state as
 -- an argument, eg. gameLoop :: State -> IO ()
--- gameLoop :: State -> IO ()
--- gameLoop st = do
---     cmd <- readCommand
---     case cmd of
---         ["instructions"] -> do printInstructions
---                                gameLoop st
---         ["look"] -> do describeState st
---                        gameLoop st
---         ["take", objectName'] -> do printLines(getMsgForObjectPickUp objectName' st)
---                                     let newState = takeObjectIfExists objectName' st
---                                     gameLoop newState
---         ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\"."]
---                           gameLoop st
---         ["inventory"] -> do printLines(getInventoryItemsDescription st)
---                             gameLoop st
---         ["investigate"] -> do investigateObject old_journal
---                               gameLoop st
---         ["quit"] -> return ()
---         _ -> do printLines ["Unknown command.", ""]
---                 gameLoop st
+gameLoop :: State -> IO ()
+gameLoop st = do
+    cmd <- readCommand
+    case cmd of
+        ["debug", roomName'] -> do  let (newState, result) = unlock roomName' st
+                                    unlockOutcome result
+                                    gameLoop newState
+        ["instructions"] -> do printInstructions
+                               gameLoop st
+        ["look"] -> do describeState st
+                       gameLoop st
+        ["take", objectName'] -> do let (newState, pickUpMsg) = takeObjectFromRoom objectName' (room (player st)) st
+                                    printLines[pickUpMsg, ""]
+                                    gameLoop newState
+        ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\"."]
+                          gameLoop st
+        ["inventory"] -> do printLines(getInventoryItemsDescription (player st))
+                            gameLoop st
+        ["investigate", objectName'] -> do let investigationMsg = investigateObject objectName' (room (player st)) st
+                                           printLines[investigationMsg, ""]
+                                           gameLoop st
+        ("investigate": _) -> do printLines ["Correct syntax is \"investigate OBJECT_NAME\"."]
+                                 gameLoop st
+        ["e"] -> do let (newState, moved) = move E st
+                    moveOutcome newState moved
+                    gameLoop newState
+        ["w"] -> do let (newState, moved) = move W st
+                    moveOutcome newState moved
+                    gameLoop newState
+        ["n"] -> do let (newState, moved) = move N st
+                    moveOutcome newState moved
+                    gameLoop newState
+        ["s"] -> do let (newState, moved) = move S st
+                    moveOutcome newState moved
+                    gameLoop newState
+        ["quit"] -> return ()
+        _ -> do printLines ["Unknown command.", ""]
+                gameLoop st
 
--- main = do
---     printIntroduction
---     printInstructions
---     describeState state
---     removeObjectFromRoom "lantern" "room_2" state
---     describeState state
-    -- gameLoop state
-
--- TEST for 3rd room (obscured)
 main = do
+    printIntroduction
+    printInstructions
     describeState state
-    let newState = removeAddition "obscured" state
-    describeState newState
-
--- TEST moving a player
--- main = do
---     let (newState, moved) = move E state
---     print $ room $ player $ newState
---     moveOutcome newState moved
-
--- TEST: for testing object pick up
--- main = do
---     printIntroduction
---     printInstructions
---     describeState state
---     let inventoryObjectNames = getStringInventory (player state)
---     printLines inventoryObjectNames
---     let (newState, message) = takeObjectFromRoom "old_journal" "room_2" state
---     putStrLn message
---     describeState newState
---     let inventoryObjectNames = getStringInventory (player newState)
---     printLines inventoryObjectNames
+    -- removeObjectFromRoom "lantern" "room_2" state
+    -- describeState state
+    gameLoop state

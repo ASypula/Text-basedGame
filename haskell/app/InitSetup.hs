@@ -36,25 +36,31 @@ hint_room12 = "[Try using light spell here]"
 hint_room16 = "[An appropriate spell or something magnetic would help with obtaining the key]"
 
 -- Rooms
-room1 = Room {roomName = "room_1", objects = Nothing, hints = [], blocked = False, additions = []}
-room2 = Room {roomName = "room_2", objects = Just [old_journal], hints = [hint_room2], blocked = False, additions = []}
-room3 = Room {roomName = "room_3", objects = Just [rope], hints = [hint_room3], blocked = False, additions = ["obscured"]}
---TODO: room4
-room5 = Room {roomName = "room_5", objects = Just [note], hints = [], blocked = False, additions = []}
-room6 = Room {roomName = "room_6", objects = Just [magnet], hints = [], blocked = False, additions = []}
-room8 = Room {roomName = "room_8", objects = Nothing, hints = [hint_room8], blocked = False, additions = []}
-room10 = Room {roomName = "room_10", objects = Nothing, hints = [], blocked = False, additions = []}
-room11 = Room {roomName = "room_11", objects = Just[ripped_page], hints = [], blocked = False, additions = []}
-room12 = Room {roomName = "room_12", objects = Just [wolfsbane], hints = [hint_room12], blocked = False, additions = ["obscured"]}
-room13 = Room {roomName = "room_13", objects = Just [ripped_journal], hints = [], blocked = False, additions = []}
---TODO room14
-room15 = Room {roomName = "room_15", objects = Just [burned_journal], hints = [], blocked = False, additions = []}
-room16 = Room {roomName = "room_16", objects = Just [potion, key, jar], hints = [], blocked = False, additions = []}
+room1 = Room {roomName = "room_1", objects =  [], hints = [], blocked = False, additions = []}
+room2 = Room {roomName = "room_2", objects = [old_journal], hints = [hint_room2], blocked = False, additions = []}
+room3 = Room {roomName = "room_3", objects = [rope], hints = [hint_room3], blocked = False, additions = ["obscured"]}
+room4 = Room {roomName = "room_4", objects = [nightcap, firefly], hints = [], blocked = False, additions = []}
+room4N = Room {roomName = "room_4N", objects = [nightcap, firefly], hints = [], blocked = False, additions = []}
+room4S = Room {roomName = "room_4S", objects = [firefly], hints = [], blocked = False, additions = []}
+--TODO: write function to move objects from 4N and 4S to 4 upon unlocking
+room5 = Room {roomName = "room_5", objects = [note], hints = [], blocked = False, additions = []}
+room6 = Room {roomName = "room_6", objects = [magnet], hints = [], blocked = False, additions = []}
+room8 = Room {roomName = "room_8", objects =  [], hints = [hint_room8], blocked = False, additions = []}
+room10 = Room {roomName = "room_10", objects =  [], hints = [], blocked = False, additions = []}
+room11 = Room {roomName = "room_11", objects = [ripped_page], hints = [], blocked = False, additions = []}
+room12 = Room {roomName = "room_12", objects = [wolfsbane], hints = [hint_room12], blocked = False, additions = ["obscured"]}
+room13 = Room {roomName = "room_13", objects = [ripped_journal], hints = [], blocked = False, additions = []}
+room14 = Room {roomName = "room_14", objects = [cheat_sheet, beer, book_fragment], hints = [], blocked = False, additions = []}
+room14W = Room {roomName = "room_14W", objects =  [], hints = [], blocked = False, additions = []}
+room14S = Room {roomName = "room_14S", objects =  [], hints = [], blocked = False, additions = []}
+room15 = Room {roomName = "room_15", objects = [burned_journal], hints = [], blocked = False, additions = []}
+room16 = Room {roomName = "room_16", objects = [potion, key, jar], hints = [], blocked = False, additions = []}
 
 
-gamer = Player {room="room_3", inventory = Nothing}
+gamer = Player {room="room_6", inventory = Just [lantern]}
 roomsMap =  Map.fromList [("room_1", room1), ("room_2", room2), ("room_3", room3), ("room_5", room5),
                         ("room_6", room6), ("room_8", room8), ("room_10", room10), ("room_11", room11),
-                        ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16)]
+                        ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16), 
+                        ("room_4", room4),("room_4N", room4N),("room_4S", room4S),("room_14", room14),("room_14W", room14W),("room_14S", room14S)]
 -- TODO: additional rooms to roomsMap
-state = State{player = gamer, rooms=roomsMap}
+state = State{player = gamer, rooms=roomsMap, blockades=["room_4", "room_14", "room_12", "room_13", "room_5"]}

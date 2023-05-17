@@ -1,0 +1,22 @@
+You are a wizard apprentice who failed their final exams, 
+thus General University of magic put you in a deadly dungeon.
+
+Were you to escape, Wizard Council would let you retake exams...
+Available commands are:
+
+instructions       -- to see these instructions.
+look               -- look around again.
+take OBJECT_NAME   -- take object (into your inventory).
+investigate        -- investigate object's details.
+quit               -- to end the game and quit.
+
+Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+Object successfully added to your inventory.
+Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+old_journal
