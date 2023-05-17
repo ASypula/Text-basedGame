@@ -84,7 +84,8 @@ gameLoop st = do
                             ["quit"] -> return()
                             _ -> do printLines ["Unknown command.", ""]
                                     gameLoop st
-      "beastDefeated" -> do printLines ["You did it. You made it out alive. The exams surely can't be worse than this. However there is something that might...", "The High University of Magic was not thrilled with an idea of student actually getting out of their deadly dungeon.", "The High Wizards were especially irritated about the loss of their favourite beast. You will have to settle this with the Dean of Magic himself.", "You escaped the deadly dungeon only to start much more frightening battle - writing an official letter.", ""]
+      "beastDefeated" -> printLines ["The beast looks at you in disbelief before collapsing to the ground. It doesn't move ever again. The exit is left unguarded.", "You did it. You made it out alive. The exams surely can't be worse than this. However there is something that might...", "The High University of Magic was not thrilled with an idea of student actually getting out of their deadly dungeon.", "The High Wizards were especially irritated about the loss of their favourite beast. You will have to settle this with the Dean of Magic himself.", "You escaped the deadly dungeon only to start much more frightening battle - writing an official letter.", ""]
+      "crueltyWins" -> printLines ["Darth Sidious has been watching you from his reborn empire at Byss in the Deep Core of the Galaxy.\n Seeing your infinite cruelty (you have tried to kill a sleeping dragonling) he creates an intergalactic portal and takes you to Byss.\nNow he is going to make you hist dark side puppet...\nYou are never going to break out of these chains.. so it is better for you to consider yourself dead."]
 
 main = do
     printIntroduction

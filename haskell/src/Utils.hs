@@ -236,10 +236,12 @@ castPowerWordKill spellComponent st roomName =
       case roomName of
         "room_10" -> do
             let newState = st { gameEnding = "beastDefeated" }
-            (newState, "The beast looks at you in disbelief before collapsing to the ground. It doesn't move ever again. The exit is left unguarded.")
-        "room_14S" -> (st, "The dragonling may be dangerous but it looks so helpless in a face of such spell.\nYou don't really want to kill it. Maybe there is some gentler way.")
-        "room_14W" -> (st, "The dragonling may be dangerous but it looks so helpless in a face of such spell.\nYou don't really want to kill it. Maybe there is some gentler way.")
-        "room_14" -> (st, "It's already asleep. Casting that spell would just be cruel.\n If you really wanted to kill it right now, it would be better for the world if you stay in this dungeon forever...")
+            (newState, "")
+        "room_14S" -> (st, "The dragonling may be dangerous but it looks so helpless in a face of such spell.\nYou don't really want to kill it.\n Besides, if you really wanted to kill it right now, it would be better for the world if you stay in this dungeon forever...")
+        "room_14W" -> (st, "The dragonling may be dangerous but it looks so helpless in a face of such spell.\nYou don't really want to kill it.\n Besides, if you really wanted to kill it right now, it would be better for the world if you stay in this dungeon forever...")
+        "room_14" -> do
+            let newState = st { gameEnding = "crueltyWins" }
+            (newState, "")
         _ -> (st, "It does not seem to work here at all... Besides you had better be careful with this spell.")
     _ -> (st, "The \"power_word_kill\" spell does not seem to work with chosen spell component...")
 
