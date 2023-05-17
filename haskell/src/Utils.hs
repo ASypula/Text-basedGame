@@ -149,8 +149,8 @@ cast st spellName spellComponent =
                 "light" -> (st, "light spell has not implemented yet")
                 "grab" -> case spellComponent of
                   "rope" -> castGrab st (room (player st))
-                  _ -> (st, "Grab spell does not seem to work with chosen spell component...")
-                "open" -> (st, "open spell has not been implemented yet")
+                  _ -> (st, "The \"grab\" spell does not seem to work with chosen spell component...")
+                "open" -> castOpen spellComponent st (room (player st))
                 "sleep" -> (st, "sleep spell has not been implemented yet")
                 "power_word_kill" -> (st, "power_word_kill spell has not been implemented yet")
                 _ -> (st, "Something went wrong - the word doesn't know how to react to your spell. You should reconsider your actions...")
@@ -175,6 +175,22 @@ castGrab st roomName =
                               then (st, "There is nothing you can grab here.")
                               else (newState, "With the help of the Grab Spell you pick up a nightcap over the acid pool.")
             _ -> (st, "There is nothing you can grab here.")
+
+castOpen :: String -> State -> String -> (State, String)
+castOpen withObj st roomName =
+  case withObj of
+    "key" ->
+      case roomName of
+        "room_4" -> do
+          let newBlockades = filter (/= roomName) (blockades st)
+          let newState = st { blockades = newBlockades }
+          if areStatesIdentical st newState
+            then (st, "There is nothing to be opened here")
+            else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+        _ -> (st, "It does not seem to work here at all...")
+
+    "rusty_key" -> (st, "openning with rusty_key")
+    _ -> (st, "The \"open\" spell does not seem to work with chosen spell component...")
 
 areStatesIdentical :: State -> State -> Bool
 areStatesIdentical state1 state2 =
