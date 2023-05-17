@@ -151,9 +151,9 @@ cast st spellName spellComponent =
                   "rope" -> castGrab st (room (player st))
                   _ -> (st, "The \"grab\" spell does not seem to work with chosen spell component...")
                 "open" -> castOpen spellComponent st (room (player st))
-                "sleep" -> (st, "sleep spell has not been implemented yet")
+                "sleep" -> castSleep spellComponent st (room (player st))
                 "power_word_kill" -> (st, "power_word_kill spell has not been implemented yet")
-                _ -> (st, "Something went wrong - the word doesn't know how to react to your spell. You should reconsider your actions...")
+                _ -> (st, "Something went wrong - the world doesn't know how to react to your spell. You should reconsider your actions...")
               else (st, "You don't have such item")
         else (st, "Such spell does not exits... You should have studied harder before your exams...")
 
@@ -197,7 +197,6 @@ castOpen withObj st roomName =
               else (newState, "You hear a click sound and the doors are beginning to open slowly.")
         "room_2" -> (st, "This won't do. The basic \"open\" spell can barely open doors. No way it would open a trapdoor.")
         _ -> (st, "It does not seem to work here at all...")
-
     "rusty_key" ->
       case roomName of
         "room_2" -> do
@@ -207,8 +206,27 @@ castOpen withObj st roomName =
               then (st, "There is nothing to be opened here")
               else (newState, "You hear a click sound and the doors are beginning to open slowly.")
         _ -> (st, "It does not seem to work here at all...")
-
     _ -> (st, "The \"open\" spell does not seem to work with chosen spell component...")
+
+castSleep :: String -> State -> String -> (State, String)
+castSleep spellComponent st roomName =
+  case spellComponent of
+    "nightcap" ->
+      case roomName of
+        "room_14S" -> do
+            let newBlockades = filter (/= "room_14") (blockades st)
+            let newState = st { blockades = newBlockades }
+            if areStatesIdentical st newState
+              then (st, "There is noone else that you could put to sleep")
+              else (newState, "You put the dragonling to magical sleep. Now it looks more cute than threatening.")
+        "room_14W" -> do
+            let newBlockades = filter (/= "room_14") (blockades st)
+            let newState = st { blockades = newBlockades }
+            if areStatesIdentical st newState
+              then (st, "There is noone else that you could put to sleep")
+              else (newState, "You put the dragonling to magical sleep. Now it looks more cute than threatening.")
+        _ -> (st, "It does not seem to work here at all...")
+    _ -> (st, "The \"sleep\" spell does not seem to work with chosen spell component...")
 
 areStatesIdentical :: State -> State -> Bool
 areStatesIdentical state1 state2 =
