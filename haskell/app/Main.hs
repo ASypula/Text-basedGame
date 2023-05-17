@@ -42,7 +42,6 @@ readCommand = do
 -- an argument, eg. gameLoop :: State -> IO ()
 gameLoop :: State -> IO ()
 gameLoop st = do
-    printLines (blockades st)
     cmd <- readCommand
     case cmd of
         ["debug", roomName'] -> do  let (newState, result) = unlock roomName' st

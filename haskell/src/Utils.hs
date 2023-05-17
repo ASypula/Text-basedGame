@@ -197,7 +197,10 @@ castOpen withObj st roomName =
               else (newState, "You hear a click sound and the doors are beginning to open slowly.")
         _ -> (st, "It does not seem to work here at all...")
 
-    "rusty_key" -> (st, "openning with rusty_key")
+    "rusty_key" ->
+      case roomName of
+        "room_2" -> (st, "This won't do. The basic \"open\" spell can barely open doors. No way it would open a trapdoor.")
+        _ -> (st, "It does not seem to work here at all...")
     _ -> (st, "The \"open\" spell does not seem to work with chosen spell component...")
 
 areStatesIdentical :: State -> State -> Bool

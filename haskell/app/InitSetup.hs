@@ -13,6 +13,7 @@ firefly = Object{objectName="firefly"}
 burned_journal = Object{objectName="burned_journal"}
 jar = Object{objectName="jar"}
 key = Object{objectName="key"}
+rusty_key = Object{objectName="rusty_key"}
 cheat_sheet = Object{objectName="cheat_sheet"}
 magnet = Object{objectName="magnet"}
 rope = Object{objectName="rope"}
@@ -57,7 +58,7 @@ room15 = Room {roomName = "room_15", objects = [burned_journal], hints = [], blo
 room16 = Room {roomName = "room_16", objects = [potion, key, jar], hints = [], blocked = False, additions = []}
 
 
-gamer = Player {room="room_4N", inventory = Just [lantern, key]}
+gamer = Player {room="room_2", inventory = Just [lantern, rusty_key]}
 roomsMap =  Map.fromList [("room_1", room1), ("room_2", room2), ("room_3", room3), ("room_5", room5),
                         ("room_6", room6), ("room_8", room8), ("room_10", room10), ("room_11", room11),
                         ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16), 

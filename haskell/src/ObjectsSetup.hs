@@ -19,6 +19,8 @@ objectDescription (obj: _) =
              ["Jar with a firefly trapped in it."]
      "key" ->
              ["Small iron key fit more for pendants than doors or chests. (hint: spell component)"]
+     "rusty_key" ->
+             ["Small iron key fit more for pendants than doors or chests. It should be shiny but you have bathed it in acid so..."]
      "cheat_sheet" ->
                      ["light spell: pros: easy, efficient, stays for a long time; cons: requires life component",
                      "grab spell: pros: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them",
