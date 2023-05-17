@@ -152,7 +152,7 @@ cast st spellName spellComponent =
                   _ -> (st, "The \"grab\" spell does not seem to work with chosen spell component...")
                 "open" -> castOpen spellComponent st (room (player st))
                 "sleep" -> castSleep spellComponent st (room (player st))
-                "power_word_kill" -> (st, "power_word_kill spell has not been implemented yet")
+                "power_word_kill" -> castPowerWordKill spellComponent st (room (player st))
                 _ -> (st, "Something went wrong - the world doesn't know how to react to your spell. You should reconsider your actions...")
               else (st, "You don't have such item")
         else (st, "Such spell does not exits... You should have studied harder before your exams...")
@@ -177,8 +177,8 @@ castGrab st roomName =
             _ -> (st, "There is nothing you can grab here.")
 
 castOpen :: String -> State -> String -> (State, String)
-castOpen withObj st roomName =
-  case withObj of
+castOpen spellComponent st roomName =
+  case spellComponent of
     "key" ->
       case roomName of
         "room_4" -> do
@@ -225,8 +225,23 @@ castSleep spellComponent st roomName =
             if areStatesIdentical st newState
               then (st, "There is noone else that you could put to sleep")
               else (newState, "You put the dragonling to magical sleep. Now it looks more cute than threatening.")
+        "room_14" -> (st, "The dragonling is already asleep. You had better staty quiet...")
         _ -> (st, "It does not seem to work here at all...")
     _ -> (st, "The \"sleep\" spell does not seem to work with chosen spell component...")
+
+castPowerWordKill :: String -> State -> String -> (State, String)
+castPowerWordKill spellComponent st roomName =
+  case spellComponent of
+    "wolfsbane" ->
+      case roomName of
+        "room_10" -> do
+            let newState = st { gameEnding = "beastDefeated" }
+            (newState, "The beast looks at you in disbelief before collapsing to the ground. It doesn't move ever again. The exit is left unguarded.")
+        "room_14S" -> (st, "The dragonling may be dangerous but it looks so helpless in a face of such spell.\nYou don't really want to kill it. Maybe there is some gentler way.")
+        "room_14W" -> (st, "The dragonling may be dangerous but it looks so helpless in a face of such spell.\nYou don't really want to kill it. Maybe there is some gentler way.")
+        "room_14" -> (st, "It's already asleep. Casting that spell would just be cruel.\n If you really wanted to kill it right now, it would be better for the world if you stay in this dungeon forever...")
+        _ -> (st, "It does not seem to work here at all... Besides you had better be careful with this spell.")
+    _ -> (st, "The \"power_word_kill\" spell does not seem to work with chosen spell component...")
 
 areStatesIdentical :: State -> State -> Bool
 areStatesIdentical state1 state2 =
