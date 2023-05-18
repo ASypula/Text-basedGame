@@ -59,7 +59,7 @@ room15 = Room {roomName = "room_15", objects = [burned_journal], hints = [], blo
 room16 = Room {roomName = "room_16", objects = [potion, key, jar], hints = [], blocked = False, additions = []}
 
 
-gamer = Player {room="room_3", inventory = Just [lantern, firefly]}
+gamer = Player {room="room_2", inventory = Just [lantern, firefly]}
 roomsMap =  Map.fromList [("room_0", room0), ("room_1", room1), ("room_2", room2), ("room_3", room3), ("room_5", room5),
                         ("room_6", room6), ("room_8", room8), ("room_10", room10), ("room_11", room11),
                         ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16), 

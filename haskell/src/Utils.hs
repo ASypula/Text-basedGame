@@ -62,16 +62,19 @@ takeObjectFromRoom objName roomName state =
       case objects oldRoom of
         [] -> (state, "Room has no objects.")
         objs ->
-          if objName `elem` map objectName objs
-            then let newRoomsMap = removeObjectFromAllRooms objName objs (rooms state)
-                     takenObj = filter (\obj -> objectName obj == objName) objs
-                     inv = maybe [] id (inventory (player state))
-                     newInventory = takenObj ++ inv
-                     oldPlayer = player state
-                     newPlayer = oldPlayer {inventory = Just newInventory}
-                     newState = state { rooms = newRoomsMap, player = newPlayer }
-                  in (newState, "Object successfully added to your inventory.")
-            else (state, "Such object does not exists or you can not reach it.")
+          if "obscured" `elem` additions oldRoom
+            then (state, "You can't pick up an object you do not see. Consider finding a way to bring some light in here.")
+            else
+              if objName `elem` map objectName objs
+                then let newRoomsMap = removeObjectFromAllRooms objName objs (rooms state)
+                         takenObj = filter (\obj -> objectName obj == objName) objs
+                         inv = maybe [] id (inventory (player state))
+                         newInventory = takenObj ++ inv
+                         oldPlayer = player state
+                         newPlayer = oldPlayer {inventory = Just newInventory}
+                         newState = state { rooms = newRoomsMap, player = newPlayer }
+                      in (newState, "Object successfully added to your inventory.")
+                else (state, "Such object does not exists or you can not reach it.")
 
 removeObjectFromAllRooms :: String -> [Object] -> Map.Map String Room -> Map.Map String Room
 removeObjectFromAllRooms objName objs oldRoomsMap =
