@@ -146,7 +146,7 @@ cast st spellName spellComponent =
           Just inv ->
             if spellComponent `elem` map objectName inv
               then case spellName of
-                "light" -> (st, "light spell has not implemented yet")
+                "light" -> castLight spellComponent st (room (player st))
                 "grab" -> case spellComponent of
                   "rope" -> castGrab st (room (player st))
                   _ -> (st, "The \"grab\" spell does not seem to work with chosen spell component...")
@@ -156,6 +156,23 @@ cast st spellName spellComponent =
                 _ -> (st, "Something went wrong - the world doesn't know how to react to your spell. You should reconsider your actions...")
               else (st, "You don't have such item")
         else (st, "Such spell does not exits... You should have studied harder before your exams...")
+
+castLight :: String -> State -> String -> (State, String)
+castLight spellComponent st roomName =
+  case spellComponent of
+    "firefly" ->
+      case Map.lookup roomName (rooms st) of
+        Nothing -> (st, "Room not found.")
+        Just oldRoom ->
+          if "obscured" `elem` additions oldRoom
+            then let newAdditions = filter (/= "obscured") (additions oldRoom)
+                     newRoom = oldRoom { additions = newAdditions }
+                     newRoomsMap = Map.delete roomName (rooms st)
+                     updatedRoomsMap = Map.insert roomName newRoom newRoomsMap
+                     newState = st { rooms = updatedRoomsMap }
+                 in (newState, "The room has been instantaneously illuminated!")
+            else (st, "The room has illuminated instantaneously to the point that you can't see anything! You decide to turn off your magical light and proceed on your journey.")
+    _ -> (st, "It does not seem to work here at all...")
 
 castGrab :: State -> String -> (State, String)
 castGrab st roomName =
