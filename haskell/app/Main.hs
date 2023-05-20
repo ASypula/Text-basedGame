@@ -55,7 +55,7 @@ gameLoop st = do
                                                    gameLoop st
                             ["look"] -> do describeState st
                                            gameLoop st
-                            ["take", objectName'] -> do let (newState, pickUpMsg) = takeObjectFromRoom objectName' (room (player st)) st
+                            ["take", objectName'] -> do let (newState, pickUpMsg) = takeObjectFromRoomIfPossible objectName' (room (player st)) st
                                                         printLines[pickUpMsg, ""]
                                                         gameLoop newState
                             ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\".", ""]

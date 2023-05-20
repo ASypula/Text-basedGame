@@ -54,6 +54,26 @@ describeState :: State -> IO()
 describeState state = do
     describeRoom state
 
+takeObjectFromRoomIfPossible :: String -> String -> State -> (State, String)
+takeObjectFromRoomIfPossible objName roomName state =
+  case objName of
+    "key" -> (state, "You can not reach it.")
+    "nightcap" -> 
+      case roomName of
+        "room_4S" -> (state, "You can not reach it.")
+        _ -> takeObjectFromRoom objName roomName state
+    "firefly" -> 
+      case Map.lookup roomName (rooms state) of
+        Nothing -> (state, "Room not found.")
+        Just oldRoom ->
+          case objects oldRoom of
+            [] -> (state, "Room has no objects.")
+            objs ->
+              if "firefly" `elem` map objectName objs
+                then (state, "Fireflies tend to be hard to catch with bare hands. Try to find something to catch it in.") 
+                else (state, "You can not reach it.") 
+    _ -> takeObjectFromRoom objName roomName state
+
 takeObjectFromRoom :: String -> String -> State -> (State, String)
 takeObjectFromRoom objName roomName state =
   case Map.lookup roomName (rooms state) of
@@ -74,7 +94,7 @@ takeObjectFromRoom objName roomName state =
                          newPlayer = oldPlayer {inventory = Just newInventory}
                          newState = state { rooms = newRoomsMap, player = newPlayer }
                       in (newState, "Object successfully added to your inventory.")
-                else (state, "Such object does not exists or you can not reach it.")
+                else (state, "Such object does not exists.")
 
 removeObjectFromAllRooms :: String -> [Object] -> Map.Map String Room -> Map.Map String Room
 removeObjectFromAllRooms objName objs oldRoomsMap =
@@ -274,3 +294,15 @@ areStatesIdentical state1 state2 =
   rooms state1 == rooms state2 &&
   blockades state1 == blockades state2 &&
   spells state1 == spells state2
+
+
+-- useObject :: State -> String -> String -> (State, String)
+-- useObject :: st objName useCaseName =
+--   if objName `elem` map objectName inv 
+--     then
+--       case objName of
+--         ""
+--     else
+--       (st, "You don't have such object in your inventory")
+
+

@@ -143,8 +143,9 @@ additionalDescription room state =
             "room_4S" ->
                 case twinRoom of
                     Just tr ->
-                        let specObjs =  objects tr
-                        in allObjectsRoomDescription room specObjs 
+                        -- let specObjs =  objects tr
+                        -- in allObjectsRoomDescription room specObjs 
+                        allObjectsRoomDescription room (filter (\obj -> objectName obj == "nightcap") (objects tr)) 
                 where 
                     twinRoom = (Map.lookup "room_4N" (rooms state))
             _ ->
