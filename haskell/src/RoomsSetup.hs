@@ -143,8 +143,6 @@ additionalDescription room state =
             "room_4S" ->
                 case twinRoom of
                     Just tr ->
-                        -- let specObjs =  objects tr
-                        -- in allObjectsRoomDescription room specObjs 
                         allObjectsRoomDescription room (filter (\obj -> objectName obj == "nightcap") (objects tr)) 
                 where 
                     twinRoom = (Map.lookup "room_4N" (rooms state))
@@ -161,6 +159,7 @@ allObjectsRoomDescription room objs =
 
 roomObjectDescription :: Room -> Object -> [String]
 roomObjectDescription room object
+    | rName == "room_1" && objName == "badge" = ["The only slightly amusing thing about it is a big, metal, old-fashioned school staff badge attached to its fur."]
     | rName == "room_2" && objName == "old_journal" = ["You see a journal near the skeleton in wizard robes."]
     | rName == "room_3" && objName == "rope" && "obscured" `elem` additionsList = ["It's too dark to see anything."]
     | rName == "room_3" && objName == "rope" = ["You were right! It''s a bunch of material, a rope."]
@@ -178,7 +177,7 @@ roomObjectDescription room object
     | rName == "room_14" && objName == "cheat_sheet" = ["There is a cheat_sheet here."]
     | rName == "room_14" && objName == "beer" = ["Magnificent! There is a bottle of beer here."]
     | rName == "room_15" && objName == "burned_journal" = ["Beside it, there is a partially burned journal."]
-    | rName == "room_16" && objName == "potion" = ["Only one of the bottles appears to have something in it."]
+    | rName == "room_16" && objName == "potion" = ["Only one of the bottles appears to have something in it. It might be a potion worth taking."]
     | rName == "room_16" && objName == "key" = ["As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.", "Some sort of jewellery? Or maybe a key?"]
     | otherwise = [""]
     where

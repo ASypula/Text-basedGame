@@ -23,6 +23,7 @@ instructionsText = [
     "instructions               -- to see these instructions.",
     "look                       -- look around again.",
     "take OBJECT_NAME           -- take object (into your inventory).",
+    "use OBJECT_NAME on CONTEXT -- use object on diffrent object or context",
     "investigate OBJECT_NAME    -- investigate object's details.",
     "cast SPELL SPELL_COMPONENT -- to cast a spell using correct component.",
     "quit                       -- to end the game and quit.",
@@ -60,6 +61,10 @@ gameLoop st = do
                                                         gameLoop newState
                             ("take": _) -> do printLines ["Correct syntax is \"take OBJECT_NAME\".", ""]
                                               gameLoop st
+                            ["use", objectName', "on", context'] -> do
+                                let (newState, msg) = useObject st objectName' context'
+                                printLines[msg, ""]
+                                gameLoop newState
                             ["inventory"] -> do printLines(getInventoryItemsDescription (player st))
                                                 gameLoop st
                             ["investigate", objectName'] -> do let investigationMsg = investigateObject objectName' (room (player st)) st

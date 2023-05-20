@@ -38,7 +38,7 @@ hint_room16 = "[An appropriate spell or something magnetic would help with obtai
 
 -- Rooms
 room0 = Room {roomName = "room_0", objects =  [], hints = [], blocked = False, additions = []}
-room1 = Room {roomName = "room_1", objects =  [], hints = [], blocked = False, additions = []}
+room1 = Room {roomName = "room_1", objects =  [badge], hints = [], blocked = False, additions = []}
 room2 = Room {roomName = "room_2", objects = [old_journal], hints = [hint_room2], blocked = False, additions = []}
 room3 = Room {roomName = "room_3", objects = [rope], hints = [hint_room3], blocked = False, additions = ["obscured"]}
 room4 = Room {roomName = "room_4", objects = [nightcap, firefly], hints = [], blocked = False, additions = []}
@@ -59,7 +59,7 @@ room15 = Room {roomName = "room_15", objects = [burned_journal], hints = [], blo
 room16 = Room {roomName = "room_16", objects = [potion, key, jar], hints = [], blocked = False, additions = []}
 
 
-gamer = Player {room="room_2", inventory = Just [lantern]}
+gamer = Player {room="room_2", inventory = [lantern, magnet]}
 roomsMap =  Map.fromList [("room_0", room0), ("room_1", room1), ("room_2", room2), ("room_3", room3), ("room_5", room5),
                         ("room_6", room6), ("room_8", room8), ("room_10", room10), ("room_11", room11),
                         ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16), 
