@@ -305,6 +305,7 @@ useObject st objName useCaseName =
         "magnet" -> useMagnet st useCaseName
         "potion" -> usePotion st useCaseName
         "key" -> useKey st useCaseName
+        "jar" -> useJar st useCaseName
         _ -> (st, "This won't help you.")
     else
       (st, "You don't have such object in your inventory")
@@ -318,9 +319,10 @@ useMagnet st useCaseName =
         if elem useCaseName useCases then
             let (newState, m) = takeObjectFromRoom "key" "room_16" st
             in
-              if areStatesIdentical st newState 
-                then (newState, "You managed to pick up a key")
-                else (st, "There is nothing more here to use magnet on.")
+              case m of 
+                "Object successfully added to your inventory." ->
+                  (newState, "You managed to pick up a key")
+                _-> (st, "There is nothing more here to use magnet on.")
           else
             (st, "This won't work.")
         where useCases = ["floor", "key", "metal"]
@@ -390,4 +392,18 @@ useKey st useCaseName =
     where useCases = ["acid", "acid_pool", "pool", "acid pool"]
 
 
+useJar :: State -> String -> (State, String)
+useJar st useCaseName =
+  if elem (room (player st)) ["room_4", "room_4S", "room_4N"]
+    then
+      if elem useCaseName useCases then
+          let (newState, m) = takeObjectFromRoom "firefly" "room_4" st
+          in
+              case m of 
+                "Object successfully added to your inventory." ->
+                  (newState, "You managed to trap firefly in a jar")
+                _ -> (st, "There are no more fireflies within your reach.")
+        else (st, "This won't work.")
+    else (st, "Not helpful here.")
+    where useCases = ["firefly", "bug", "bugs", "fireflies"]
 

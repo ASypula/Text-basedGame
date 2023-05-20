@@ -16,7 +16,7 @@ objectDescription (obj: _) =
      "burned_journal" ->
                         ["[illegible] is giving me a hard time. I know the [illegible] spell would be a save way to deal with it, however casting 'grab' on it's tail would be funnier. Besides I don't have nightcap for [illegible] spell"]
      "jar" ->
-             ["Jar with a firefly trapped in it."]
+             ["Old jar with a lid. Could be used for storing something small."]
      "key" ->
              ["Small iron key fit more for pendants than doors or chests. (hint: spell component)"]
      "rusty_key" ->
