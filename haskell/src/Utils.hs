@@ -235,13 +235,16 @@ castSleep spellComponent st roomName =
       case roomName of
         "room_14S" -> do
             let newBlockades = filter (/= "room_14") (blockades st)
-            let newState = st { blockades = newBlockades }
+            let newPlayer = (player st) { room = "room_14" }
+            let newState = st { blockades = newBlockades, player = newPlayer }
             if areStatesIdentical st newState
               then (st, "There is noone else that you could put to sleep")
               else (newState, "You put the dragonling to magical sleep. Now it looks more cute than threatening.")
         "room_14W" -> do
             let newBlockades = filter (/= "room_14") (blockades st)
             let newState = st { blockades = newBlockades }
+            let newPlayer = (player st) { room = "room_14" }
+            let newState = st { blockades = newBlockades, player = newPlayer }
             if areStatesIdentical st newState
               then (st, "There is noone else that you could put to sleep")
               else (newState, "You put the dragonling to magical sleep. Now it looks more cute than threatening.")
