@@ -225,20 +225,21 @@ castOpen spellComponent st roomName =
     "key" ->
       case roomName of
         "room_4" -> do
-            let newBlockades = filter (/= "room_5") (blockades st)
-            let evenNewerBlockades = filter (/= "room_4") newBlockades
-            let newState = st { blockades = evenNewerBlockades }
-            if areStatesIdentical st newState
+            let (newState, wasOpened) = unlock "room_5" st
+            if not wasOpened
               then (st, "There is nothing to be opened here")
-              else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+              else (newState, "You hear a click sound and the western door begin to open slowly.")
         "room_4N" -> do
-            let newBlockades = filter (/= "room_5") (blockades st)
-            let evenNewerBlockades = filter (/= "room_4") newBlockades
-            let newState = st { blockades = evenNewerBlockades }
-            if areStatesIdentical st newState
+            let (newState, wasOpened) = unlock "room_5" st
+            if not wasOpened
               then (st, "There is nothing to be opened here")
-              else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+              else (newState, "You hear a click sound and the western door begin to open slowly.")
         "room_2" -> (st, "This won't do. The basic \"open\" spell can barely open doors. No way it would open a trapdoor.")
+        "room_11" -> do 
+            let (newState, wasOpened) = unlock "room_13" st
+            if not wasOpened
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the sothern door begin to slowly open. Nothen door are to well guarded for a simple open spell.")
         _ -> (st, "It does not seem to work here at all...")
     "rusty_key" ->
       case roomName of
@@ -247,6 +248,22 @@ castOpen spellComponent st roomName =
             if areStatesIdentical st newState
               then (st, "There is nothing to be opened here")
               else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+        "room_4" -> do
+            let (newState, wasOpened) = unlock "room_5" st
+            if not wasOpened
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the western door begin to open slowly.")
+        "room_4N" -> do
+            let (newState, wasOpened) = unlock "room_5" st
+            if not wasOpened
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the western door begin to open slowly.")
+        "room_11" -> do 
+            let (newState, wasOpened) = unlock "room_13" st
+            let (newerState, wasOpened2) = unlock "room_12" newState
+            if  wasOpened || wasOpened2
+              then (newerState, "You hear a click sound and doors begin to slowly open.")
+              else (st, "There is nothing to be opened here")
         _ -> (st, "It does not seem to work here at all...")
     _ -> (st, "The \"open\" spell does not seem to work with chosen spell component...")
 
@@ -271,8 +288,21 @@ castSleep spellComponent st roomName =
               then (st, "There is noone else that you could put to sleep")
               else (newState, "You put the dragonling to magical sleep. Now it looks more cute than threatening.")
         "room_14" -> (st, "The dragonling is already asleep. You had better staty quiet...")
+        "room_1" -> 
+            if elem "sleepResistant" (listAdditions "room_1" st) then 
+                (st, "The beast is somehow immune to this spell!")
+              else let
+                newState = st {gameEnding="a_mimir"}
+                in (newState, "")
         _ -> (st, "It does not seem to work here at all...")
     _ -> (st, "The \"sleep\" spell does not seem to work with chosen spell component...")
+
+listAdditions :: String -> State -> [String]
+listAdditions roomName st =
+  case Map.lookup roomName (rooms st) of
+    Just r -> additions r
+    Nothing -> []
+
 
 castPowerWordKill :: String -> State -> String -> (State, String)
 castPowerWordKill spellComponent st roomName =
@@ -307,6 +337,7 @@ useObject st objName useCaseName =
         "key" -> useKey st useCaseName
         "jar" -> useJar st useCaseName
         "beer" -> useBeer st useCaseName
+        "crystal" -> useCrystal st useCaseName
         _ -> (st, "This won't help you.")
     else
       (st, "You don't have such object in your inventory")
@@ -331,7 +362,13 @@ useMagnet st useCaseName =
         if elem useCaseName useCases then 
             let 
               (newState, m) = takeObjectFromRoom "badge" "room_1" st
-            in (newState, "Badge springs to your hand across the room. The beast gives you a puzzled look.")
+            in 
+              case m of 
+                "Object successfully added to your inventory." ->
+                  let
+                    newState2 = removeAdditionAlt "room_1" "sleepResistant" newState
+                  in (newState2, "Badge springs to your hand across the room. The beast gives you a puzzled look.")
+                _-> (st, "There is nothing to more here to use magnet on")
           else
             (st, "This won't work.")
         where useCases = ["badge", "monster", "beast", "manticore"]
@@ -424,3 +461,20 @@ useBeer st useCaseName =
         in (state3, "You give beer to undead student. It wasn't an easy decision.")
       else (st, "This won't do.")
     _-> (st, "Maybe it's better to save it for worse times.")
+
+
+useCrystal ::State -> String -> (State,String)
+useCrystal st useCaseName =
+  if room (player st) == "room_5" then
+    if elem useCaseName ["machinery", "panel"] then
+      let
+          player' = player st
+          inv = inventory player'
+          inv2 = filter (\obj -> objectName obj /= "crystal") inv
+          newPlayer = player' {inventory=inv}
+          state2 = removeAdditionAlt "room_5" "inactive" st
+          state3 =state2 {player=newPlayer} 
+          (state4, _) = unlock "room_4" state3 
+      in (state4, "You put crystal in it's place and hear loud popping noise from nearby room.")
+      else (st, "This won't do.")
+    else (st, "This is not helpful here.")

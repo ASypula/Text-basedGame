@@ -36,7 +36,7 @@ objectDescription (obj: _) =
      "nightcap" ->
                   ["It doesn't look too fashionable, but kind of comfy. (hint: spell component)"]
      "note" ->
-              ["The code is the year of the Worm Spell disaster.", "You'd better provide the code in the form password_xxxx... Wrong code might have its own consequences."]
+              ["Purple crystal keeps popping out when magical energy spikes. Should it do that again, force it in place with some magic tape."]
      "book_fragment" ->
                        ["There is a more powerful variant of 'open' spell that uses rusty key as a component, which is proven to...",
                        "The words 'more', 'powerful' and 'rusty' are underlined and next to them there is a handwritten note 'Dumb as hell'."]
@@ -53,6 +53,8 @@ objectDescription (obj: _) =
                    ["A solid bunch of wolfsbane. Good that you aren't a werewolf."]
      "badge" ->
                ["It has 'School staff member' written on it. It also emits some kind of protection aura."]
+     "crystal" ->
+                ["Purple crystal packed with magic. There is some sticky tape attached to it."]
      _ ->
          ["Sorry, it's some unknown object. We don't know what to say about it..."]
 
