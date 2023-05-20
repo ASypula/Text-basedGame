@@ -47,7 +47,7 @@ room4S = Room {roomName = "room_4S", objects = [firefly], hints = [], blocked = 
 --TODO: write function to move objects from 4N and 4S to 4 upon unlocking
 room5 = Room {roomName = "room_5", objects = [note], hints = [], blocked = False, additions = []}
 room6 = Room {roomName = "room_6", objects = [magnet], hints = [], blocked = False, additions = []}
-room8 = Room {roomName = "room_8", objects =  [], hints = [hint_room8], blocked = False, additions = []}
+room8 = Room {roomName = "room_8", objects =  [], hints = [hint_room8], blocked = False, additions = ["noBeer"]}
 room10 = Room {roomName = "room_10", objects =  [], hints = [], blocked = False, additions = []}
 room11 = Room {roomName = "room_11", objects = [ripped_page], hints = [], blocked = False, additions = []}
 room12 = Room {roomName = "room_12", objects = [wolfsbane], hints = [hint_room12], blocked = False, additions = ["obscured"]}
@@ -59,7 +59,7 @@ room15 = Room {roomName = "room_15", objects = [burned_journal], hints = [], blo
 room16 = Room {roomName = "room_16", objects = [potion, key, jar], hints = [], blocked = False, additions = []}
 
 
-gamer = Player {room="room_2", inventory = [lantern, magnet]}
+gamer = Player {room="room_8", inventory = [lantern, magnet]}
 roomsMap =  Map.fromList [("room_0", room0), ("room_1", room1), ("room_2", room2), ("room_3", room3), ("room_5", room5),
                         ("room_6", room6), ("room_8", room8), ("room_10", room10), ("room_11", room11),
                         ("room_12", room12), ("room_13", room13), ("room_15", room15), ("room_16", room16), 

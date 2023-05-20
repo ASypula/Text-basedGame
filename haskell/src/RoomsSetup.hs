@@ -43,10 +43,18 @@ roomDescription (Just room)
     | name == "room_6" = [
         "Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.",
         "The corridor leads north. There is also an opening on the east side."]
-    | name == "room_8" = [
-        "The hidden room is filled with books and oracle orbs. It is illuminated by mistical blue light.",
+    | name == "room_8" &&  not (elem "noBeer" additionsList) = [
+        "The room is filled with books and oracle orbs. It is illuminated by mistical blue light.",
         "In the centre of the room stands a skeleton wearing very old tattered hat with \"Maggus\" on it.",
-        "Suddenly the skeleton moves and gestures you to come closer."]
+        "\"Magnificent! Beer! Anyway the spell is power_word_kill and the component is wolfsbane. I think the name is self explainatory."]
+    | name == "room_8"  = [
+        "The room is filled with books and oracle orbs. It is illuminated by mistical blue light.",
+        "In the centre of the room stands a skeleton wearing very old tattered hat with \"Maggus\" on it.",
+        "Suddenly the skeleton moves and gestures you to come closer.",
+        "\"Oh don't be afraid,\" he suddenly says. \"I was once a student like you, but now I am bonded with this cursed place. I can help you",
+        "Let's make a deal.\" He claps his hands with the rattling noise. \"You give me beer and I teach you a very powerful spell.\"",
+        "I haven't had beer in a while..."
+        ]
     | name == "room_10" = [
         "There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.",
         "There is also a long corridor going east and another corridor going south."]

@@ -306,6 +306,7 @@ useObject st objName useCaseName =
         "potion" -> usePotion st useCaseName
         "key" -> useKey st useCaseName
         "jar" -> useJar st useCaseName
+        "beer" -> useBeer st useCaseName
         _ -> (st, "This won't help you.")
     else
       (st, "You don't have such object in your inventory")
@@ -407,3 +408,19 @@ useJar st useCaseName =
     else (st, "Not helpful here.")
     where useCases = ["firefly", "bug", "bugs", "fireflies"]
 
+
+useBeer :: State -> String -> (State, String)
+useBeer st useCaseName =
+  case room (player st) of
+    "room_8" ->
+      if elem useCaseName ["skeleton", "student", "maggus", "undead"] then 
+        let
+          player' = player st
+          inv = inventory player'
+          inv2 = filter (\obj -> objectName obj /= "beer") inv
+          newPlayer = player' {inventory=inv}
+          state2 = removeAdditionAlt "room_8" "noBeer" st
+          state3 =state2 {player=newPlayer} 
+        in (state3, "You give beer to undead student. It wasn't an easy decision.")
+      else (st, "This won't do.")
+    _-> (st, "Maybe it's better to save it for worse times.")
