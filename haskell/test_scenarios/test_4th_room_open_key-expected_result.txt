@@ -1,0 +1,26 @@
+You are a wizard apprentice who failed their final exams, 
+thus General University of magic put you in a deadly dungeon.
+
+Were you to escape, Wizard Council would let you retake exams...
+Available commands are:
+
+instructions               -- to see these instructions.
+look                       -- look around again.
+take OBJECT_NAME           -- take object (into your inventory).
+investigate OBJECT_NAME    -- investigate object's details.
+cast SPELL SPELL_COMPONENT -- to cast a spell using correct component.
+quit                       -- to end the game and quit.
+
+At the center of the large room there is a magical bridge, covering an acid pool. Congrats, this obstacle is not a problem any more.
+On the north side of the late acid pool there are passages north and west. On the south side there is a passage south.
+On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+Over the pool fly some weird glowing bugs. They look similar to fireflies.
+inventory
+> lantern
+key
+cast open key
+> You hear a click sound and the doors are beginning to open slowly.
+
+cast open key
+> There is nothing to be opened here
+

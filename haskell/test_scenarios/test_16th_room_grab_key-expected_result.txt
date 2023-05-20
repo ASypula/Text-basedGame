@@ -1,0 +1,33 @@
+You are a wizard apprentice who failed their final exams, 
+thus General University of magic put you in a deadly dungeon.
+
+Were you to escape, Wizard Council would let you retake exams...
+Available commands are:
+
+instructions               -- to see these instructions.
+look                       -- look around again.
+take OBJECT_NAME           -- take object (into your inventory).
+investigate OBJECT_NAME    -- investigate object's details.
+cast SPELL SPELL_COMPONENT -- to cast a spell using correct component.
+quit                       -- to end the game and quit.
+
+You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it.
+As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.
+Some sort of jewellery? Or maybe a key?
+
+inventory
+> lantern
+rope
+cast grab rope
+> With the help of the Grab Spell you pick up a key.
+
+cast grab rope
+> There is nothing you can grab here.
+
+inventory
+> key
+lantern
+rope

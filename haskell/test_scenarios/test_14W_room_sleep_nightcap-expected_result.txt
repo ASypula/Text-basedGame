@@ -1,0 +1,29 @@
+You are a wizard apprentice who failed their final exams, 
+thus General University of magic put you in a deadly dungeon.
+
+Were you to escape, Wizard Council would let you retake exams...
+Available commands are:
+
+instructions               -- to see these instructions.
+look                       -- look around again.
+take OBJECT_NAME           -- take object (into your inventory).
+investigate OBJECT_NAME    -- investigate object's details.
+cast SPELL SPELL_COMPONENT -- to cast a spell using correct component.
+quit                       -- to end the game and quit.
+
+The corridor takes a turn here. You could go south but in the corner lies a dragonling.
+It guards a pile of student''s robes, books and cheat sheets and looks rather angry. Walls around it are covered in burn marks.
+You can also go back west.
+
+inventory
+> lantern
+nightcap
+cast sleep nightcap
+> You put the dragonling to magical sleep. Now it looks more cute than threatening.
+
+look
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+There is a cheat_sheet here.
+Magnificent! There is a bottle of beer here.
+There is a book_fragment here.
