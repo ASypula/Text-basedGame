@@ -26,6 +26,9 @@ instructionsText = [
     "investigate OBJECT_NAME    -- investigate object's details.",
     "cast SPELL SPELL_COMPONENT -- to cast a spell using correct component.",
     "quit                       -- to end the game and quit.",
+    "",
+    "Additionaly, it is wise to look around again after you cast some speels. You might be able to see additional things.",
+    "",
     ""
     ]
                
