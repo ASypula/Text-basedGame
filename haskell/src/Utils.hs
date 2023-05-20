@@ -304,6 +304,7 @@ useObject st objName useCaseName =
       case objName of
         "magnet" -> useMagnet st useCaseName
         "potion" -> usePotion st useCaseName
+        "key" -> useKey st useCaseName
         _ -> (st, "This won't help you.")
     else
       (st, "You don't have such object in your inventory")
@@ -331,6 +332,7 @@ useMagnet st useCaseName =
           else
             (st, "This won't work.")
         where useCases = ["badge", "monster", "beast", "manticore"]
+    _ -> (st, "Not helpful here.")
 
 
 
@@ -359,7 +361,7 @@ usePotion st useCaseName =
         where useCases = ["self", "myself", "me", "acid_pool"]
     "room_2" ->
         if elem useCaseName useCases then 
-            if elem "trapdoor" (additions room) 
+            if elem "trapdoor" (additions room') 
               then (st, "Jumping here would surely hurt your head now.")
             else 
               let newState = st {gameEnding="escaped"}
@@ -367,5 +369,25 @@ usePotion st useCaseName =
         else (st, "This won't work.")
         where 
           useCases = ["self", "myself", "me", "trapdoor"]
-          [room] = maybeToList ( Map.lookup "room_2" (rooms st))
+          [room'] = maybeToList ( Map.lookup "room_2" (rooms st))
+    _ -> (st, "Not helpful here.")
+
+useKey :: State -> String -> (State, String) 
+useKey st useCaseName = 
+  if elem (room (player st)) ["room_4", "room_4S", "room_4N"]
+    then
+      if elem useCaseName useCases then
+        let 
+          player' = player st
+          inv = inventory player'
+          inv2 = filter (\obj -> objectName obj /= "key") inv
+          inv3 = inv2 ++ [Object {objectName="rusty_key"}]
+          newPlayer = player' {inventory = inv3}
+          newState = st {player = newPlayer}
+        in (newState, "The key rusts in contact with acid.")
+      else (st, "This won't work.")
+    else (st, "Not helpful here.")
+    where useCases = ["acid", "acid_pool", "pool", "acid pool"]
+
+
 
