@@ -12,6 +12,10 @@ roomDescription (Just room)
         "You can still back off to the south.",
         "The head belongs to deceptively beautiful woman with blue eyes and cruel smile.",
         "The beast rises its double scorpion tail as if already prepared to attack.", ""]
+    | name == "room_2" && not ("trapdoor" `elem` additionsList) = [
+        "The trapdoor above is now open. You can see light coming through it.",
+        "There is a slightly open door on the east wall.",
+        "There is a skeleton in wizard robes."]
     | name == "room_2" = [
         "Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.",
         "There is a slightly open door on the east wall.",

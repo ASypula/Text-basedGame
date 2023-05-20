@@ -5,7 +5,7 @@ import RoomsSetup
 import ObjectsSetup
 import qualified Data.Map as Map
 import qualified Data.List as List
-import Data.Maybe (fromMaybe, fromJust)
+import Data.Maybe (fromMaybe, fromJust, maybeToList)
 
 printLines :: [String] -> IO ()
 printLines xs = putStr (unlines xs)
@@ -134,6 +134,18 @@ removeAddition text state =
           newState = state { rooms = newRoomsMap }
       in newState
 
+
+removeAdditionAlt :: String -> String -> State -> State
+removeAdditionAlt roomName' text state =
+  case Map.lookup roomName' (rooms state) of
+    Nothing -> state
+    Just oldRoom ->
+      let rName = roomName oldRoom
+          newRoom = removeAdditionFromRoom oldRoom text
+          newRoomsMap = Map.insert rName newRoom (rooms state)
+          newState = state { rooms = newRoomsMap }
+      in newState
+
 unlock :: String -> State -> (State, Bool)
 unlock rName state = 
   case elem rName blockedRooms of
@@ -231,8 +243,7 @@ castOpen spellComponent st roomName =
     "rusty_key" ->
       case roomName of
         "room_2" -> do
-            let newBlockades = filter (/= "room_0") (blockades st)
-            let newState = st { blockades = newBlockades }
+            let newState = removeAdditionAlt "room_2" "trapdoor" st
             if areStatesIdentical st newState
               then (st, "There is nothing to be opened here")
               else (newState, "You hear a click sound and the doors are beginning to open slowly.")
@@ -289,10 +300,11 @@ areStatesIdentical state1 state2 =
 
 useObject :: State -> String -> String -> (State, String)
 useObject st objName useCaseName =
-  if objName `elem` map objectName inv 
-    then
+  if objName `elem` map objectName inv then
       case objName of
         "magnet" -> useMagnet st useCaseName
+        "potion" -> usePotion st useCaseName
+        _ -> (st, "This won't help you.")
     else
       (st, "You don't have such object in your inventory")
   where inv = inventory (player st)
@@ -302,21 +314,58 @@ useMagnet :: State -> String -> (State, String)
 useMagnet st useCaseName =
   case room (player st) of 
     "room_16" ->
-        if elem useCaseName useCases
-          then 
-            let 
-              (newState, m) = takeObjectFromRoom "key" "room_16" st
-            in (newState, "You managed to pick up a key")
+        if elem useCaseName useCases then
+            let (newState, m) = takeObjectFromRoom "key" "room_16" st
+            in
+              if areStatesIdentical st newState 
+                then (newState, "You managed to pick up a key")
+                else (st, "There is nothing more here to use magnet on.")
           else
             (st, "This won't work.")
         where useCases = ["floor", "key", "metal"]
     "room_1" ->
-        if elem useCaseName useCases
-          then 
+        if elem useCaseName useCases then 
             let 
               (newState, m) = takeObjectFromRoom "badge" "room_1" st
             in (newState, "Badge springs to your hand across the room. The beast gives you a puzzled look.")
           else
             (st, "This won't work.")
         where useCases = ["badge", "monster", "beast", "manticore"]
+
+
+
+usePotion :: State -> String -> (State, String)
+usePotion st useCaseName =
+  case room (player st) of 
+    "room_4S" ->
+        if elem useCaseName useCases then 
+            let 
+              oldPlayer = player st
+              newPlayer = oldPlayer {room ="room_4N"}
+              newState = st {player = newPlayer}
+            in (newState, "You take a swig from a bottle and without a problem you manage to jump over the acid pool.")
+          else
+            (st, "This won't work.")
+        where useCases = ["self", "myself", "me", "acid_pool"]
+    "room_4N" ->
+        if elem useCaseName useCases then 
+            let 
+              oldPlayer = player st
+              newPlayer = oldPlayer {room ="room_4S"}
+              newState = st {player = newPlayer}
+            in (newState, "You take a swig from a bottle and without a problem you manage to jump over the acid pool.")
+          else
+            (st, "This won't work.")
+        where useCases = ["self", "myself", "me", "acid_pool"]
+    "room_2" ->
+        if elem useCaseName useCases then 
+            if elem "trapdoor" (additions room) 
+              then (st, "Jumping here would surely hurt your head now.")
+            else 
+              let newState = st {gameEnding="escaped"}
+              in (newState, "")
+        else (st, "This won't work.")
+        where 
+          useCases = ["self", "myself", "me", "trapdoor"]
+          [room] = maybeToList ( Map.lookup "room_2" (rooms st))
 
