@@ -12,6 +12,10 @@ roomDescription (Just room)
         "You can still back off to the south.",
         "The head belongs to deceptively beautiful woman with blue eyes and cruel smile.",
         "The beast rises its double scorpion tail as if already prepared to attack.", ""]
+    | name == "room_2" && not ("trapdoor" `elem` additionsList) = [
+        "The trapdoor above is now open. You can see light coming through it.",
+        "There is a slightly open door on the east wall.",
+        "There is a skeleton in wizard robes."]
     | name == "room_2" = [
         "Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.",
         "There is a slightly open door on the east wall.",
@@ -33,21 +37,34 @@ roomDescription (Just room)
     | name == "room_4S" = [
         "Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.",
         "On your side there is one passages south. On the northern side there are two passages: north and west."]
+    | name == "room_5" && elem "inactive" additionsList = [
+        "The room is filled with techno-magic machinery. It is not considered difficult magic, but you overslept that exam and failed it anyway.",
+        "There are several colourful crystals embedden in the machinery. One of them seems to be missing from it's place though.",
+        "There is a door on the east wall."]
     | name == "room_5" = [
         "The room is filled with techno-magic machinery. It is not considered difficult magic, but you overslept that exam and failed it anyway.",
+        "There are several colourful crystals embedded in the machinery. Now they emit bright light and high-pith buzzing.",
         "There is a door on the east wall."]
     | name == "room_6" = [
         "Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.",
         "The corridor leads north. There is also an opening on the east side."]
-    | name == "room_8" = [
-        "The hidden room is filled with books and oracle orbs. It is illuminated by mistical blue light.",
+    | name == "room_8" &&  not (elem "noBeer" additionsList) = [
+        "The room is filled with books and oracle orbs. It is illuminated by mistical blue light.",
         "In the centre of the room stands a skeleton wearing very old tattered hat with \"Maggus\" on it.",
-        "Suddenly the skeleton moves and gestures you to come closer."]
+        "\"Magnificent! Beer! Anyway the spell is power_word_kill and the component is wolfsbane. I think the name is self explainatory."]
+    | name == "room_8"  = [
+        "The room is filled with books and oracle orbs. It is illuminated by mistical blue light.",
+        "In the centre of the room stands a skeleton wearing very old tattered hat with \"Maggus\" on it.",
+        "Suddenly the skeleton moves and gestures you to come closer.",
+        "\"Oh don't be afraid,\" he suddenly says. \"I was once a student like you, but now I am bonded with this cursed place. I can help you",
+        "Let's make a deal.\" He claps his hands with the rattling noise. \"You give me beer and I teach you a very powerful spell.\"",
+        "I haven't had beer in a while..."
+        ]
     | name == "room_10" = [
         "There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.",
         "There is also a long corridor going east and another corridor going south."]
     | name == "room_11" = [
-        "You are in a long corridor going east and west. In the middle it has two doors in front of each other.",
+        "You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.",
         "The corridor is stained with soot in some places."]
     | name == "room_12" && "obscured" `elem` additionsList = [
         "It's strange. You've just walked into this room and just by being in here you feel some pain.",
@@ -143,8 +160,7 @@ additionalDescription room state =
             "room_4S" ->
                 case twinRoom of
                     Just tr ->
-                        let specObjs =  objects tr
-                        in allObjectsRoomDescription room specObjs 
+                        allObjectsRoomDescription room (filter (\obj -> objectName obj == "nightcap") (objects tr)) 
                 where 
                     twinRoom = (Map.lookup "room_4N" (rooms state))
             _ ->
@@ -160,7 +176,8 @@ allObjectsRoomDescription room objs =
 
 roomObjectDescription :: Room -> Object -> [String]
 roomObjectDescription room object
-    | rName == "room_2" && objName == "old_journal" = ["You see a journal near the skeleton in wizard robes."]
+    | rName == "room_1" && objName == "badge" = ["The only slightly amusing thing about it is a big, metal, old-fashioned school staff badge attached to its fur."]
+    | rName == "room_2" && objName == "old_journal" = ["You see an old_journal near the skeleton in wizard robes."]
     | rName == "room_3" && objName == "rope" && "obscured" `elem` additionsList = ["It's too dark to see anything."]
     | rName == "room_3" && objName == "rope" = ["You were right! It''s a bunch of material, a rope."]
     | rName == "room_4" && objName == "firefly" = ["Over the pool fly some weird glowing bugs. They look similar to fireflies."]
@@ -170,6 +187,8 @@ roomObjectDescription room object
     | rName == "room_4S" && objName == "nightcap" = ["On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here."]
     | rName == "room_4N" && objName == "nightcap" = ["On your side of the acid pool there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here."]
     | rName == "room_4S" && objName == "nightcap" = ["On the opposite side of the acid pool there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here."]
+    | rName == "room_5" && objName == "note" = ["There is an old dusty note sticked to the machinery."]
+    | rName == "room_5" && objName == "crystal" = ["You nearly step on little purple crystal laying on the floor."]
     | rName == "room_6" && objName == "magnet" = ["One of the goblins holds curious looking magnet."]
     | rName == "room_12" && objName == "wolfsbane" && not ("obscured" `elem` additionsList) = ["The wolfsbane catches your eye.", "And now you see the thorns are because roses grow... black roses but you remember from your herbology lectures that they are not harmful until you eat them. You have a lot of luck this time."]
     | rName == "room_13" && objName == "ripped_journal" = ["There is a ripped_journal here."]
@@ -177,7 +196,7 @@ roomObjectDescription room object
     | rName == "room_14" && objName == "cheat_sheet" = ["There is a cheat_sheet here."]
     | rName == "room_14" && objName == "beer" = ["Magnificent! There is a bottle of beer here."]
     | rName == "room_15" && objName == "burned_journal" = ["Beside it, there is a partially burned journal."]
-    | rName == "room_16" && objName == "potion" = ["Only one of the bottles appears to have something in it."]
+    | rName == "room_16" && objName == "potion" = ["Only one of the bottles appears to have something in it. It might be a potion worth taking."]
     | rName == "room_16" && objName == "key" = ["As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.", "Some sort of jewellery? Or maybe a key?"]
     | otherwise = [""]
     where

@@ -5,7 +5,7 @@ import RoomsSetup
 import ObjectsSetup
 import qualified Data.Map as Map
 import qualified Data.List as List
-import Data.Maybe (fromMaybe, fromJust)
+import Data.Maybe (fromMaybe, fromJust, maybeToList)
 
 printLines :: [String] -> IO ()
 printLines xs = putStr (unlines xs)
@@ -31,28 +31,41 @@ investigateObject objName roomName state =
   case Map.lookup roomName (rooms state) of
     Nothing -> "Room not found"
     Just room ->
-      case inventory (player state) of
-        Nothing -> "You don't hold any object"
-        Just objs ->
-          let filteredObjs = filter (\obj -> objectName obj == objName) objs
-          in case filteredObjs of
-            [] -> "You don't hold such object"
-            _ -> unlines (objectDescription filteredObjs)
+        let filteredObjs = filter (\obj -> objectName obj == objName) objs
+        in case filteredObjs of
+          [] -> "You don't hold such object"
+          _ -> unlines (objectDescription filteredObjs)
+        where objs = inventory (player state)
 
-ifObjectIsPresentInInventory :: String -> State -> Bool
-ifObjectIsPresentInInventory lookForObjectName state = case inventory (player state) of
-                                              Just objects -> elem lookForObjectName (map objectName objects)
-                                              Nothing -> False
 
 getInventoryItemsDescription :: Player -> [String]
-getInventoryItemsDescription player = do
-    case inventory player of
-        Nothing -> [""]
-        Just objects -> map objectName objects
+getInventoryItemsDescription player = 
+        map objectName objects
+        where objects = inventory player
 
 describeState :: State -> IO()
 describeState state = do
     describeRoom state
+
+takeObjectFromRoomIfPossible :: String -> String -> State -> (State, String)
+takeObjectFromRoomIfPossible objName roomName state =
+  case objName of
+    "key" -> (state, "You can not reach it.")
+    "nightcap" -> 
+      case roomName of
+        "room_4S" -> (state, "You can not reach it.")
+        _ -> takeObjectFromRoom objName roomName state
+    "firefly" -> 
+      case Map.lookup roomName (rooms state) of
+        Nothing -> (state, "Room not found.")
+        Just oldRoom ->
+          case objects oldRoom of
+            [] -> (state, "Room has no objects.")
+            objs ->
+              if "firefly" `elem` map objectName objs
+                then (state, "Fireflies tend to be hard to catch with bare hands. Try to find something to catch it in.") 
+                else (state, "You can not reach it.") 
+    _ -> takeObjectFromRoom objName roomName state
 
 takeObjectFromRoom :: String -> String -> State -> (State, String)
 takeObjectFromRoom objName roomName state =
@@ -68,13 +81,13 @@ takeObjectFromRoom objName roomName state =
               if objName `elem` map objectName objs
                 then let newRoomsMap = removeObjectFromAllRooms objName objs (rooms state)
                          takenObj = filter (\obj -> objectName obj == objName) objs
-                         inv = maybe [] id (inventory (player state))
+                         inv = inventory (player state)
                          newInventory = takenObj ++ inv
                          oldPlayer = player state
-                         newPlayer = oldPlayer {inventory = Just newInventory}
+                         newPlayer = oldPlayer {inventory = newInventory}
                          newState = state { rooms = newRoomsMap, player = newPlayer }
                       in (newState, "Object successfully added to your inventory.")
-                else (state, "Such object does not exists or you can not reach it.")
+                else (state, "Such object does not exists.")
 
 removeObjectFromAllRooms :: String -> [Object] -> Map.Map String Room -> Map.Map String Room
 removeObjectFromAllRooms objName objs oldRoomsMap =
@@ -90,9 +103,8 @@ removeSpecyficObjectFromRoom oldRoom objName objs =
 
 getStringInventory :: Player -> [String]
 getStringInventory player =
-  case inventory player of
-    Nothing -> []
-    Just objs -> map objectName objs
+        map objectName objects
+        where objects = inventory player
 
 -- removeAdditionFromRoom :: Room -> String -> Room
 -- removeAdditionFromRoom room stringToRemove =
@@ -114,6 +126,18 @@ removeAdditionFromRoom room stringToRemove =
 removeAddition :: String -> State -> State
 removeAddition text state =
   case Map.lookup (room (player state)) (rooms state) of
+    Nothing -> state
+    Just oldRoom ->
+      let rName = roomName oldRoom
+          newRoom = removeAdditionFromRoom oldRoom text
+          newRoomsMap = Map.insert rName newRoom (rooms state)
+          newState = state { rooms = newRoomsMap }
+      in newState
+
+
+removeAdditionAlt :: String -> String -> State -> State
+removeAdditionAlt roomName' text state =
+  case Map.lookup roomName' (rooms state) of
     Nothing -> state
     Just oldRoom ->
       let rName = roomName oldRoom
@@ -144,21 +168,20 @@ cast st spellName spellComponent =
     [] -> (st, "Something has gone terribly wrong! You cannot cast any spell...")
     sp ->
       if spellName `elem` sp
-        then case inventory (player st) of
-          Nothing -> (st, "You don't have any obejct in your inventory")
-          Just inv ->
-            if spellComponent `elem` map objectName inv
-              then case spellName of
-                "light" -> castLight spellComponent st (room (player st))
-                "grab" -> case spellComponent of
-                  "rope" -> castGrab st (room (player st))
-                  _ -> (st, "The \"grab\" spell does not seem to work with chosen spell component...")
-                "open" -> castOpen spellComponent st (room (player st))
-                "sleep" -> castSleep spellComponent st (room (player st))
-                "power_word_kill" -> castPowerWordKill spellComponent st (room (player st))
-                _ -> (st, "Something went wrong - the world doesn't know how to react to your spell. You should reconsider your actions...")
-              else (st, "You don't have such item")
+        then
+          if spellComponent `elem` map objectName inv
+            then case spellName of
+              "light" -> castLight spellComponent st (room (player st))
+              "grab" -> case spellComponent of
+                "rope" -> castGrab st (room (player st))
+                _ -> (st, "The \"grab\" spell does not seem to work with chosen spell component...")
+              "open" -> castOpen spellComponent st (room (player st))
+              "sleep" -> castSleep spellComponent st (room (player st))
+              "power_word_kill" -> castPowerWordKill spellComponent st (room (player st))
+              _ -> (st, "Something went wrong - the world doesn't know how to react to your spell. You should reconsider your actions...")
+            else (st, "You don't have such item")
         else (st, "Such spell does not exits... You should have studied harder before your exams...")
+        where inv = inventory (player st)
 
 castLight :: String -> State -> String -> (State, String)
 castLight spellComponent st roomName =
@@ -202,29 +225,45 @@ castOpen spellComponent st roomName =
     "key" ->
       case roomName of
         "room_4" -> do
-            let newBlockades = filter (/= "room_5") (blockades st)
-            let evenNewerBlockades = filter (/= "room_4") newBlockades
-            let newState = st { blockades = evenNewerBlockades }
-            if areStatesIdentical st newState
+            let (newState, wasOpened) = unlock "room_5" st
+            if not wasOpened
               then (st, "There is nothing to be opened here")
-              else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+              else (newState, "You hear a click sound and the western door begin to open slowly.")
         "room_4N" -> do
-            let newBlockades = filter (/= "room_5") (blockades st)
-            let evenNewerBlockades = filter (/= "room_4") newBlockades
-            let newState = st { blockades = evenNewerBlockades }
-            if areStatesIdentical st newState
+            let (newState, wasOpened) = unlock "room_5" st
+            if not wasOpened
               then (st, "There is nothing to be opened here")
-              else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+              else (newState, "You hear a click sound and the western door begin to open slowly.")
         "room_2" -> (st, "This won't do. The basic \"open\" spell can barely open doors. No way it would open a trapdoor.")
+        "room_11" -> do 
+            let (newState, wasOpened) = unlock "room_13" st
+            if not wasOpened
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the sothern door begin to slowly open. Nothen door are to well guarded for a simple open spell.")
         _ -> (st, "It does not seem to work here at all...")
     "rusty_key" ->
       case roomName of
         "room_2" -> do
-            let newBlockades = filter (/= "room_0") (blockades st)
-            let newState = st { blockades = newBlockades }
+            let newState = removeAdditionAlt "room_2" "trapdoor" st
             if areStatesIdentical st newState
               then (st, "There is nothing to be opened here")
               else (newState, "You hear a click sound and the doors are beginning to open slowly.")
+        "room_4" -> do
+            let (newState, wasOpened) = unlock "room_5" st
+            if not wasOpened
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the western door begin to open slowly.")
+        "room_4N" -> do
+            let (newState, wasOpened) = unlock "room_5" st
+            if not wasOpened
+              then (st, "There is nothing to be opened here")
+              else (newState, "You hear a click sound and the western door begin to open slowly.")
+        "room_11" -> do 
+            let (newState, wasOpened) = unlock "room_13" st
+            let (newerState, wasOpened2) = unlock "room_12" newState
+            if  wasOpened || wasOpened2
+              then (newerState, "You hear a click sound and doors begin to slowly open.")
+              else (st, "There is nothing to be opened here")
         _ -> (st, "It does not seem to work here at all...")
     _ -> (st, "The \"open\" spell does not seem to work with chosen spell component...")
 
@@ -249,8 +288,21 @@ castSleep spellComponent st roomName =
               then (st, "There is noone else that you could put to sleep")
               else (newState, "You put the dragonling to magical sleep. Now it looks more cute than threatening.")
         "room_14" -> (st, "The dragonling is already asleep. You had better staty quiet...")
+        "room_1" -> 
+            if elem "sleepResistant" (listAdditions "room_1" st) then 
+                (st, "The beast is somehow immune to this spell!")
+              else let
+                newState = st {gameEnding="a_mimir"}
+                in (newState, "")
         _ -> (st, "It does not seem to work here at all...")
     _ -> (st, "The \"sleep\" spell does not seem to work with chosen spell component...")
+
+listAdditions :: String -> State -> [String]
+listAdditions roomName st =
+  case Map.lookup roomName (rooms st) of
+    Just r -> additions r
+    Nothing -> []
+
 
 castPowerWordKill :: String -> State -> String -> (State, String)
 castPowerWordKill spellComponent st roomName =
@@ -274,3 +326,155 @@ areStatesIdentical state1 state2 =
   rooms state1 == rooms state2 &&
   blockades state1 == blockades state2 &&
   spells state1 == spells state2
+
+
+useObject :: State -> String -> String -> (State, String)
+useObject st objName useCaseName =
+  if objName `elem` map objectName inv then
+      case objName of
+        "magnet" -> useMagnet st useCaseName
+        "potion" -> usePotion st useCaseName
+        "key" -> useKey st useCaseName
+        "jar" -> useJar st useCaseName
+        "beer" -> useBeer st useCaseName
+        "crystal" -> useCrystal st useCaseName
+        _ -> (st, "This won't help you.")
+    else
+      (st, "You don't have such object in your inventory")
+  where inv = inventory (player st)
+
+
+useMagnet :: State -> String -> (State, String)
+useMagnet st useCaseName =
+  case room (player st) of 
+    "room_16" ->
+        if elem useCaseName useCases then
+            let (newState, m) = takeObjectFromRoom "key" "room_16" st
+            in
+              case m of 
+                "Object successfully added to your inventory." ->
+                  (newState, "You managed to pick up a key")
+                _-> (st, "There is nothing more here to use magnet on.")
+          else
+            (st, "This won't work.")
+        where useCases = ["floor", "key", "metal"]
+    "room_1" ->
+        if elem useCaseName useCases then 
+            let 
+              (newState, m) = takeObjectFromRoom "badge" "room_1" st
+            in 
+              case m of 
+                "Object successfully added to your inventory." ->
+                  let
+                    newState2 = removeAdditionAlt "room_1" "sleepResistant" newState
+                  in (newState2, "Badge springs to your hand across the room. The beast gives you a puzzled look.")
+                _-> (st, "There is nothing to more here to use magnet on")
+          else
+            (st, "This won't work.")
+        where useCases = ["badge", "monster", "beast", "manticore"]
+    _ -> (st, "Not helpful here.")
+
+
+
+usePotion :: State -> String -> (State, String)
+usePotion st useCaseName =
+  case room (player st) of 
+    "room_4S" ->
+        if elem useCaseName useCases then 
+            let 
+              oldPlayer = player st
+              newPlayer = oldPlayer {room ="room_4N"}
+              newState = st {player = newPlayer}
+            in (newState, "You take a swig from a bottle and without a problem you manage to jump over the acid pool.")
+          else
+            (st, "This won't work.")
+        where useCases = ["self", "myself", "me", "acid_pool"]
+    "room_4N" ->
+        if elem useCaseName useCases then 
+            let 
+              oldPlayer = player st
+              newPlayer = oldPlayer {room ="room_4S"}
+              newState = st {player = newPlayer}
+            in (newState, "You take a swig from a bottle and without a problem you manage to jump over the acid pool.")
+          else
+            (st, "This won't work.")
+        where useCases = ["self", "myself", "me", "acid_pool"]
+    "room_2" ->
+        if elem useCaseName useCases then 
+            if elem "trapdoor" (additions room') 
+              then (st, "Jumping here would surely hurt your head now.")
+            else 
+              let newState = st {gameEnding="escaped"}
+              in (newState, "")
+        else (st, "This won't work.")
+        where 
+          useCases = ["self", "myself", "me", "trapdoor"]
+          [room'] = maybeToList ( Map.lookup "room_2" (rooms st))
+    _ -> (st, "Not helpful here.")
+
+useKey :: State -> String -> (State, String) 
+useKey st useCaseName = 
+  if elem (room (player st)) ["room_4", "room_4S", "room_4N"]
+    then
+      if elem useCaseName useCases then
+        let 
+          player' = player st
+          inv = inventory player'
+          inv2 = filter (\obj -> objectName obj /= "key") inv
+          inv3 = inv2 ++ [Object {objectName="rusty_key"}]
+          newPlayer = player' {inventory = inv3}
+          newState = st {player = newPlayer}
+        in (newState, "The key rusts in contact with acid.")
+      else (st, "This won't work.")
+    else (st, "Not helpful here.")
+    where useCases = ["acid", "acid_pool", "pool", "acid pool"]
+
+
+useJar :: State -> String -> (State, String)
+useJar st useCaseName =
+  if elem (room (player st)) ["room_4", "room_4S", "room_4N"]
+    then
+      if elem useCaseName useCases then
+          let (newState, m) = takeObjectFromRoom "firefly" "room_4" st
+          in
+              case m of 
+                "Object successfully added to your inventory." ->
+                  (newState, "You managed to trap firefly in a jar")
+                _ -> (st, "There are no more fireflies within your reach.")
+        else (st, "This won't work.")
+    else (st, "Not helpful here.")
+    where useCases = ["firefly", "bug", "bugs", "fireflies"]
+
+
+useBeer :: State -> String -> (State, String)
+useBeer st useCaseName =
+  case room (player st) of
+    "room_8" ->
+      if elem useCaseName ["skeleton", "student", "maggus", "undead"] then 
+        let
+          player' = player st
+          inv = inventory player'
+          inv2 = filter (\obj -> objectName obj /= "beer") inv
+          newPlayer = player' {inventory=inv}
+          state2 = removeAdditionAlt "room_8" "noBeer" st
+          state3 =state2 {player=newPlayer} 
+        in (state3, "You give beer to undead student. It wasn't an easy decision.")
+      else (st, "This won't do.")
+    _-> (st, "Maybe it's better to save it for worse times.")
+
+
+useCrystal ::State -> String -> (State,String)
+useCrystal st useCaseName =
+  if room (player st) == "room_5" then
+    if elem useCaseName ["machinery", "panel"] then
+      let
+          player' = player st
+          inv = inventory player'
+          inv2 = filter (\obj -> objectName obj /= "crystal") inv
+          newPlayer = player' {inventory=inv}
+          state2 = removeAdditionAlt "room_5" "inactive" st
+          state3 =state2 {player=newPlayer} 
+          (state4, _) = unlock "room_4" state3 
+      in (state4, "You put crystal in it's place and hear loud popping noise from nearby room.")
+      else (st, "This won't do.")
+    else (st, "This is not helpful here.")

@@ -8,7 +8,7 @@ data PathState = OPEN | BLOCKED | NONE deriving (Eq)
 
 data Object = Object { objectName :: String } deriving (Eq, Show)
 
-data Player = Player { room :: String, inventory :: Maybe [Object] } deriving (Eq)
+data Player = Player { room :: String, inventory :: [Object] } deriving (Eq)
 
 -- TODO: should blocked be as a String - room name from which we are blocked or a Bool
 -- TODO: change additions to tags
