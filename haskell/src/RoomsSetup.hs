@@ -177,7 +177,7 @@ allObjectsRoomDescription room objs =
 roomObjectDescription :: Room -> Object -> [String]
 roomObjectDescription room object
     | rName == "room_1" && objName == "badge" = ["The only slightly amusing thing about it is a big, metal, old-fashioned school staff badge attached to its fur."]
-    | rName == "room_2" && objName == "old_journal" = ["You see a journal near the skeleton in wizard robes."]
+    | rName == "room_2" && objName == "old_journal" = ["You see an old_journal near the skeleton in wizard robes."]
     | rName == "room_3" && objName == "rope" && "obscured" `elem` additionsList = ["It's too dark to see anything."]
     | rName == "room_3" && objName == "rope" = ["You were right! It''s a bunch of material, a rope."]
     | rName == "room_4" && objName == "firefly" = ["Over the pool fly some weird glowing bugs. They look similar to fireflies."]
