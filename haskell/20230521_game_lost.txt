@@ -1,0 +1,674 @@
+You are a wizard apprentice who failed their final exams, 
+thus General University of magic put you in a deadly dungeon.
+
+Were you to escape, Wizard Council would let you retake exams...
+Available commands are:
+
+instructions               -- to see these instructions.
+look                       -- look around again.
+take OBJECT_NAME           -- take object (into your inventory).
+use OBJECT_NAME on CONTEXT -- use object on diffrent object or context
+investigate OBJECT_NAME    -- investigate object's details.
+cast SPELL SPELL_COMPONENT -- to cast a spell using correct component.
+quit                       -- to end the game and quit.
+
+Additionaly, it is wise to look around again after you cast some spells. You might be able to see additional things.
+
+
+Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
+There is a slightly open door on the east wall.
+There is a skeleton in wizard robes.
+You see an old_journal near the skeleton in wizard robes.
+inventory
+> lantern
+investigate lantern
+> Your good trusty lantern. You will need it until you finally get a hold of light spell.
+
+
+take old_journal    
+> Object successfully added to your inventory.
+
+investigate old_journal
+> I found the exit! It is to the north, but fierce beast guides it. I'm gonna await next student who's gonna fail their exams and team up with them against the beast.
+
+
+e
+> Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+e
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it. It might be a potion worth taking.
+As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.
+Some sort of jewellery? Or maybe a key?
+
+take jar
+> Object successfully added to your inventory.
+
+investigate jar
+> Old jar with a lid. Could be used for storing something small.
+
+
+look
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it. It might be a potion worth taking.
+As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.
+Some sort of jewellery? Or maybe a key?
+n
+> Rather big room covered with soot spots. It has exits on south and north wall.
+There is a soot covered skeleton here.
+Beside it, there is a partially burned journal.
+take burned_journal
+> Object successfully added to your inventory.
+
+inventory
+> burned_journal
+jar
+old_journal
+lantern
+investigate burned_journal
+> [illegible] is giving me a hard time. I know the [illegible] spell would be a save way to deal with it, however casting 'grab' on it's tail would be funnier. Besides I don't have nightcap for [illegible] spell
+
+
+look
+> Rather big room covered with soot spots. It has exits on south and north wall.
+There is a soot covered skeleton here.
+
+n
+> The corridor takes a turn here. You could go west but in the corner lies a dragonling.
+It guards a pile of student''s robes, books and cheat sheets and looks rather angry. Walls around it are covered in burn marks.
+You can also go back south.
+
+s
+> Rather big room covered with soot spots. It has exits on south and north wall.
+There is a soot covered skeleton here.
+
+s
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it. It might be a potion worth taking.
+As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.
+Some sort of jewellery? Or maybe a key?
+w
+> Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+n
+> Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+Over the pool fly some weird glowing bugs. They look similar to fireflies.
+On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+use jar on firefly
+> You managed to trap firefly in a jar
+
+look
+> Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+s
+> Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+
+cast light firefly
+> The room has been instantaneously illuminated!
+
+look
+> Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+You were right! It''s a bunch of material, a rope.
+take rope
+> Object successfully added to your inventory.
+
+look
+> Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+n
+> Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+On the north side there is a skeleton wearing a nightcap. It lays in a very comfortable natural position, as if it just layed to eternal sleep here.
+cast grab rope
+> With the help of the Grab Spell you pick up a nightcap over the acid pool.
+
+look
+> Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+
+
+s
+> Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+e
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it. It might be a potion worth taking.
+As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.
+Some sort of jewellery? Or maybe a key?
+n
+> Rather big room covered with soot spots. It has exits on south and north wall.
+There is a soot covered skeleton here.
+
+n
+> The corridor takes a turn here. You could go west but in the corner lies a dragonling.
+It guards a pile of student''s robes, books and cheat sheets and looks rather angry. Walls around it are covered in burn marks.
+You can also go back south.
+
+cast sleep nightcap
+> You put the dragonling to magical sleep. Now it looks more cute than threatening.
+
+look
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+There is a cheat_sheet here.
+Magnificent! There is a bottle of beer here.
+There is a book_fragment here.
+take cheat_sheet
+> Object successfully added to your inventory.
+
+take book_fragment
+> Object successfully added to your inventory.
+
+inventory
+> book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+investigate cheat_sheet
+> light spell: pros: easy, efficient, stays for a long time; cons: requires life component
+grab spell: pros: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them
+sleep spell: pros: useful to avoid combat; cons: doesn't work on school staff for some reason, If casted on self, you cannot wake up.
+
+
+investigate book_fragment
+> There is a more powerful variant of 'open' spell that uses rusty key as a component, which is proven to...
+The words 'more', 'powerful' and 'rusty' are underlined and next to them there is a handwritten note 'Dumb as hell'.
+
+
+look
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+Magnificent! There is a bottle of beer here.
+w
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+inventory
+> book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+n
+> That path is blocked.
+w
+> There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.
+There is also a long corridor going east and another corridor going south.
+
+s
+> Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
+The corridor leads north. There is also an opening on the east side.
+One of the goblins holds curious looking magnet.
+take magnet
+> Object successfully added to your inventory.
+
+investigate magnet
+> Medium size magnet with carved initials.
+
+
+look
+> Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
+The corridor leads north. There is also an opening on the east side.
+
+e
+> The room is filled with books and oracle orbs. It is illuminated by mistical blue light.
+In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.
+Suddenly the skeleton moves and gestures you to come closer.
+"Oh don't be afraid," he suddenly says. "I was once a student like you, but now I am bonded with this cursed place. I can help you
+Let's make a deal." He claps his hands with the rattling noise. "You give me beer and I teach you a very powerful spell."
+I haven't had beer in a while...
+
+inventory
+> magnet
+book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+look
+> The room is filled with books and oracle orbs. It is illuminated by mistical blue light.
+In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.
+Suddenly the skeleton moves and gestures you to come closer.
+"Oh don't be afraid," he suddenly says. "I was once a student like you, but now I am bonded with this cursed place. I can help you
+Let's make a deal." He claps his hands with the rattling noise. "You give me beer and I teach you a very powerful spell."
+I haven't had beer in a while...
+
+n
+> You cannot go that way.
+s
+> You cannot go that way.
+w
+> Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
+The corridor leads north. There is also an opening on the east side.
+
+n
+> There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.
+There is also a long corridor going east and another corridor going south.
+
+n
+> Exit - On the north side of a room you see big golden door with "exit" engraved on them. Unfortunately it is guarded by a beast.
+The room is filled with skeletons in wizard apprentice robes.
+You can still back off to the south.
+The head belongs to deceptively beautiful woman with blue eyes and cruel smile.
+The beast rises its double scorpion tail as if already prepared to attack.
+
+The only slightly amusing thing about it is a big, metal, old-fashioned school staff badge attached to its fur.
+use magnet on badge
+> Badge springs to your hand across the room. The beast gives you a puzzled look.
+
+inventory
+> badge
+magnet
+book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+investigate magnet
+> Medium size magnet with carved initials.
+
+
+look
+> Exit - On the north side of a room you see big golden door with "exit" engraved on them. Unfortunately it is guarded by a beast.
+The room is filled with skeletons in wizard apprentice robes.
+You can still back off to the south.
+The head belongs to deceptively beautiful woman with blue eyes and cruel smile.
+The beast rises its double scorpion tail as if already prepared to attack.
+
+
+s
+> There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.
+There is also a long corridor going east and another corridor going south.
+
+e
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+s
+> That path is blocked.
+e
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+Magnificent! There is a bottle of beer here.
+s
+> Rather big room covered with soot spots. It has exits on south and north wall.
+There is a soot covered skeleton here.
+
+s
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it. It might be a potion worth taking.
+As you look around the room you notice something shiny between floor tiles, but you cannot grab it with your fingers.
+Some sort of jewellery? Or maybe a key?
+use magnet on key
+> You managed to pick up a key
+
+inventory
+> key
+badge
+magnet
+book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+investigate key
+> Small iron key fit more for pendants than doors or chests. (hint: spell component)
+
+
+look
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it. It might be a potion worth taking.
+n
+> Rather big room covered with soot spots. It has exits on south and north wall.
+There is a soot covered skeleton here.
+
+n
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+Magnificent! There is a bottle of beer here.
+w
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+cast open key
+> You hear a click sound and the sothern door begin to slowly open. Nothen door are to well guarded for a simple open spell.
+
+look
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+s
+> Inside there is a skeleton sitting in a corner. Next to it lays a broken jar with some dead insects inside.
+Apart from that, the room is mostly filled with empty crates.
+The door is on the north wall.
+There is a ripped_journal here.
+take ripped_journal
+> Object successfully added to your inventory.
+
+investigate ripped_journal
+> My Open spell was so bad my spell component shattered. I am stuck here. I didn't even have a chance to try to enter the code to that machinery.
+I wasn't very good at History of Magic but I think Morris Worm Spell disaster was in 1998 or 1988.
+
+
+n
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+inventory
+> ripped_journal
+key
+badge
+magnet
+book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+e
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+Magnificent! There is a bottle of beer here.
+take beer
+> Object successfully added to your inventory.
+
+w
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+w
+> There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.
+There is also a long corridor going east and another corridor going south.
+
+s
+> Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
+The corridor leads north. There is also an opening on the east side.
+
+e
+> The room is filled with books and oracle orbs. It is illuminated by mistical blue light.
+In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.
+Suddenly the skeleton moves and gestures you to come closer.
+"Oh don't be afraid," he suddenly says. "I was once a student like you, but now I am bonded with this cursed place. I can help you
+Let's make a deal." He claps his hands with the rattling noise. "You give me beer and I teach you a very powerful spell."
+I haven't had beer in a while...
+
+use beer on maggus
+> You give beer to undead student. It wasn't an easy decision.
+
+look 
+> The room is filled with books and oracle orbs. It is illuminated by mistical blue light.
+In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.
+"Magnificent! Beer! Anyway the spell is power_word_kill and the component is wolfsbane. I think the name is self explainatory.
+
+look
+> The room is filled with books and oracle orbs. It is illuminated by mistical blue light.
+In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.
+"Magnificent! Beer! Anyway the spell is power_word_kill and the component is wolfsbane. I think the name is self explainatory.
+
+w
+> Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
+The corridor leads north. There is also an opening on the east side.
+
+inventory
+> beer
+ripped_journal
+key
+badge
+magnet
+book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+look
+> Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
+The corridor leads north. There is also an opening on the east side.
+
+e
+> The room is filled with books and oracle orbs. It is illuminated by mistical blue light.
+In the centre of the room stands a skeleton wearing very old tattered hat with "Maggus" on it.
+"Magnificent! Beer! Anyway the spell is power_word_kill and the component is wolfsbane. I think the name is self explainatory.
+
+w
+> Corridor filled with goblin skeletons. Looks like some mage defeated them, you can still sense magic in the air.
+The corridor leads north. There is also an opening on the east side.
+
+n
+> There is a door on the north wall, however it is covered in many warning messages written using chalk, soot, ink and even blood.
+There is also a long corridor going east and another corridor going south.
+
+e
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+e
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+
+s
+> Rather big room covered with soot spots. It has exits on south and north wall.
+There is a soot covered skeleton here.
+
+s
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it. It might be a potion worth taking.
+w
+> Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+e
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+Only one of the bottles appears to have something in it. It might be a potion worth taking.
+take potion
+> Object successfully added to your inventory.
+
+investigate potion
+> You recognise it from your alchemy classes (the only ones that you pass). This is a Far Jump Potion.
+You can use it to jump very far, but only once.
+
+
+w
+> Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+n
+> Southern side of a large room with an acid pool at its center. It expands from east to west wall and is too wide to jump over it.
+On your side there is one passages south. On the northern side there are two passages: north and west.
+
+inventory
+> potion
+beer
+ripped_journal
+key
+badge
+magnet
+book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+use key
+> Unknown command.
+
+use key on pool
+> The key rusts in contact with acid.
+
+s
+> Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+w
+> Beneath the trapdoor - First room. Walls are smooth. On the ceiling far above there is trapdoor, you were tossed here through.
+There is a slightly open door on the east wall.
+There is a skeleton in wizard robes.
+
+e
+> Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+
+e
+> You enter a vast, cluttered room. You have to maneuver between shelves, crates and tables to move around.
+Exits are on the west and north wall.
+The room is filled with jars, bottles and glass aparature.
+
+n
+> Rather big room covered with soot spots. It has exits on south and north wall.
+There is a soot covered skeleton here.
+
+n
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+
+w
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+cast open rusty_key
+> You hear a click sound and doors begin to slowly open.
+
+look
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+n
+> It's strange. You've just walked into this room and just by being in here you feel some pain.
+The room is very dark and smells of dirt and herbs. Even your lantern can't illuminate it.
+After even one step in you get scratched by thorns. Let's hope that wasn't anything poisonous.
+There is no way to safely explore this room without magical light.
+
+cast light firefly
+> The room has been instantaneously illuminated!
+
+look
+> The room is of a medium size. You see many normal and magical herbs and flowers growing here.
+The wolfsbane catches your eye.
+And now you see the thorns are because roses grow... black roses but you remember from your herbology lectures that they are not harmful until you eat them. You have a lot of luck this time.
+take wolfsbane
+> Object successfully added to your inventory.
+
+investigate wolfsbane
+> A solid bunch of wolfsbane. Good that you aren't a werewolf.
+
+
+inventory
+> wolfsbane
+potion
+beer
+ripped_journal
+badge
+magnet
+book_fragment
+cheat_sheet
+nightcap
+rope
+firefly
+burned_journal
+jar
+old_journal
+lantern
+rusty_key
+investigate ripped_journal 
+> My Open spell was so bad my spell component shattered. I am stuck here. I didn't even have a chance to try to enter the code to that machinery.
+I wasn't very good at History of Magic but I think Morris Worm Spell disaster was in 1998 or 1988.
+
+
+investigate cheat_sheet
+> light spell: pros: easy, efficient, stays for a long time; cons: requires life component
+grab spell: pros: nearly anything will do as a component. Just needs to be long; cons: beasts hate it for some reason. It is nearly impossible to cast it near them
+sleep spell: pros: useful to avoid combat; cons: doesn't work on school staff for some reason, If casted on self, you cannot wake up.
+
+
+investigate book_fragment
+> There is a more powerful variant of 'open' spell that uses rusty key as a component, which is proven to...
+The words 'more', 'powerful' and 'rusty' are underlined and next to them there is a handwritten note 'Dumb as hell'.
+
+
+investigate old_journal
+> I found the exit! It is to the north, but fierce beast guides it. I'm gonna await next student who's gonna fail their exams and team up with them against the beast.
+
+
+s
+> You are in a long corridor going east and west. In the middle it has two doors in front of each other. The southern door are made out of wood and with simple lock, but northen door are metal and blocked with big, magicly infused lock.
+The corridor is stained with soot in some places.
+
+e
+> Now with the dragon not being an issue anymore you can freely traverse the corridor or plunder dragon''s treasure.
+Corridor takes a turn here. You can go west or south.
+
+cast power_word_kill wolfsbane
+> 
+
+Darth Sidious has been watching you from his reborn empire at Byss in the Deep Core of the Galaxy.
+ Seeing your infinite cruelty (you have tried to kill a sleeping dragonling) he creates an intergalactic portal and takes you to Byss.
+Now he is going to make you hist dark side puppet...
+You are never going to break out of these chains.. so it is better for you to consider yourself dead.

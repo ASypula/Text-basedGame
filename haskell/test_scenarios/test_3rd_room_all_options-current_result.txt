@@ -1,0 +1,38 @@
+You are a wizard apprentice who failed their final exams, 
+thus General University of magic put you in a deadly dungeon.
+
+Were you to escape, Wizard Council would let you retake exams...
+Available commands are:
+
+instructions               -- to see these instructions.
+look                       -- look around again.
+take OBJECT_NAME           -- take object (into your inventory).
+investigate OBJECT_NAME    -- investigate object's details.
+cast SPELL SPELL_COMPONENT -- to cast a spell using correct component.
+quit                       -- to end the game and quit.
+
+Junk Room - The room is covered by unnatural magical darkness, your lantern cannot illuminate.
+You stumble upon various object scattered on the floor, but there is no way to distinguish whether any of them may be useful.
+By touch you find passage north, east and west.
+It's too dark to see anything.
+take rope
+> You can't pick up an object you do not see. Consider finding a way to bring some light in here.
+
+inventory
+> lantern
+firefly
+cast light firefly
+> The room has been instantaneously illuminated!
+
+look
+> Now, when the light provides better visibility, you can distinguish various objects littering the floor.
+One of them in particular draws your attention... a beige pile of something but you need to look closer to name it.
+Now the possible exits are more clearly visible: three different passages leading north, east and west.
+You were right! It''s a bunch of material, a rope.
+take rope
+> Object successfully added to your inventory.
+
+inventory
+> rope
+lantern
+firefly
