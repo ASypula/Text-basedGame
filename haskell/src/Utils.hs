@@ -239,7 +239,7 @@ castOpen spellComponent st roomName =
             let (newState, wasOpened) = unlock "room_13" st
             if not wasOpened
               then (st, "There is nothing to be opened here")
-              else (newState, "You hear a click sound and the sothern door begin to slowly open. Nothen door are to well guarded for a simple open spell.")
+              else (newState, "You hear a click sound and the southern door begin to slowly open. Northern door are to well guarded for a simple open spell.")
         _ -> (st, "It does not seem to work here at all...")
     "rusty_key" ->
       case roomName of

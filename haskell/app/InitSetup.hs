@@ -44,7 +44,7 @@ room2 = Room {roomName = "room_2", objects = [old_journal], hints = [hint_room2]
 room3 = Room {roomName = "room_3", objects = [rope], hints = [hint_room3], blocked = False, additions = ["obscured"]}
 room4 = Room {roomName = "room_4", objects = [nightcap, firefly], hints = [], blocked = False, additions = []}
 room4N = Room {roomName = "room_4N", objects = [nightcap, firefly], hints = [], blocked = False, additions = []}
-room4S = Room {roomName = "room_4S", objects = [firefly], hints = [], blocked = False, additions = []}
+room4S = Room {roomName = "room_4S", objects = [nightcap, firefly], hints = [], blocked = False, additions = []}
 --TODO: write function to move objects from 4N and 4S to 4 upon unlocking
 room5 = Room {roomName = "room_5", objects = [note, crystal], hints = [], blocked = False, additions = ["inactive"]}
 room6 = Room {roomName = "room_6", objects = [magnet], hints = [], blocked = False, additions = []}
